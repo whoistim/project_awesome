@@ -1,4 +1,3 @@
-project_awesome
+Rspots
 ===============
 
-Project numero dos
