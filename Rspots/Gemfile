@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 # Added gems
 gem 'pry-rails'
+gem 'omniauth-facebook'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
