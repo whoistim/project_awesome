@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
+  root 'home#index'
   get 'home/index'
 
   get 'home/about'
 
   get 'home/faq'
+
+match 'auth/:provider/callback', to: 'sessions#create', via: :get
+match 'auth/failure', to: redirect('/'), via: :get
+match 'signout', to: 'sessions#destroy', as: 'signout', via: :get
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
