@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
 
 # Added gems
-gem 'pry-rails'
 gem 'omniauth-facebook'
+#figaro for ENV variables
+gem 'figaro'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
