@@ -14,6 +14,7 @@ google.maps.event.addDomListener(window, 'load', function () {
 		scrollwheel: true,
   });
 
+
 	var input = ( document.getElementById('pac-input')); 
 	map.controls[google.maps.ControlPosition.TOP_RIGHT].push(input);
 
@@ -60,9 +61,11 @@ google.maps.event.addDomListener(window, 'load', function () {
 		//
 	});
 
+
 // google.maps.event.addListener(map, 'bounds_changed', function() {
 // 	var bounds = map.getBounds();
 // 	searchBox.setBounds(bounds);
 // });
+
 
 });
