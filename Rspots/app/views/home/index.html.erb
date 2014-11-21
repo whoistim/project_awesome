@@ -1,5 +1,4 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+
 <div id="user_nav">
   <% if @current_user %>
     Signed in as <strong><%= @current_user.first_name %></strong>!
@@ -8,3 +7,7 @@
     <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
   <% end %>
 </div>
+
+<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+<div id="map-canvas"></div>
+
