@@ -15,9 +15,9 @@ var input = ( document.getElementById('pac-input'));
 
 map.controls[google.maps.ControlPosition.TOP_RIGHT].push(input);
 
-
 // var defaultBounds = new google.maps.LatLngBounds(
   //     new google.maps.LatLng(37.79086,-122.40147),
   //     new google.maps.LatLng(37.8337, -122.3143));
   // map.fitBounds(defaultBounds);
+
 });
