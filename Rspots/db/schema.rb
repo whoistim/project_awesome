@@ -11,10 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141121023726) do
+ActiveRecord::Schema.define(version: 20141121182836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "group_locations", force: true do |t|
+    t.integer  "group_id"
+    t.integer  "location_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "group_locations", ["group_id"], name: "index_group_locations_on_group_id", using: :btree
+  add_index "group_locations", ["location_id"], name: "index_group_locations_on_location_id", using: :btree
+
+  create_table "group_users", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.boolean  "is_owner"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "group_users", ["group_id"], name: "index_group_users_on_group_id", using: :btree
+  add_index "group_users", ["user_id"], name: "index_group_users_on_user_id", using: :btree
 
   create_table "groups", force: true do |t|
     t.string   "name"
@@ -23,27 +44,6 @@ ActiveRecord::Schema.define(version: 20141121023726) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "groups_locations", force: true do |t|
-    t.integer  "group_id"
-    t.integer  "location_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "groups_locations", ["group_id"], name: "index_groups_locations_on_group_id", using: :btree
-  add_index "groups_locations", ["location_id"], name: "index_groups_locations_on_location_id", using: :btree
-
-  create_table "groups_users", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "group_id"
-    t.boolean  "is_owner"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "groups_users", ["group_id"], name: "index_groups_users_on_group_id", using: :btree
-  add_index "groups_users", ["user_id"], name: "index_groups_users_on_user_id", using: :btree
 
   create_table "locations", force: true do |t|
     t.string   "title"
@@ -60,13 +60,13 @@ ActiveRecord::Schema.define(version: 20141121023726) do
   create_table "reviews", force: true do |t|
     t.integer  "rating"
     t.text     "review"
-    t.integer  "groupLocation_id"
+    t.integer  "group_location_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "reviews", ["groupLocation_id"], name: "index_reviews_on_groupLocation_id", using: :btree
+  add_index "reviews", ["group_location_id"], name: "index_reviews_on_group_location_id", using: :btree
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
