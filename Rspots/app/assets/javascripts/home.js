@@ -2,7 +2,6 @@
 
 google.maps.event.addDomListener(window, 'load', function () {
 
-	console.log("Hello");
 	var map = new google.maps.Map(document.getElementById('map-canvas'), {
 		zoom: 17,
 		center: new google.maps.LatLng(37.7912563,-122.4006792),
@@ -14,9 +13,11 @@ google.maps.event.addDomListener(window, 'load', function () {
 		scrollwheel: true,
   });
 
-
 	var input = ( document.getElementById('pac-input')); 
 	map.controls[google.maps.ControlPosition.TOP_RIGHT].push(input);
+
+	myMarker(myLatlng,map);//TG: puts GA home marker on the map.
+
 
 	//Code added to be able to search for a place and then mark it on the map:
 	var searchBox = new google.maps.places.SearchBox((input));
@@ -36,6 +37,7 @@ google.maps.event.addDomListener(window, 'load', function () {
 		// For each place, get the icon, place name, and location.
 		markers = [];
 		var bounds = new google.maps.LatLngBounds();
+
 		for (var i = 0, place; place = places[i]; i++) {
 		  var image = {
 		    url: place.icon,
