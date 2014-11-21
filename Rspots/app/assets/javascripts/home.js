@@ -4,6 +4,9 @@ google.maps.event.addDomListener(window, 'load', function () {
 		zoom: 17,
 		center: new google.maps.LatLng(37.7912563,-122.4006792),
 		mapTypeId: google.maps.MapTypeId.ROADMAP,
+		mapTypeControl: false,
+		streetViewControl: false,
+		panControl: false,
 		zoomControl: false,
 		scrollwheel: false,
   });
