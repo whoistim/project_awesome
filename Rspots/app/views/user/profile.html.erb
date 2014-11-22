@@ -1,0 +1,18 @@
+
+ <% if !@current_user %>
+<h1>PLEASE SIGN IN</h1>
+ <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+
+  <% else %>
+    <h1>User Profile</h1>
+    <p>Signed in as <strong><%= @current_user.first_name %></strong>!</p>
+
+    <%= link_to "Sign out", signout_path, id: "sign_out" %>
+
+  <% @groups.each do |g| %>
+    <p><%= g.name %></p>
+  <% end %>
+
+
+  <% end %>
+
