@@ -17,6 +17,7 @@ class GroupsController < ApplicationController
     group = params.require(:group).permit(:name, :lat, :lng)
     new_group = Group.create(group)
     GroupUser.create(group_id: new_group.id, user_id: @current_user.id, is_owner: true)
+    flash[:success] = "You're Group has been created!"
     redirect_to root_path
   end
 
@@ -26,9 +27,10 @@ class GroupsController < ApplicationController
     id = params[:id]
     @group = Group.find(id)
     if @group.update(group_params)
+      flash[:success] = "You're Group has been updated"
       redirect_to root_path
     else
-      #NEED FLASH
+      flash[:alert] = "Input not valid. Please fill out all fields."
       render edit_group_path
     end
 
