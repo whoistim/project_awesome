@@ -67,7 +67,9 @@ class GroupsController < ApplicationController
   def map
     id = params[:id]
     @locations = Group.find_by_id(id).locations
-    render
+    respond_to do |format|
+      format.json { render json: @locations}
+    end
   end
 
 
