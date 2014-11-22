@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'groups/edit'
-
-  get 'groups/new'
 
   get 'user/profile'
 
@@ -11,6 +8,9 @@ Rails.application.routes.draw do
   get 'home/about'
 
   get 'home/faq'
+
+  # Groups Controller Resources
+  resources :groups, only: [:new, :edit, :create, :update, :destroy]
 
   #OMNIAUTH ROUTES
   match 'auth/:provider/callback', to: 'sessions#create', via: :get

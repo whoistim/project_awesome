@@ -1,2 +1,28 @@
-<h1>Groups#new</h1>
-<p>Find me in app/views/groups/new.html.erb</p>
+<h1>Create a New Group</h1>
+
+<%= form_for @group do |g| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+
+    <p>
+    <%= f.label :lat %><br>
+    <%= f.text_field :lat %>
+  </p>
+
+    <p>
+    <%= f.label :lng %><br>
+    <%= f.text_field :lng %>
+  </p>
+
+  <p>
+    <%= f.label :image_tag, "Image URL" %><br>
+    <%= f.text_field :photo %>
+  </p>
+
+  <p>
+    <%= f.submit "Submit" %>
+  </p>
+<% end %>
+
