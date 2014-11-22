@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'groups/edit'
+
+  get 'groups/new'
+
   get 'user/profile'
 
   root 'user#profile'
