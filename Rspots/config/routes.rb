@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   # Groups Controller Resources
   resources :groups, only: [:new, :edit, :create, :update, :destroy]
   delete 'groups/:id/leave', to: 'groups#leave', as: 'leave_group'
+  get 'groups/:id/map', to: 'groups#map', as: 'group_map'
 
   #OMNIAUTH ROUTES
   match 'auth/:provider/callback', to: 'sessions#create', via: :get

@@ -64,6 +64,13 @@ class GroupsController < ApplicationController
     end
   end
 
+  def map
+    id = params[:id]
+    @locations = Group.find_by_id(id).locations
+    render
+  end
+
+
   private
   def group_params
     params.require(:group).permit(:name, :lat, :lng)
