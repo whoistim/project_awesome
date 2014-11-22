@@ -14,7 +14,7 @@ google.maps.event.addDomListener(window, 'load', function () {
 		scrollwheel: true,
   });
 
-	var input = ( document.getElementById('pac-input')); 
+	var input = ( document.getElementById('pac-input'));
 	map.controls[google.maps.ControlPosition.TOP_RIGHT].push(input);
 
 console.log(myLatlng);

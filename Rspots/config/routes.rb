@@ -1,18 +1,22 @@
 Rails.application.routes.draw do
 
+  # root route
+  root 'user#profile'
+
+  # user route
   get 'user/profile'
 
-  root 'user#profile'
   get 'home/index'
-
   get 'home/about'
-
   get 'home/faq'
 
-  # Groups Controller Resources
+  # Groups Resources & additional routes for leave and map
   resources :groups, only: [:new, :edit, :create, :update, :destroy]
   delete 'groups/:id/leave', to: 'groups#leave', as: 'leave_group'
   get 'groups/:id/map', to: 'groups#map', as: 'group_map'
+
+  # Locations routes
+  post 'locations', to: 'locations#create', as: 'new_location'
 
   #OMNIAUTH ROUTES
   match 'auth/:provider/callback', to: 'sessions#create', via: :get
