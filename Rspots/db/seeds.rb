@@ -10,7 +10,7 @@ GroupUser.delete_all
 # Users
   u1 = User.create(provider: "facebook", uid: "10203844294482291", first_name: "Peter", last_name: "Schulz", image: "http://graph.facebook.com/10203844294482291/picture", oauth_token: "CAALvadZCq1V4BADlKzZA0VBerJ2NlgK7qVtJ32zdqgfp0PEZBkCWYofDlAdPt7VsZCmXVZCdUWx33sZB0UReGEFHFHuVLaVAvuzbtzbZCxWw6vBcUWML2I6ZAfQPlgskzJQQ2R25AeCuHz5Yo8ZBXbYjocZCWObfNaQ83v0ZAXo6AzZAxZCKxGmrLPyVCu6MsLwa8hDBGpZBbH65Djcy9841qj2XLZA...", oauth_expires_at: "2015-01-20 23:29:57")
   u2 = User.create(provider: "facebook", uid: "nil", first_name: "Melody", last_name: "Serra", image: "http://graph.facebook.com/10203844294482291/picture")
-  u3 = User.create(provider: "facebook", uid: "nil", first_name: "Tim", last_name: "Gray", image: "http://graph.facebook.com/10203844294482291/picture")
+  u3 = User.create(provider: "facebook", uid: "688572161238150", first_name: "Tim", last_name: "Gray", image: "http://graph.facebook.com/688572161238150/picture", oauth_token: "CAALvadZCq1V4BACwZApBZCb0TwYrWAkzDD3sEvH34nyMnnufDZBrNhjNjZBIXvrpjHd3eRG2JzLFKQnftclZB4sMw4ZAZCkFYaIg5rMLoyrM1mjd9ckekYS66Wxcm2QrrqBOr7P6q8XNR48FoVcJTEhA2japZAyZAZCERqW90vPKaM0RTQ2k2xZAqgrgIAQdatMsphHT28p20rVkFZBEfR9mGMtAS", oauth_expires_at: "2015-01-21 22:08:12")
 
 # Groups
   g1 = Group.create(name: "General Assembly", lng:"37.7912563", lat:"-122.4006792",)
