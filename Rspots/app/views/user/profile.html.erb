@@ -9,8 +9,12 @@
 
     <%= link_to "Sign out", signout_path, id: "sign_out" %>
 
+  <h3>Groups</h3>
+  <%= link_to "Create New Group", new_group_path %>
+
   <% @groups.each do |g| %>
     <p><%= g.name %></p>
+    <%= link_to "Edit", edit_group_path(g) %>
   <% end %>
 
 

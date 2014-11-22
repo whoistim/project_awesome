@@ -15,7 +15,8 @@ class GroupsController < ApplicationController
   # groups POST /groups(.:format) groups#create
   def create
     group = params.require(:group).permit(:name, :lat, :lng)
-    Group.create(group)
+    new_group = Group.create(group)
+    GroupUser.create(group_id: new_group.id, user_id: @current_user.id, is_owner: true)
     redirect_to root_path
   end
 
@@ -23,8 +24,14 @@ class GroupsController < ApplicationController
   #       PUT /groups/:id(.:format) groups#update
   def update
     id = params[:id]
-    @groups = Group.find(id)
-    redirect_to root_path
+    @group = Group.find(id)
+    if @group.update(group_params)
+      redirect_to root_path
+    else
+      #NEED FLASH
+      render edit_group_path
+    end
+
   end
 
   # DELETE /groups/:id(.:format) groups#destroy
