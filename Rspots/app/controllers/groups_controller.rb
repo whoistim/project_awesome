@@ -68,6 +68,7 @@ class GroupsController < ApplicationController
     id = params[:id]
     @locations = Group.find_by_id(id).locations
     respond_to do |format|
+      format.html # map.html.erb
       format.json { render json: @locations}
     end
   end
