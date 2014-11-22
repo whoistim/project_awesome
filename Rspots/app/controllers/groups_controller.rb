@@ -37,11 +37,31 @@ class GroupsController < ApplicationController
   end
 
   # DELETE /groups/:id(.:format) groups#destroy
+  # :data => {:confirm => 'Are you sure?'} -- add this to link in view
   def destroy
-      id = params[:id]
-      @groups = Group.find(id)
-      @groups.destroy
+    id = params[:id]
+    @group = Group.find(id)
+    if @group.destroy
+      flash[:notice] = "Group has been deleted."
       redirect_to root_path
+    else
+      flash.now[:alert] = "Unable to delete group" #flash now to not display twice
+      render root_path
+    end
+
+  end
+
+  # leave_group DELETE /groups/leave/:id(.:format) groups#leave
+  def leave
+    id = params[:id]
+    @group = Group.find(id)
+    if @group.group_users.find_by_user_id(@current_user.id).destroy  #find user in GroupUser and delete
+      flash[:notice] = "You have left this group."
+      redirect_to root_path
+    else
+      flash.now[:alert] = "You cannot leave. Sorry."
+      render root_path
+    end
   end
 
   private
