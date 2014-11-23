@@ -65,7 +65,8 @@ class GroupsController < ApplicationController
 
   def map
     id = params[:id]
-    @locations = Group.find_by_id(id).locations
+    @group = Group.find_by_id(id) #will use to pass id into page for AJAX
+    @locations = @group.locations #calls locations for group
     respond_to do |format|
       format.html # map.html.erb
       format.json { render json: @locations}

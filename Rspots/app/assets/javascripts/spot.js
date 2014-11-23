@@ -29,6 +29,7 @@ var our_locations  = [{id: 1, title: "Mixt Greens", lat: "-122.40063700000002", 
 {id: 3, title: "House of NanKing", lat: "-122.40542600000003", lng: "37.796477", address: "919 Kearny St, San Francisco, CA 94133, United Sta...", place_id: "ChIJvS92wfSAhYARC2tq3BmjmIM", website: "http://poop.com", phone_number: "415-333-3333", created_at: "2014-11-21 23:09:45", updated_at: "2014-11-21 23:09:45"}];
 
 var setMarkers = function (locations,map){
+
 	//loop over each location passed into page to set marker for each
   locations.forEach(function(location){
 
