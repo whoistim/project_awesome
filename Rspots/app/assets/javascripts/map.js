@@ -14,8 +14,28 @@ google.maps.event.addDomListener(window, 'load', function () {
 		scrollwheel: true,
   });
 
-	var input = ( document.getElementById('pac-input')); 
+	var input = ( document.getElementById('pac-input'));
 	map.controls[google.maps.ControlPosition.TOP_RIGHT].push(input);
+
+// console.log(myLatlng);
+	groupMarker(myLatlng,map);//TG: puts GA home marker on the map. function from spot.js
+
+// id for ajax call
+var id = $('#map_path').attr('data-path');
+
+// ajax call to grab locations from DB
+$.ajax({
+    url:'/groups/'+ id +'/map.json',
+    type:"GET",
+    success: function (locations){
+        setMarkers(locations,map); // calls function from spot.js
+    },
+    error: function (xhr, status){
+        console.info(xhr.error);
+    }
+});
+
+
 
 	//Code added to be able to search for a place and then mark it on the map:
 	var searchBox = new google.maps.places.SearchBox((input));
@@ -69,4 +89,4 @@ console.log(myLatlng);
 	myMarker(myLatlng,map);//TG: puts GA home marker on the map.
 	setMarkers(our_locations,map);
 
-});
+}); //end google maps function
