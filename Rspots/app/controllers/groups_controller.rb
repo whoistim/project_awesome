@@ -37,7 +37,6 @@ class GroupsController < ApplicationController
   end
 
   # DELETE /groups/:id(.:format) groups#destroy
-  # :data => {:confirm => 'Are you sure?'} -- add this to link in view
   def destroy
     id = params[:id]
     @group = Group.find(id)
