@@ -17,10 +17,6 @@ google.maps.event.addDomListener(window, 'load', function () {
 	var input = ( document.getElementById('pac-input')); 
 	map.controls[google.maps.ControlPosition.TOP_RIGHT].push(input);
 
-console.log(myLatlng);
-	myMarker(myLatlng,map);//TG: puts GA home marker on the map.
-	setMarkers(our_locations,map);
-
 	//Code added to be able to search for a place and then mark it on the map:
 	var searchBox = new google.maps.places.SearchBox((input));
 
@@ -28,7 +24,7 @@ console.log(myLatlng);
 	google.maps.event.addListener(searchBox, 'places_changed', function() {
 	  var places = searchBox.getPlaces();
 	  var markers = [];
-	  console.log("Place:" + places);
+	  // console.log("Place:" + places);
 	  if (places.length == 0) {
 	    return;
 	  }
@@ -60,16 +56,17 @@ console.log(myLatlng);
 			markers.push(marker);
 			bounds.extend(place.geometry.location);
 			map.setCenter(place.geometry.location);
-		}
-		// map.fitBounds(bounds);
-		//
+		}	
 	});
 
 
-// google.maps.event.addListener(map, 'bounds_changed', function() {
-// 	var bounds = map.getBounds();
-// 	searchBox.setBounds(bounds);
-// });
+google.maps.event.addListener(map, 'bounds_changed', function() {
+	var bounds = map.getBounds();
+	searchBox.setBounds(bounds);
+});
 
+console.log(myLatlng);
+	myMarker(myLatlng,map);//TG: puts GA home marker on the map.
+	setMarkers(our_locations,map);
 
 });

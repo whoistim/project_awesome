@@ -13,6 +13,7 @@ var myMarker = function(myLatlng,map){
 };
 
 
+
 var image = {
   url: 'assets/GA.png',
   size: new google.maps.Size(71, 71),
@@ -30,9 +31,10 @@ var setMarkers = function (locations,map){
 	var locLatlng = new google.maps.LatLng(location.lng,location.lat);
 	var contentString = "This is the placeholder review";
   var infowindow = new google.maps.InfoWindow({
-      content: contentString
+      content: contentString,
+      maxWidth: 400
   });
-  console.log(locLatlng);
+  // console.log(locLatlng);
 	// var image = function(){
 	// 	if(location.reviewed !=1){
 	// 		return("assets/blue.png");
@@ -41,7 +43,7 @@ var setMarkers = function (locations,map){
 	// }
 	// };
 	var image =
-	{url: 'assets/blue2.png',
+	{url: 'blue2.png',
   size: new google.maps.Size(71, 71),
   origin: new google.maps.Point(0, 0),
   anchor: new google.maps.Point(16, 16),
@@ -56,9 +58,11 @@ var setMarkers = function (locations,map){
 	});
 
   google.maps.event.addListener(marker, 'click', function() {
+
   infowindow.open(map,marker);
 	});
 
 });
 };
+
 
