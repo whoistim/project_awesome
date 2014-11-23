@@ -12,7 +12,7 @@ var logo = {
 };
 
 //Places the GA marker on the map
-var myMarker = function(myLatlng,map){
+var groupMarker = function(myLatlng,map){
 	new google.maps.Marker({
     position: myLatlng,
     map: map,

@@ -18,8 +18,8 @@ google.maps.event.addDomListener(window, 'load', function () {
 	map.controls[google.maps.ControlPosition.TOP_RIGHT].push(input);
 
 // console.log(myLatlng);
-	myMarker(myLatlng,map);//TG: puts GA home marker on the map.
-	setMarkers(our_locations,map);
+	groupMarker(myLatlng,map);//TG: puts GA home marker on the map. function from spot.js
+	setMarkers(our_locations,map); // calls function from spot.js
 
 	//Code added to be able to search for a place and then mark it on the map:
 	var searchBox = new google.maps.places.SearchBox((input));
