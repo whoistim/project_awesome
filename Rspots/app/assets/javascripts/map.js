@@ -17,7 +17,7 @@ google.maps.event.addDomListener(window, 'load', function () {
 	var input = ( document.getElementById('pac-input'));
 	map.controls[google.maps.ControlPosition.TOP_RIGHT].push(input);
 
-console.log(myLatlng);
+// console.log(myLatlng);
 	myMarker(myLatlng,map);//TG: puts GA home marker on the map.
 	setMarkers(our_locations,map);
 

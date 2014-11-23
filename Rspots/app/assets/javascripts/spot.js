@@ -15,7 +15,7 @@ var myMarker = function(myLatlng,map){
 
 // sets image as GA logo -- NEED TO CHANGE TO GET LOGO FROM DB in v2
 var image = {
-  url: 'assets/GA.png',
+  url: '/assets/GA.png',
   size: new google.maps.Size(71, 71),
   origin: new google.maps.Point(0, 0),
   anchor: new google.maps.Point(17, 34),
@@ -32,7 +32,7 @@ var setMarkers = function (locations,map){
 	var locLatlng = new google.maps.LatLng(location.lng,location.lat);
 	var contentString = "This is the placeholder review";
   var infowindow = new google.maps.InfoWindow({
-      content: contentString
+      content: contentString,
   });
   console.log(locLatlng);
 
@@ -47,7 +47,7 @@ var setMarkers = function (locations,map){
 
 	// Sets image for points on map
   var image =
-	{url: 'images/blue2.png',
+	{url: '/assets/blue2.png',
   size: new google.maps.Size(71, 71),
   origin: new google.maps.Point(0, 0),
   anchor: new google.maps.Point(16, 16),
