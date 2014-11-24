@@ -27,7 +27,7 @@ class GroupsController < ApplicationController
     id = params[:id]
     @group = Group.find(id)
     if @group.update(group_params)
-      flash[:success] = "You're Group has been updated"
+      flash[:success] = "Your Group has been updated"
       redirect_to root_path
     else
       flash[:alert] = "Input not valid. Please fill out all fields."

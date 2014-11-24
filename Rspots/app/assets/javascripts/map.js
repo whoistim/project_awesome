@@ -1,6 +1,10 @@
 
-google.maps.event.addDomListener(window, 'load', function () {
-	// var myLatlng = new google.maps.LatLng(37.7908767,-122.4016454);
+
+$(document).ready(function(){
+
+
+// google.maps.event.addDomListener(window, 'load', function () {
+// 	// var myLatlng = new google.maps.LatLng(37.7908767,-122.4016454);
 
 	var map = new google.maps.Map(document.getElementById('map-canvas'), {
 		zoom: 17,
@@ -88,5 +92,7 @@ console.log(myLatlng);
 	myMarker(myLatlng,map);//TG: puts GA home marker on the map.
 	setMarkers(our_locations,map);
 
-}); //end google maps function
 
+// }); //end google maps function
+
+}); //end ready function
