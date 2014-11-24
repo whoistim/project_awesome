@@ -1,8 +1,5 @@
 //The GA location
-<<<<<<< HEAD
-=======
 
->>>>>>> 87e626c0d1c0fe6bec143c705941201e903b86c6
 var myLatlng = new google.maps.LatLng(37.7908767,-122.4016454);
 
 // sets logo as GA logo -- NEED TO CHANGE TO GET LOGO FROM DB in v2
