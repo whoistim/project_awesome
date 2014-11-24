@@ -55,19 +55,7 @@ var setMarkers = function (locations,map){
 
 
   var locLatlng = new google.maps.LatLng(location.lng,location.lat);
-  var contentString = "this is a placeholder";//function(){
-  //   if(our_locations.indexOf(location)){
-  //   $.when(get_location_reviews(group_id,location.id)).done(function(reviews){
-  //       var template = HandlebarsTemplates["review"];
-  //       var html = template({reviews: reviews});
-  //       return html;
-  //   });
-  //     }//returns the reviews plus the form for new reviews.
-  //   else{
-  //     return("New location & review form goes here");//returns just the html for the form   //replace with newLocation(location)
-  //   }
-  // };
-//////ABOVE IS CODE TO GET DIFFERNT TEMPLATES IF IT'S A NEW LOCAITON OR NOT
+  var contentString = "<p>"+location.id+"</p>";
 
 
     var infowindow = new google.maps.InfoWindow({
