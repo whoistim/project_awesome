@@ -59,7 +59,7 @@ $.ajax({
 		markers = [];
 		var bounds = new google.maps.LatLngBounds();
 
-		for (var i = 0, place; place = places[i]; i++) {
+		for (var i = 0, place; place = places[i]; i++) {	
 		  var image = {
 		    url: place.icon,
 		    size: new google.maps.Size(71, 71),
@@ -80,6 +80,15 @@ $.ajax({
 			bounds.extend(place.geometry.location);
 			map.setCenter(place.geometry.location);
 		}	
+			our_locations.forEach(function(location){
+				if(location[5]===place.place_id){
+					return true;
+				}
+					else{
+						return false;
+					}
+				
+			});		
 	});
 
 

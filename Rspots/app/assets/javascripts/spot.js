@@ -33,7 +33,14 @@ var setMarkers = function (locations,map){
 	//loop over each location passed into page to set marker for each
   locations.forEach(function(location){
   var locLatlng = new google.maps.LatLng(location.lng,location.lat);
-  var contentString = "Review placeholder for location "+location.id;
+  var contentString = function(){
+    if(our_locations.indexOf(location)){
+      return("Review placeholder for location "+location.id);//replace with (newReview(location))
+    }//returns the reviews plus the form for new reviews.
+    else{
+      return("New location & review form goes here");//returns just the html for the form   //replace with newLocation(location)
+    }
+  };
   var infowindow = new google.maps.InfoWindow({
       content: contentString,
       maxWidth: 400

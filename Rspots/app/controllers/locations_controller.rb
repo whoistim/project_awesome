@@ -1,4 +1,4 @@
-class LocationsController < ApplicationController
+  class LocationsController < ApplicationController
   before_action :current_user
 
   #NEED TO NEST UNDER GROUPS
