@@ -74,8 +74,10 @@ $(document).ready(function(){
       maxWidth: 400
 	  }); //end infowindow variable
 
+    //add event listener to marker to open infowindow on click
     google.maps.event.addListener(marker, 'click', function() {
 			infowindow.open(map,marker);
+			//close any open infowindows on clicking new marker
 			if(currentWindow){
 				currentWindow.setMap(null);
 			}
