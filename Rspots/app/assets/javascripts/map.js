@@ -1,5 +1,5 @@
+var load_map = function () {
 
-$(document).ready(function(){
 
 	var map = new google.maps.Map(document.getElementById('map-canvas'), {
 		zoom: 17,
@@ -26,6 +26,7 @@ $(document).ready(function(){
 	    url:'/groups/'+ group_id +'/map.json',
 	    type:"GET",
 	    success: function (locations){
+	    		console.log("AJAX HIT");
 	        setMarkers(locations,map); // calls function from spot.js to put down markers
 	    },
 	    error: function (xhr, status){
@@ -95,4 +96,4 @@ $(document).ready(function(){
 		searchBox.setBounds(bounds);
 	});
 
-}); //end ready function
+}; //end load_map function

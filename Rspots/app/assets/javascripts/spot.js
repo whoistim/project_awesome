@@ -35,22 +35,23 @@ var my_group;
 var setMarkers = function (locations,map){
   //group_id for ajax call
   var group_id = $('#group_id').attr('data-path');
-  console.log("this is the group lat "+group_id.lat);
+  // console.log("this is the group lat "+group_id.lat);
 
+console.log(locations);
 	//loop over each location passed into page to set marker for each
   locations.forEach(function(location){
 
     // ajax call to return reviews for each location
     $.when(get_location_reviews(group_id,location.id)).done(function(reviews){
-      reviews.forEach(function(review){
-        console.log(review.review);
-        console.log(location.title);
-        // div.append($("<p>").text(review.review));
-      });
+
+      // location.reviews = reviews;
+      // console.log(location);
+
     });
 
 
   var locLatlng = new google.maps.LatLng(location.lng,location.lat);
+
   var contentString = "<p>"+location.id+"</p>";
 
 
