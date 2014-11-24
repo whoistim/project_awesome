@@ -11,7 +11,12 @@ Rails.application.routes.draw do
   get 'home/faq'
 
   # Groups Resources & additional routes for leave and map
-  resources :groups, only: [:new, :edit, :create, :update, :destroy]
+  resources :groups, only: [:new, :edit, :create, :update, :destroy] do
+    resources :locations, only: [:create, :show]
+    resources :reviews, only: [:create]
+  end
+
+  # Additional groups routes
   delete 'groups/:id/leave', to: 'groups#leave', as: 'leave_group'
   get 'groups/:id/map', to: 'groups#map', as: 'group_map'
 
