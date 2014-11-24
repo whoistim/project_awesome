@@ -47,11 +47,10 @@ var setMarkers = function (locations,map){
   locations.forEach(function(location){
 
     //ajax call to return reviews for each location
-    var reviews = $.when(get_location_reviews(group_id,location.id)).done(function(reviews){
+    $.when(get_location_reviews(group_id,location.id)).done(function(reviews){
       reviews.forEach(function(review){
         console.log(review.review);
       });
-
     });
 
   	var locLatlng = new google.maps.LatLng(location.lng,location.lat);
