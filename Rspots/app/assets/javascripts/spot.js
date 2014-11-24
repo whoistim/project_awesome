@@ -50,11 +50,12 @@ var setMarkers = function (locations,map){
     $.when(get_location_reviews(group_id,location.id)).done(function(reviews){
       reviews.forEach(function(review){
         console.log(review.review);
+        console.log(location.title);
       });
     });
 
   	var locLatlng = new google.maps.LatLng(location.lng,location.lat);
-  	var contentString = "This is the placeholder review";
+  	var contentString = location.title;
     var infowindow = new google.maps.InfoWindow({
       content: contentString,
       }); //end infowindow variable
