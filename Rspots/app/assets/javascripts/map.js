@@ -1,5 +1,4 @@
 
-
 google.maps.event.addDomListener(window, 'load', function () {
 	// var myLatlng = new google.maps.LatLng(37.7908767,-122.4016454);
 
@@ -90,3 +89,4 @@ console.log(myLatlng);
 	setMarkers(our_locations,map);
 
 }); //end google maps function
+

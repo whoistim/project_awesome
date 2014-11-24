@@ -33,7 +33,7 @@ var setMarkers = function (locations,map){
 	//loop over each location passed into page to set marker for each
   locations.forEach(function(location){
   var locLatlng = new google.maps.LatLng(location.lng,location.lat);
-  var contentString = "This is the placeholder review";
+  var contentString = "Review placeholder for location "+location.id;
   var infowindow = new google.maps.InfoWindow({
       content: contentString,
       maxWidth: 400
