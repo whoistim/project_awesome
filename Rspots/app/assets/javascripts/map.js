@@ -27,7 +27,7 @@ var group_id = $('#group_id').attr('data-path');
 
 // ajax call to grab locations from DB
 $.ajax({
-    url:'/groups/'+ id +'/map.json',
+    url:'/groups/'+ group_id +'/map.json',
     type:"GET",
     success: function (locations){
         setMarkers(locations,map); // calls function from spot.js

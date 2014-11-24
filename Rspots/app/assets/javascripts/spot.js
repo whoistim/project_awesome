@@ -21,16 +21,17 @@ var groupMarker = function(myLatlng,map){
   });
 };
 
-// id for ajax call
-var group_id = $('#group_id').attr('data-path');
-
+// ajax call for location reviews
 var get_location_reviews = function (g_id,l_id) {
-    return $.ajax({
-      url: "/groups/'+ id +'/map.json",
-      data: {s: search}
-    });
-  };
-}
+  return $.ajax({
+    dataType: "json",
+    url: '/groups/'+ g_id +'/locations/'+ l_id +'.json',
+    type:"GET",
+  });// end ajax call
+};
+
+
+
 
 var my_group;
 
@@ -39,9 +40,19 @@ var my_group;
 // {id: 3, title: "House of NanKing", lat: "-122.40542600000003", lng: "37.796477", address: "919 Kearny St, San Francisco, CA 94133, United Sta...", place_id: "ChIJvS92wfSAhYARC2tq3BmjmIM", website: "http://poop.com", phone_number: "415-333-3333", created_at: "2014-11-21 23:09:45", updated_at: "2014-11-21 23:09:45"}];
 
 var setMarkers = function (locations,map){
+  //group_id for ajax call
+  var group_id = $('#group_id').attr('data-path');
 
 	//loop over each location passed into page to set marker for each
   locations.forEach(function(location){
+
+    //ajax call to return reviews for each location
+    var reviews = $.when(get_location_reviews(group_id,location.id)).done(function(reviews){
+      reviews.forEach(function(review){
+        console.log(review.review);
+      });
+
+    });
 
   	var locLatlng = new google.maps.LatLng(location.lng,location.lat);
   	var contentString = "This is the placeholder review";
@@ -50,7 +61,7 @@ var setMarkers = function (locations,map){
       }); //end infowindow variable
 
     //lets us see locations referenced in console for testing
-    console.log(locLatlng);
+    // console.log(locLatlng);
 
     // //function to choose which version of the marker to choose
   	// var image = function(){
