@@ -26,7 +26,6 @@ var load_map = function () {
 	    url:'/groups/'+ group_id +'/map.json',
 	    type:"GET",
 	    success: function (locations){
-	    		console.log("AJAX HIT");
 	        setMarkers(locations,map); // calls function from spot.js to put down markers
 	    },
 	    error: function (xhr, status){
