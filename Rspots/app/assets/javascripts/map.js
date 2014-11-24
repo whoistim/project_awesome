@@ -1,9 +1,11 @@
 
+
 $(document).ready(function(){
 
 
 // google.maps.event.addDomListener(window, 'load', function () {
-// 	// var myLatlng = new google.maps.LatLng(37.7908767,-122.4016454);
+// CHANGE: set Latlng to group values
+
 
 	var map = new google.maps.Map(document.getElementById('map-canvas'), {
 		zoom: 17,
@@ -41,12 +43,12 @@ $.ajax({
 
 	//Code added to be able to search for a place and then mark it on the map:
 	var searchBox = new google.maps.places.SearchBox((input));
-
+	window.currrentWindow=null;
 
 	google.maps.event.addListener(searchBox, 'places_changed', function() {
 	  var places = searchBox.getPlaces();
 	  var markers = [];
-	  console.log("Place:" + places);
+	  // console.log("Place:" + places);
 	  if (places.length == 0) {
 	    return;
 	  }
@@ -58,7 +60,7 @@ $.ajax({
 		markers = [];
 		var bounds = new google.maps.LatLngBounds();
 
-		for (var i = 0, place; place = places[i]; i++) {
+		places.forEach(function(place){	
 		  var image = {
 		    url: place.icon,
 		    size: new google.maps.Size(71, 71),
@@ -74,20 +76,44 @@ $.ajax({
 			  title: place.name,
 			  position: place.geometry.location
 			});
+		var contentString = place.formatted_address;
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString,
+      maxWidth: 400
+	  }); //end infowindow variable
+
+    google.maps.event.addListener(marker, 'click', function() {
+			infowindow.open(map,marker);
+			if(currrentWindow){
+				currrentWindow.setMap(null);
+			}
+			currrentWindow = infowindow;
+    });
 
 			markers.push(marker);
 			bounds.extend(place.geometry.location);
 			map.setCenter(place.geometry.location);
-		}
-		// map.fitBounds(bounds);
-		//
+		}	);
+			// our_locations.forEach(function(location){
+			// 	if(location[5]===place.place_id){
+			// 		return true;
+			// 	}
+			// 		else{
+			// 			return false;
+			// 		}
+				
+			// });		
 	});
 
 
-// google.maps.event.addListener(map, 'bounds_changed', function() {
-// 	var bounds = map.getBounds();
-// 	searchBox.setBounds(bounds);
-// });
+google.maps.event.addListener(map, 'bounds_changed', function() {
+	var bounds = map.getBounds();
+	searchBox.setBounds(bounds);
+});
+
+console.log(myLatlng);
+	// myMarker(myLatlng,map);//TG: puts GA home marker on the map.
+	setMarkers(our_locations,map);
 
 
 // }); //end google maps function
