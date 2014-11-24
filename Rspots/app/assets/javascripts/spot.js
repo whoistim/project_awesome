@@ -30,9 +30,6 @@ var get_location_reviews = function (g_id,l_id) {
   });// end ajax call
 };
 
-
-
-
 var my_group;
 
 // var our_locations  = [{id: 1, title: "Mixt Greens", lat: "-122.40063700000002", lng: "37.791578", address: "120 Sansome St., San Francisco, CA", place_id: "ChIJ62yCEWKAhYARNL0YQVpRuKg", website: "http://mixtgreens.com", phone_number: "415-555-5555", created_at: "2014-11-21 23:09:45", updated_at: "2014-11-21 23:09:45"},
@@ -42,12 +39,12 @@ var my_group;
 var setMarkers = function (locations,map){
   //group_id for ajax call
   var group_id = $('#group_id').attr('data-path');
+  console.log("this is the group lat "+group_id.lat);
 
 	//loop over each location passed into page to set marker for each
   locations.forEach(function(location){
 
-    // var contentString;
-    //ajax call to return reviews for each location
+    // ajax call to return reviews for each location
     $.when(get_location_reviews(group_id,location.id)).done(function(reviews){
       reviews.forEach(function(review){
         console.log(review.review);
@@ -56,30 +53,39 @@ var setMarkers = function (locations,map){
       });
     });
 
-  	var locLatlng = new google.maps.LatLng(location.lng,location.lat);
-    var content = "<p class='lead'>"+location.title+"</p>";
+
+  var locLatlng = new google.maps.LatLng(location.lng,location.lat);
+  var contentString = "this is a placeholder";//function(){
+  //   if(our_locations.indexOf(location)){
+  //   $.when(get_location_reviews(group_id,location.id)).done(function(reviews){
+  //       var template = HandlebarsTemplates["review"];
+  //       var html = template({reviews: reviews});
+  //       return html;
+  //   });
+  //     }//returns the reviews plus the form for new reviews.
+  //   else{
+  //     return("New location & review form goes here");//returns just the html for the form   //replace with newLocation(location)
+  //   }
+  // };
+//////ABOVE IS CODE TO GET DIFFERNT TEMPLATES IF IT'S A NEW LOCAITON OR NOT
+
+
     var infowindow = new google.maps.InfoWindow({
-      }); //end infowindow variable
+      content: contentString,
+      maxWidth: 400
+  }); //end infowindow variable
+
 
     //lets us see locations referenced in console for testing
     // console.log(locLatlng);
 
-    // //function to choose which version of the marker to choose
-  	// var image = function(){
-  	// 	if(location.reviewed !=1){
-  	// 		return("assets/blue.png");
-  	// 	else
-  	// 		return("assets/gray.png");
-  	// }
-  	// };
-
   	// Sets image for points on map
-    var image = {
-      url: '/assets/blue2.png',
-      size: new google.maps.Size(71, 71),
-      origin: new google.maps.Point(0, 0),
-      anchor: new google.maps.Point(16, 16),
-      scaledSize: new google.maps.Size(32, 32)
+    var image =
+    {url: '/assets/blue2.png',
+    size: new google.maps.Size(71, 71),
+    origin: new google.maps.Point(0, 0),
+    anchor: new google.maps.Point(16, 16),
+    scaledSize: new google.maps.Size(32, 32)
     }; // end of setting image for markers
 
     // sets marker
@@ -93,10 +99,15 @@ var setMarkers = function (locations,map){
 
     //function to add infobox to marker
     google.maps.event.addListener(marker, 'click', function() {
-      infowindow.setContent(content);
+
+      if(currentWindow){
+      currentWindow.setMap(null);
+      }
+      currentWindow = infowindow;
       infowindow.open(map,marker);
     });//end info window function
 
   });//end of locations loop
 };// end of set markers function
+
 

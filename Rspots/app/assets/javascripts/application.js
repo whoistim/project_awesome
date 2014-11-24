@@ -14,5 +14,7 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require turbolinks
-//= require spot.js
+//= require handlebars.runtime
+//= require_tree ./templates
+//= require_tree .
 

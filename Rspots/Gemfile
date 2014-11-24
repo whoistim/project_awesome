@@ -5,6 +5,9 @@ gem 'omniauth-facebook'
 #figaro for ENV variables
 gem 'figaro'
 
+gem 'handlebars_assets'
+
+gem 'simple_form'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.7'
