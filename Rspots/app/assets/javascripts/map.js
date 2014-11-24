@@ -1,6 +1,5 @@
+var load_map = function () {
 
-$(document).ready(function(){
-console.log("map.js is calling you.")
 	var map = new google.maps.Map(document.getElementById('map-canvas'), {
 		zoom: 17,
 		center: new google.maps.LatLng(37.7912563,-122.4006792),
@@ -26,6 +25,7 @@ console.log("map.js is calling you.")
 	    url:'/groups/'+ group_id +'/map.json',
 	    type:"GET",
 	    success: function (locations){
+	    		console.log("AJAX HIT");
 	        setMarkers(locations,map); // calls function from spot.js to put down markers
 	    },
 	    error: function (xhr, status){
@@ -74,8 +74,10 @@ console.log("map.js is calling you.")
       maxWidth: 400
 	  }); //end infowindow variable
 
+    //add event listener to marker to open infowindow on click
     google.maps.event.addListener(marker, 'click', function() {
 			infowindow.open(map,marker);
+			//close any open infowindows on clicking new marker
 			if(currentWindow){
 				currentWindow.setMap(null);
 			}
@@ -93,4 +95,4 @@ console.log("map.js is calling you.")
 		searchBox.setBounds(bounds);
 	});
 
-}); //end ready function
+}; //end load_map function

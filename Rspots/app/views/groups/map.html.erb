@@ -1,4 +1,4 @@
-<%= javascript_include_tag "map.js" %>
+
 
 <div id="user_nav">
   <% if @current_user %>
@@ -16,6 +16,11 @@
 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
 <div id="map-canvas"></div>
 
+<script>
+  $(document).ready(function(){
+        load_map();
+       });
+</script>
 
 
 
