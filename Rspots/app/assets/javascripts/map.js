@@ -1,7 +1,9 @@
 
+$(document).ready(function(){
 
-google.maps.event.addDomListener(window, 'load', function () {
-	// var myLatlng = new google.maps.LatLng(37.7908767,-122.4016454);
+
+// google.maps.event.addDomListener(window, 'load', function () {
+// 	// var myLatlng = new google.maps.LatLng(37.7908767,-122.4016454);
 
 	var map = new google.maps.Map(document.getElementById('map-canvas'), {
 		zoom: 17,
@@ -88,4 +90,6 @@ $.ajax({
 // });
 
 
-}); //end google maps function
+// }); //end google maps function
+
+}); //end ready function

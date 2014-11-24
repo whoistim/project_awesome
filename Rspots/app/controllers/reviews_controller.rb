@@ -15,16 +15,15 @@ class ReviewsController < ApplicationController
     review = params.require(:review).permit(:rating, :review)
     new_review = Review.create(rating: review.rating, review: review.review, group_location_id: group_location.id, user_id: @current_user.id)
 
-    # #response for AJAX call
-    # respond_to do |format|
-    #   format.html # map.html.erb
-    #   format.json { render json: @new_review}
-    # end
+    #response for AJAX call
+    respond_to do |format|
+      format.html # map.html.erb
+      format.json { render json: @new_review}
+    end
 
   end
 
-  #show reviews
-  #GroupLocation.find_by_group_id_and_location_id(g.id, l.id).reviews
+
 
   private
   def review_params
