@@ -40,22 +40,26 @@ var setMarkers = function (locations,map){
 	//loop over each location passed into page to set marker for each
   locations.forEach(function(location){
 
-    // ajax call to return reviews for each location 
+    // ajax call to return reviews for each location
     $.when(get_location_reviews(group_id,location.id)).done(function(reviews){
       reviews.forEach(function(review){
         console.log(review.review);
         console.log(location.title);
+        // div.append($("<p>").text(review.review));
       });
     });
 
+
   var locLatlng = new google.maps.LatLng(location.lng,location.lat);
-  var contentString = "this is a placeholder";//function(){
+
+  var contentString = "<p>"+location.id+"</p>";
 
 
     var infowindow = new google.maps.InfoWindow({
       content: contentString,
       maxWidth: 400
   }); //end infowindow variable
+
 
     //lets us see locations referenced in console for testing
     // console.log(locLatlng);
@@ -80,12 +84,12 @@ var setMarkers = function (locations,map){
 
     //function to add infobox to marker
     google.maps.event.addListener(marker, 'click', function() {
+
       if(currentWindow){
       currentWindow.setMap(null);
       }
       currentWindow = infowindow;
-    infowindow.open(map,marker);
-
+      infowindow.open(map,marker);
     });//end info window function
 
   });//end of locations loop

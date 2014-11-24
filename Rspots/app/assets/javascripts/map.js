@@ -1,9 +1,6 @@
 
-
 $(document).ready(function(){
-
-
-
+console.log("map.js is calling you.")
 	var map = new google.maps.Map(document.getElementById('map-canvas'), {
 		zoom: 17,
 		center: new google.maps.LatLng(37.7912563,-122.4006792),
@@ -18,25 +15,23 @@ $(document).ready(function(){
 	var input = ( document.getElementById('pac-input'));
 	map.controls[google.maps.ControlPosition.TOP_RIGHT].push(input);
 
-// console.log(myLatlng);
+	// console.log(myLatlng);
 	groupMarker(myLatlng,map);//TG: puts GA home marker on the map. function from spot.js
 
-// id for ajax call
-var group_id = $('#group_id').attr('data-path');
+	// id for ajax call
+	var group_id = $('#group_id').attr('data-path');
 
-// ajax call to grab locations from DB
-$.ajax({
-    url:'/groups/'+ group_id +'/map.json',
-    type:"GET",
-    success: function (locations){
-        setMarkers(locations,map); // calls function from spot.js
-    },
-    error: function (xhr, status){
-        console.info(xhr.error);
-    }
-});
-
-
+	// ajax call to grab locations from DB
+	$.ajax({
+	    url:'/groups/'+ group_id +'/map.json',
+	    type:"GET",
+	    success: function (locations){
+	        setMarkers(locations,map); // calls function from spot.js to put down markers
+	    },
+	    error: function (xhr, status){
+	        console.info(xhr.error);
+	    }
+	});
 
 	//Code added to be able to search for a place and then mark it on the map:
 	var searchBox = new google.maps.places.SearchBox((input));
@@ -57,7 +52,7 @@ $.ajax({
 		markers = [];
 		var bounds = new google.maps.LatLngBounds();
 
-		places.forEach(function(place){	
+		places.forEach(function(place){
 		  var image = {
 		    url: place.icon,
 		    size: new google.maps.Size(71, 71),
@@ -91,15 +86,11 @@ $.ajax({
 			bounds.extend(place.geometry.location);
 			map.setCenter(place.geometry.location);
 		}	);
-		
-	});
-
-
-google.maps.event.addListener(map, 'bounds_changed', function() {
-	var bounds = map.getBounds();
-	searchBox.setBounds(bounds);
 });
 
-console.log(myLatlng);
+	google.maps.event.addListener(map, 'bounds_changed', function() {
+		var bounds = map.getBounds();
+		searchBox.setBounds(bounds);
+	});
 
 }); //end ready function
