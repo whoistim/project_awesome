@@ -6,20 +6,23 @@ class ReviewsController < ApplicationController
   def create
     #get id from route
     group_id = params[:group_id]
-    location_id = require(:location).permit(:id)
+    location_id = params[:location_id]
 
     # add the location to groups_locations table
-    group_location = GroupLocation.find_by_group_id_and_location_id(group_id: group_id, location_id:location_id)
+    group_location = GroupLocation.find_by_group_id_and_location_id(group_id, location_id)
 
     # add review that triggered location creation
-    review = params.require(:review).permit(:rating, :review)
-    @new_review = Review.create(rating: review.rating, review: review.review, group_location_id: group_location.id, user_id: @current_user.id)
-
-    #response for AJAX call
-    respond_to do |format|
-      format.html # map.html.erb
-      format.json { render json: @new_review}
-    end
+    review = params[:review]
+    rating = params[:rating]
+    # binding.pry
+    @new_review = Review.create(rating: rating, review: review, group_location_id: group_location.id, user_id: @current_user.id)
+    # 
+    #response 
+    # respond_to do |format|
+    #   format.html # map.html.erb
+    #   format.json { render json: @new_review}
+    # end
+    redirect_to("/groups/#{group_id}/map")
 
   end
 
