@@ -1,12 +1,21 @@
-{{#each reviews}}
-{{!-- <div class="userImage"> --}}
-{{!-- <img src="image"> --}}
-  {{!-- </div> --}}
-  {{!-- remember to change description to review --}}
-<div class="review">
-  {{review}}
-</div>
-{{/each}}
-<br>
+<!-- location header -->
+<p class="lead location-header">{{title}}</p>
 
-<form action="/groups/{{:group_id}}/reviews" method="POST"></form>
+<!-- location information div -->
+<div class="location-info">
+  <p>
+    {{address}}<br>
+    {{phone_number}}<br>
+    <a href="{{website}}" target="_blank">{{website}}</a>
+  </p>
+</div>
+
+<!-- reviews -->
+
+<div class="review-box">
+{{#each reviews}}
+  <p>{{review}}</p>
+{{/each}}
+</div>
+
+

@@ -1,4 +1,8 @@
 //The GA location
+<<<<<<< HEAD
+=======
+
+>>>>>>> 87e626c0d1c0fe6bec143c705941201e903b86c6
 var myLatlng = new google.maps.LatLng(37.7908767,-122.4016454);
 
 // sets logo as GA logo -- NEED TO CHANGE TO GET LOGO FROM DB in v2
@@ -32,63 +36,57 @@ var get_location_reviews = function (g_id,l_id) {
 var setMarkers = function (locations,map){
   //group_id for ajax call
   var group_id = $('#group_id').attr('data-path');
-  // console.log("this is the group lat "+group_id.lat);
 
-console.log(locations);
 	//loop over each location passed into page to set marker for each
   locations.forEach(function(location){
+    location.group_id = group_id; // add group_id to location object
 
     // ajax call to return reviews for each location
     $.when(get_location_reviews(group_id,location.id)).done(function(reviews){
 
-    location.reviews = reviews;      
-    // console.log(location);
-    location.group_id = group_id;
-    });
+      location.reviews = reviews; // add reviews to location object
+      // console.log(location.reviews)
+      var template_html = HandlebarsTemplates["review"](location); //passing location to hbs template
+      var contentString = template_html; //adding template to content for infowindow
+      var locLatlng = new google.maps.LatLng(location.lng,location.lat);
 
-  var locLatlng = new google.maps.LatLng(location.lng,location.lat);
+      var infowindow = new google.maps.InfoWindow({
+        content: contentString,
+        maxWidth: 400
+      }); //end infowindow variable
 
+      //lets us see locations referenced in console for testing
+      // console.log(locLatlng);
 
+    	// Sets image for points on map
+      var image =
+      {url: '/assets/blue2.png',
+      size: new google.maps.Size(71, 71),
+      origin: new google.maps.Point(0, 0),
+      anchor: new google.maps.Point(16, 16),
+      scaledSize: new google.maps.Size(32, 32)
+      }; // end of setting image for markers
 
-  var contentString = "<p>"+location.id+"</p>";
+      // sets marker
+      var marker = new google.maps.Marker({
+        position: locLatlng,
+        map: map,
+        icon: image,
+        animation: google.maps.Animation.DROP,
+        title:location.title
+      });//end of marker object
 
-    var infowindow = new google.maps.InfoWindow({
-      content: contentString,
-      maxWidth: 400
-  }); //end infowindow variable
+      //function to add infobox to marker
+      google.maps.event.addListener(marker, 'click', function() {
 
+        if(currentWindow){
+          currentWindow.setMap(null);
+        }
+        currentWindow = infowindow;
+        infowindow.open(map,marker);
+      });//end info window function
 
-    //lets us see locations referenced in console for testing
-    // console.log(locLatlng);
-
-  	// Sets image for points on map
-    var image =
-    {url: '/assets/blue2.png',
-    size: new google.maps.Size(71, 71),
-    origin: new google.maps.Point(0, 0),
-    anchor: new google.maps.Point(16, 16),
-    scaledSize: new google.maps.Size(32, 32)
-    }; // end of setting image for markers
-
-    // sets marker
-    var marker = new google.maps.Marker({
-      position: locLatlng,
-      map: map,
-      icon: image,
-      animation: google.maps.Animation.DROP,
-      title:location.title
-    });//end of marker object
-
-    //function to add infobox to marker
-    google.maps.event.addListener(marker, 'click', function() {
-
-      if(currentWindow){
-      currentWindow.setMap(null);
-      }
-      currentWindow = infowindow;
-      infowindow.open(map,marker);
-    });//end info window function
-
+    });//end of when function
   });//end of locations loop
 };// end of set markers function
 
