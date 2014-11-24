@@ -32,10 +32,6 @@ var get_location_reviews = function (g_id,l_id) {
 
 var my_group;
 
-// var our_locations  = [{id: 1, title: "Mixt Greens", lat: "-122.40063700000002", lng: "37.791578", address: "120 Sansome St., San Francisco, CA", place_id: "ChIJ62yCEWKAhYARNL0YQVpRuKg", website: "http://mixtgreens.com", phone_number: "415-555-5555", created_at: "2014-11-21 23:09:45", updated_at: "2014-11-21 23:09:45"},
-// {id: 2, title: "Rickhouse", lat: "-122.40386799999999", lng: "37.79046", address: "246 Kearny St, San Francisco", place_id: "ChIJd7ebnImAhYARhr91iINx01g", website: "http://www.rickhousebar.com/", phone_number: "415-777-7777", created_at: "2014-11-21 23:09:45", updated_at: "2014-11-21 23:09:45"},
-// {id: 3, title: "House of NanKing", lat: "-122.40542600000003", lng: "37.796477", address: "919 Kearny St, San Francisco, CA 94133, United Sta...", place_id: "ChIJvS92wfSAhYARC2tq3BmjmIM", website: "http://poop.com", phone_number: "415-333-3333", created_at: "2014-11-21 23:09:45", updated_at: "2014-11-21 23:09:45"}];
-
 var setMarkers = function (locations,map){
   //group_id for ajax call
   var group_id = $('#group_id').attr('data-path');
@@ -54,18 +50,6 @@ var setMarkers = function (locations,map){
 
   var locLatlng = new google.maps.LatLng(location.lng,location.lat);
   var contentString = "this is a placeholder";//function(){
-  //   if(our_locations.indexOf(location)){
-  //   $.when(get_location_reviews(group_id,location.id)).done(function(reviews){
-  //       var template = HandlebarsTemplates["review"];
-  //       var html = template({reviews: reviews});
-  //       return html;
-  //   });
-  //     }//returns the reviews plus the form for new reviews.
-  //   else{
-  //     return("New location & review form goes here");//returns just the html for the form   //replace with newLocation(location)
-  //   }
-  // };
-//////ABOVE IS CODE TO GET DIFFERNT TEMPLATES IF IT'S A NEW LOCAITON OR NOT
 
 
     var infowindow = new google.maps.InfoWindow({
@@ -96,10 +80,10 @@ var setMarkers = function (locations,map){
 
     //function to add infobox to marker
     google.maps.event.addListener(marker, 'click', function() {
-      if(currrentWindow){
-      currrentWindow.setMap(null);
+      if(currentWindow){
+      currentWindow.setMap(null);
       }
-      currrentWindow = infowindow;
+      currentWindow = infowindow;
     infowindow.open(map,marker);
 
     });//end info window function

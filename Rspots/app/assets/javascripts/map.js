@@ -3,9 +3,6 @@
 $(document).ready(function(){
 
 
-// google.maps.event.addDomListener(window, 'load', function () {
-// CHANGE: set Latlng to group values
-
 
 	var map = new google.maps.Map(document.getElementById('map-canvas'), {
 		zoom: 17,
@@ -43,7 +40,7 @@ $.ajax({
 
 	//Code added to be able to search for a place and then mark it on the map:
 	var searchBox = new google.maps.places.SearchBox((input));
-	window.currrentWindow=null;
+	window.currentWindow=null;
 
 	google.maps.event.addListener(searchBox, 'places_changed', function() {
 	  var places = searchBox.getPlaces();
@@ -84,25 +81,17 @@ $.ajax({
 
     google.maps.event.addListener(marker, 'click', function() {
 			infowindow.open(map,marker);
-			if(currrentWindow){
-				currrentWindow.setMap(null);
+			if(currentWindow){
+				currentWindow.setMap(null);
 			}
-			currrentWindow = infowindow;
+			currentWindow = infowindow;
     });
 
 			markers.push(marker);
 			bounds.extend(place.geometry.location);
 			map.setCenter(place.geometry.location);
 		}	);
-			// our_locations.forEach(function(location){
-			// 	if(location[5]===place.place_id){
-			// 		return true;
-			// 	}
-			// 		else{
-			// 			return false;
-			// 		}
-				
-			// });		
+		
 	});
 
 
@@ -112,10 +101,5 @@ google.maps.event.addListener(map, 'bounds_changed', function() {
 });
 
 console.log(myLatlng);
-	// myMarker(myLatlng,map);//TG: puts GA home marker on the map.
-	setMarkers(our_locations,map);
-
-
-// }); //end google maps function
 
 }); //end ready function
