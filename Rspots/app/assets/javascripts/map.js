@@ -26,7 +26,7 @@ $(document).ready(function(){
 	    url:'/groups/'+ group_id +'/map.json',
 	    type:"GET",
 	    success: function (locations){
-	        setMarkers(locations,map); // calls function from spot.js
+	        setMarkers(locations,map); // calls function from spot.js to put down markers
 	    },
 	    error: function (xhr, status){
 	        console.info(xhr.error);
