@@ -60,7 +60,7 @@ $.ajax({
 		markers = [];
 		var bounds = new google.maps.LatLngBounds();
 
-		places.forEach(function(place){	
+		places.forEach(function(place){
 		  var image = {
 		    url: place.icon,
 		    size: new google.maps.Size(71, 71),
@@ -84,10 +84,10 @@ $.ajax({
 
     google.maps.event.addListener(marker, 'click', function() {
 			infowindow.open(map,marker);
-			if(currrentWindow){
-				currrentWindow.setMap(null);
+			if(currentWindow){
+				currentWindow.setMap(null);
 			}
-			currrentWindow = infowindow;
+			currentWindow = infowindow;
     });
 
 			markers.push(marker);
@@ -101,8 +101,8 @@ $.ajax({
 			// 		else{
 			// 			return false;
 			// 		}
-				
-			// });		
+
+			// });
 	});
 
 
