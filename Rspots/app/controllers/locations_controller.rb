@@ -21,10 +21,16 @@ class LocationsController < ApplicationController
 
   #show reviews
   #GroupLocation.find_by_group_id_and_location_id(g.id, l.id).reviews
-  def reviews
-    group_id = params[:group_id]
-    location_id = params[:id]
+  def show
+    g_id = params[:group_id]
+    l_id = params[:id]
+    @reviews = GroupLocation.find_by_group_id_and_location_id(g_id, l_id).reviews
 
+    #response for AJAX call
+    respond_to do |format|
+      format.html # map.html.erb
+      format.json { render json: @reviews}
+    end
 
   end
 
