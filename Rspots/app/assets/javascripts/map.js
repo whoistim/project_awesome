@@ -1,6 +1,5 @@
 var load_map = function () {
 
-
 	var map = new google.maps.Map(document.getElementById('map-canvas'), {
 		zoom: 17,
 		center: new google.maps.LatLng(37.7912563,-122.4006792),
@@ -88,7 +87,7 @@ var load_map = function () {
 			bounds.extend(place.geometry.location);
 			map.setCenter(place.geometry.location);
 		}	);
-	});
+});
 
 	google.maps.event.addListener(map, 'bounds_changed', function() {
 		var bounds = map.getBounds();

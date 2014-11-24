@@ -1,5 +1,8 @@
 //The GA location
+<<<<<<< HEAD
+=======
 
+>>>>>>> 87e626c0d1c0fe6bec143c705941201e903b86c6
 var myLatlng = new google.maps.LatLng(37.7908767,-122.4016454);
 
 // sets logo as GA logo -- NEED TO CHANGE TO GET LOGO FROM DB in v2
@@ -30,7 +33,6 @@ var get_location_reviews = function (g_id,l_id) {
   });// end ajax call
 };
 
-
 var setMarkers = function (locations,map){
   //group_id for ajax call
   var group_id = $('#group_id').attr('data-path');
@@ -41,6 +43,7 @@ var setMarkers = function (locations,map){
 
     // ajax call to return reviews for each location
     $.when(get_location_reviews(group_id,location.id)).done(function(reviews){
+
       location.reviews = reviews; // add reviews to location object
       // console.log(location.reviews)
       var template_html = HandlebarsTemplates["review"](location); //passing location to hbs template
