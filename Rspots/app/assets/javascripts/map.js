@@ -23,7 +23,7 @@ $(document).ready(function(){
 	groupMarker(myLatlng,map);//TG: puts GA home marker on the map. function from spot.js
 
 // id for ajax call
-var id = $('#map_path').attr('data-path');
+var group_id = $('#group_id').attr('data-path');
 
 // ajax call to grab locations from DB
 $.ajax({

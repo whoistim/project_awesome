@@ -7,7 +7,7 @@ class LocationsController < ApplicationController
     group_id = params[:group_id]
 
     # add the location if it doesn't already exist
-    location = params.require(:group).permit(:title, :lat, :lng, :address, :place_id, :website, :phone_number)
+    location = params.require(:location).permit(:title, :lat, :lng, :address, :place_id, :website, :phone_number)
     new_location = Location.create_with(location).find_or_create_by(place_id: location.place_id)
 
     # add the location to groups_locations table
@@ -16,6 +16,7 @@ class LocationsController < ApplicationController
     # add review that triggered location
     review = params.require(:review).permit(:rating, :review)
     @new_review = Review.create(rating: review.rating, review: review.review, group_location_id: group_location.id, user_id: @current_user.id)
+
 
   end
 
