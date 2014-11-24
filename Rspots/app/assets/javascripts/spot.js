@@ -1,5 +1,5 @@
 //The GA location
-// var grpLatlng = new google.maps.LatLng(my_group.lat,my_group.lng);
+
 var myLatlng = new google.maps.LatLng(37.7908767,-122.4016454);
 
 // sets logo as GA logo -- NEED TO CHANGE TO GET LOGO FROM DB in v2
@@ -30,7 +30,6 @@ var get_location_reviews = function (g_id,l_id) {
   });// end ajax call
 };
 
-var my_group;
 
 var setMarkers = function (locations,map){
   //group_id for ajax call
