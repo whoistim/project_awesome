@@ -45,11 +45,11 @@ var setMarkers = function (locations,map){
     });
 
   console.log(location);
+  var template_html = HandlebarsTemplates["review"](location);
+
+  var contentString = template_html;
 
   var locLatlng = new google.maps.LatLng(location.lng,location.lat);
-
-  var contentString = "<p>"+location.id+"</p>";
-
 
     var infowindow = new google.maps.InfoWindow({
       content: contentString,
