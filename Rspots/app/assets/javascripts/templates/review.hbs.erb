@@ -1,2 +1,21 @@
+<!-- location header -->
+<p class="lead location-header">{{title}}</p>
 
-  <h1>{{title}}</h1>
+<!-- location information div -->
+<div class="location-info">
+  <p>
+    {{address}}<br>
+    {{phone_number}}<br>
+    <a href="{{website}}" target="_blank">{{website}}</a>
+  </p>
+</div>
+
+<!-- reviews -->
+
+<div class="review-box">
+{{#each reviews}}
+  <p>{{review}}</p>
+{{/each}}
+</div>
+
+

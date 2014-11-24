@@ -42,52 +42,48 @@ var setMarkers = function (locations,map){
     // ajax call to return reviews for each location
     $.when(get_location_reviews(group_id,location.id)).done(function(reviews){
       location.reviews = reviews; // add reviews to location object
-    });
+      // console.log(location.reviews)
+      var template_html = HandlebarsTemplates["review"](location); //passing location to hbs template
+      var contentString = template_html; //adding template to content for infowindow
+      var locLatlng = new google.maps.LatLng(location.lng,location.lat);
 
-  console.log(location);
-  var template_html = HandlebarsTemplates["review"](location);
+      var infowindow = new google.maps.InfoWindow({
+        content: contentString,
+        maxWidth: 400
+      }); //end infowindow variable
 
-  var contentString = template_html;
+      //lets us see locations referenced in console for testing
+      // console.log(locLatlng);
 
-  var locLatlng = new google.maps.LatLng(location.lng,location.lat);
+    	// Sets image for points on map
+      var image =
+      {url: '/assets/blue2.png',
+      size: new google.maps.Size(71, 71),
+      origin: new google.maps.Point(0, 0),
+      anchor: new google.maps.Point(16, 16),
+      scaledSize: new google.maps.Size(32, 32)
+      }; // end of setting image for markers
 
-    var infowindow = new google.maps.InfoWindow({
-      content: contentString,
-      maxWidth: 400
-  }); //end infowindow variable
+      // sets marker
+      var marker = new google.maps.Marker({
+        position: locLatlng,
+        map: map,
+        icon: image,
+        animation: google.maps.Animation.DROP,
+        title:location.title
+      });//end of marker object
 
+      //function to add infobox to marker
+      google.maps.event.addListener(marker, 'click', function() {
 
-    //lets us see locations referenced in console for testing
-    // console.log(locLatlng);
+        if(currentWindow){
+          currentWindow.setMap(null);
+        }
+        currentWindow = infowindow;
+        infowindow.open(map,marker);
+      });//end info window function
 
-  	// Sets image for points on map
-    var image =
-    {url: '/assets/blue2.png',
-    size: new google.maps.Size(71, 71),
-    origin: new google.maps.Point(0, 0),
-    anchor: new google.maps.Point(16, 16),
-    scaledSize: new google.maps.Size(32, 32)
-    }; // end of setting image for markers
-
-    // sets marker
-    var marker = new google.maps.Marker({
-      position: locLatlng,
-      map: map,
-      icon: image,
-      animation: google.maps.Animation.DROP,
-      title:location.title
-    });//end of marker object
-
-    //function to add infobox to marker
-    google.maps.event.addListener(marker, 'click', function() {
-
-      if(currentWindow){
-      currentWindow.setMap(null);
-      }
-      currentWindow = infowindow;
-      infowindow.open(map,marker);
-    });//end info window function
-
+    });//end of when function
   });//end of locations loop
 };// end of set markers function
 
