@@ -82,6 +82,7 @@ var setMarkers = function (locations,map){
         }
         currentWindow = infowindow;
         infowindow.open(map,marker);
+        //adding auth token to allow controller access. Tricksy.
         $('form.hbs input[name=authenticity_token]').val(
           $('meta[name="csrf-token"]').attr('content')
         );
