@@ -7,18 +7,20 @@
     group_id = params[:group_id]
 
     # add the location if it doesn't already exist
-    location = params[:title, :lat, :lng, :address, :place_id, :website, :phone_number]
-    new_location = Location.create_with(location).find_or_create_by(place_id: location.place_id)
+    location = location_params()
+    new_location = Location.create_with(location).find_or_create_by(place_id: location[:place_id])
+    new_location.groups << Group.find(group_id)
+    new_location.save
 
-    # add the location to groups_locations table
-    group_location = GroupLocation.create(group_id, location.id)
+    group_location = GroupLocation.where(group_id: group_id, location_id: new_location.id).last
+    binding.pry
 
     # add review that triggered location
     # add review that triggered location creation
-    review = params[:review]
-    rating = params[:rating]
-    # binding.pry
-    @new_review = Review.create(rating: rating, review: review, group_location_id: group_location.id, user_id: @current_user.id)
+    review = params.permit(:review, :rating )
+
+    @new_review = Review.create(rating: review[:rating], review: review[:review], group_location_id: group_location.id, user_id: @current_user.id)
+    binding.pry
 
     redirect_to("/groups/#{group_id}/map")
 
@@ -42,7 +44,7 @@
 
   private
   def location_params
-    params.require(:group).permit(:title, :lat, :lng, :address, :place_id, :website, :phone_number)
+    params.permit(:title, :lat, :lng, :address, :place_id, :website, :phone_number)
   end
 
 end
