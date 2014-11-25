@@ -13,14 +13,14 @@
     new_location.save
 
     group_location = GroupLocation.where(group_id: group_id, location_id: new_location.id).last
-    binding.pry
+    # binding.pry
 
     # add review that triggered location
     # add review that triggered location creation
     review = params.permit(:review, :rating )
 
     @new_review = Review.create(rating: review[:rating], review: review[:review], group_location_id: group_location.id, user_id: @current_user.id)
-    binding.pry
+    # binding.pry
 
     redirect_to("/groups/#{group_id}/map")
 

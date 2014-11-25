@@ -46,11 +46,12 @@ var setMarkers = function (locations,map){
       var template_html = HandlebarsTemplates["review"](location); //passing location to hbs template
 
       var contentString = template_html; //adding template to content for infowindow
-      var locLatlng = new google.maps.LatLng(location.lng,location.lat);
+      var locLatlng = new google.maps.LatLng(location.lat,location.lng);
 
       var infowindow = new google.maps.InfoWindow({
         content: contentString,
-        maxWidth: 400
+        maxWidth: 400,
+        pixelOffset: {width:-23, height:3}
       }); //end infowindow variable
 
       //lets us see locations referenced in console for testing
