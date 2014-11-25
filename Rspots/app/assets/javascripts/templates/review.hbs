@@ -6,7 +6,6 @@
   <p>
     {{address}}<br>
     {{phone_number}}<br>
-    {{group_id}}
     <a href="{{website}}" target="_blank">{{website}}</a>
   </p>
 </div>
@@ -16,24 +15,25 @@
 <div class="review-box">
 {{#each reviews}}
   <p>
-  <img src="/assets/up.svg" alt="" height="25px" width="25px">
-  {{review}}
+    <img src="/assets/up.svg" alt="" height="25px" width="25px">
+    {{review}}
   </p>
 {{/each}}
 </div>
 
-<form 
-	class="hbs" 
-	action="/groups/{{group_id}}/reviews" 
+<form
+	class="hbs"
+	action="/groups/{{group_id}}/reviews"
 	method="POST">
 
 	<input type="hidden" name="location_id" value="{{id}}">
 	<input type="hidden" name="authenticity_token" value="">
-<label><input type="radio" name="rating" value="1"required> Try it!</label>
-<label><input type="radio" name="rating" value="-1"required> Skip it!</label>
-<input type="textarea" required name="review" >
-<input type="submit" value="Save">
+  <label><input type="radio" name="rating" value="1"required> Try it!</label>
+  <label><input type="radio" name="rating" value="-1"required> Skip it!</label>
+  <input type="textarea" required name="review" >
+  <input type="submit" value="Save">
 </form>
+
 
 
 

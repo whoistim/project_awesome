@@ -13,13 +13,13 @@ GroupUser.delete_all
   u3 = User.create(provider: "facebook", uid: "688572161238150", first_name: "Tim", last_name: "Gray", image: "http://graph.facebook.com/688572161238150/picture", oauth_token: "CAALvadZCq1V4BACwZApBZCb0TwYrWAkzDD3sEvH34nyMnnufDZBrNhjNjZBIXvrpjHd3eRG2JzLFKQnftclZB4sMw4ZAZCkFYaIg5rMLoyrM1mjd9ckekYS66Wxcm2QrrqBOr7P6q8XNR48FoVcJTEhA2japZAyZAZCERqW90vPKaM0RTQ2k2xZAqgrgIAQdatMsphHT28p20rVkFZBEfR9mGMtAS", oauth_expires_at: "2015-01-21 22:08:12")
 
 # Groups
-  g1 = Group.create(name: "General Assembly", lng:"37.7912563", lat:"-122.4006792",)
-  g2 = Group.create(name: "WDI", lng:"37.7912563", lat:"-122.4006792",)
+  g1 = Group.create(name: "General Assembly", lng:"-122.4006792", lat:"37.7912563")
+  g2 = Group.create(name: "WDI", lng:"-122.4006792", lat:"37.7912563")
 
 # Locations
-  l1 = Location.create(title:"Mixt Greens",lng:"37.791578", lat:"-122.40063700000002", address:"120 Sansome St., San Francisco, CA", place_id:"ChIJ62yCEWKAhYARNL0YQVpRuKg", website:"http://mixtgreens.com", phone_number:"415-555-5555")
-  l2 = Location.create(title:"Rickhouse",lng:"37.79046", lat:"-122.40386799999999", address:"246 Kearny St, San Francisco", place_id:"ChIJd7ebnImAhYARhr91iINx01g", website:"http://www.rickhousebar.com/", phone_number:"415-777-7777")
-  l3 = Location.create(title:"House of NanKing",lng:"37.796477", lat:"-122.40542600000003", address:"919 Kearny St, San Francisco, CA 94133, United States", place_id:"ChIJvS92wfSAhYARC2tq3BmjmIM", website:"http://poop.com", phone_number:"415-333-3333")
+  l1 = Location.create(title:"Mixt Greens",lng:"-122.40063700000002", lat:"37.791578", address:"120 Sansome St., San Francisco, CA", place_id:"ChIJ62yCEWKAhYARNL0YQVpRuKg", website:"http://mixtgreens.com", phone_number:"415-555-5555")
+  l2 = Location.create(title:"Rickhouse",lng:"-122.40386799999999", lat:"37.79046", address:"246 Kearny St, San Francisco", place_id:"ChIJd7ebnImAhYARhr91iINx01g", website:"http://www.rickhousebar.com/", phone_number:"415-777-7777")
+  l3 = Location.create(title:"House of NanKing",lng:"-122.40542600000003", lat:"37.796477", address:"919 Kearny St, San Francisco, CA 94133, United States", place_id:"ChIJvS92wfSAhYARC2tq3BmjmIM", website:"http://poop.com", phone_number:"415-333-3333")
 
 #GroupLocation
   gl1 = GroupLocation.create(group_id: g1.id, location_id: l1.id)
