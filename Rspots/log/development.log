@@ -11947,3 +11947,287 @@ Processing by LocationsController#show as JSON
   [1m[36mGroupLocation Load (0.5ms)[0m  [1mSELECT  "group_locations".* FROM "group_locations"  WHERE "group_locations"."group_id" = 33 AND "group_locations"."location_id" = 58 LIMIT 1[0m
   [1m[35mReview Load (0.3ms)[0m  SELECT "reviews".* FROM "reviews"  WHERE "reviews"."group_location_id" = $1  [["group_location_id", 85]]
 Completed 200 OK in 4ms (Views: 1.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-24 20:08:11 -0800
+Processing by UserController#profile as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 47]]
+  [1m[35mGroup Load (1.4ms)[0m  SELECT "groups".* FROM "groups" INNER JOIN "group_users" ON "groups"."id" = "group_users"."group_id" WHERE "group_users"."user_id" = $1  [["user_id", 47]]
+  [1m[36mGroupUser Load (1.1ms)[0m  [1mSELECT  "group_users".* FROM "group_users"  WHERE "group_users"."group_id" = 33 AND "group_users"."user_id" = 47 LIMIT 1[0m
+  [1m[35mGroupUser Load (0.6ms)[0m  SELECT  "group_users".* FROM "group_users"  WHERE "group_users"."group_id" = 34 AND "group_users"."user_id" = 47 LIMIT 1
+  Rendered user/profile.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 280ms (Views: 272.0ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-24 20:12:46 -0800
+Processing by UserController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 47]]
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" INNER JOIN "group_users" ON "groups"."id" = "group_users"."group_id" WHERE "group_users"."user_id" = $1  [["user_id", 47]]
+  [1m[36mGroupUser Load (0.4ms)[0m  [1mSELECT  "group_users".* FROM "group_users"  WHERE "group_users"."group_id" = 33 AND "group_users"."user_id" = 47 LIMIT 1[0m
+  [1m[35mGroupUser Load (0.3ms)[0m  SELECT  "group_users".* FROM "group_users"  WHERE "group_users"."group_id" = 34 AND "group_users"."user_id" = 47 LIMIT 1
+  Rendered user/profile.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 282ms (Views: 278.0ms | ActiveRecord: 1.1ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (1.2ms)[0m  DELETE FROM "users"
+  [1m[36mSQL (0.8ms)[0m  [1mDELETE FROM "groups"[0m
+  [1m[35mSQL (1.0ms)[0m  DELETE FROM "reviews"
+  [1m[36mSQL (0.7ms)[0m  [1mDELETE FROM "locations"[0m
+  [1m[35mSQL (0.9ms)[0m  DELETE FROM "group_locations"
+  [1m[36mSQL (0.8ms)[0m  [1mDELETE FROM "group_users"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "users" ("created_at", "first_name", "image", "last_name", "oauth_expires_at", "oauth_token", "provider", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["created_at", "2014-11-25 04:15:11.526661"], ["first_name", "Peter"], ["image", "http://graph.facebook.com/10203844294482291/picture?width=200&height=200"], ["last_name", "Schulz"], ["oauth_expires_at", "2015-01-20 23:29:57.000000"], ["oauth_token", "CAALvadZCq1V4BADlKzZA0VBerJ2NlgK7qVtJ32zdqgfp0PEZBkCWYofDlAdPt7VsZCmXVZCdUWx33sZB0UReGEFHFHuVLaVAvuzbtzbZCxWw6vBcUWML2I6ZAfQPlgskzJQQ2R25AeCuHz5Yo8ZBXbYjocZCWObfNaQ83v0ZAXo6AzZAxZCKxGmrLPyVCu6MsLwa8hDBGpZBbH65Djcy9841qj2XLZA..."], ["provider", "facebook"], ["uid", "10203844294482291"], ["updated_at", "2014-11-25 04:15:11.526661"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "first_name", "image", "last_name", "oauth_expires_at", "oauth_token", "provider", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["created_at", "2014-11-25 04:15:11.539957"], ["first_name", "Melody"], ["image", "http://graph.facebook.com/10103525070422447/picture"], ["last_name", "Serra"], ["oauth_expires_at", "2015-01-22 19:01:17.000000"], ["oauth_token", "CAALvadZCq1V4BABf9cmWuYtQ5aL4qGBzQiAlZAYopZBpTsLHswjrMYR2tINBq1GA9vHifDxg45uvfYFzcbu1MUwNmXdhR6kZAhbcQHtUIio96Bgy63sqk3yAqCge1xy1Dwt4eguEGhZCCZAHhqOQHrKzP9mgfZAzjBV70Ejlj69YZAfd9aYI7g7gH5J1DWp4xR3cSTGxOZARV7WEXOqP9n49o"], ["provider", "facebook"], ["uid", "10103525070422447"], ["updated_at", "2014-11-25 04:15:11.539957"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "first_name", "image", "last_name", "oauth_expires_at", "oauth_token", "provider", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["created_at", "2014-11-25 04:15:11.542503"], ["first_name", "Tim"], ["image", "http://graph.facebook.com/688572161238150/picture"], ["last_name", "Gray"], ["oauth_expires_at", "2015-01-21 22:08:12.000000"], ["oauth_token", "CAALvadZCq1V4BACwZApBZCb0TwYrWAkzDD3sEvH34nyMnnufDZBrNhjNjZBIXvrpjHd3eRG2JzLFKQnftclZB4sMw4ZAZCkFYaIg5rMLoyrM1mjd9ckekYS66Wxcm2QrrqBOr7P6q8XNR48FoVcJTEhA2japZAyZAZCERqW90vPKaM0RTQ2k2xZAqgrgIAQdatMsphHT28p20rVkFZBEfR9mGMtAS"], ["provider", "facebook"], ["uid", "688572161238150"], ["updated_at", "2014-11-25 04:15:11.542503"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "groups" ("created_at", "lat", "lng", "name", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-25 04:15:11.551286"], ["lat", "37.7912563"], ["lng", "-122.4006792"], ["name", "General Assembly"], ["updated_at", "2014-11-25 04:15:11.551286"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "groups" ("created_at", "lat", "lng", "name", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-25 04:15:11.553809"], ["lat", "37.7912563"], ["lng", "-122.4006792"], ["name", "WDI"], ["updated_at", "2014-11-25 04:15:11.553809"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "locations" ("address", "created_at", "lat", "lng", "phone_number", "place_id", "title", "updated_at", "website") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["address", "120 Sansome St., San Francisco, CA"], ["created_at", "2014-11-25 04:15:11.564055"], ["lat", "37.791578"], ["lng", "-122.40063700000002"], ["phone_number", "415-555-5555"], ["place_id", "ChIJ62yCEWKAhYARNL0YQVpRuKg"], ["title", "Mixt Greens"], ["updated_at", "2014-11-25 04:15:11.564055"], ["website", "http://mixtgreens.com"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "locations" ("address", "created_at", "lat", "lng", "phone_number", "place_id", "title", "updated_at", "website") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["address", "246 Kearny St, San Francisco"], ["created_at", "2014-11-25 04:15:11.566653"], ["lat", "37.79046"], ["lng", "-122.40386799999999"], ["phone_number", "415-777-7777"], ["place_id", "ChIJd7ebnImAhYARhr91iINx01g"], ["title", "Rickhouse"], ["updated_at", "2014-11-25 04:15:11.566653"], ["website", "http://www.rickhousebar.com/"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "locations" ("address", "created_at", "lat", "lng", "phone_number", "place_id", "title", "updated_at", "website") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["address", "919 Kearny St, San Francisco, CA 94133, United States"], ["created_at", "2014-11-25 04:15:11.568460"], ["lat", "37.796477"], ["lng", "-122.40542600000003"], ["phone_number", "415-333-3333"], ["place_id", "ChIJvS92wfSAhYARC2tq3BmjmIM"], ["title", "House of NanKing"], ["updated_at", "2014-11-25 04:15:11.568460"], ["website", "http://poop.com"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "group_locations" ("created_at", "group_id", "location_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-25 04:15:11.576048"], ["group_id", 35], ["location_id", 60], ["updated_at", "2014-11-25 04:15:11.576048"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "group_locations" ("created_at", "group_id", "location_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-25 04:15:11.579986"], ["group_id", 35], ["location_id", 61], ["updated_at", "2014-11-25 04:15:11.579986"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "group_locations" ("created_at", "group_id", "location_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-25 04:15:11.583140"], ["group_id", 35], ["location_id", 62], ["updated_at", "2014-11-25 04:15:11.583140"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "group_locations" ("created_at", "group_id", "location_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-25 04:15:11.584643"], ["group_id", 36], ["location_id", 60], ["updated_at", "2014-11-25 04:15:11.584643"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "group_locations" ("created_at", "group_id", "location_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-25 04:15:11.586189"], ["group_id", 36], ["location_id", 61], ["updated_at", "2014-11-25 04:15:11.586189"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "group_users" ("created_at", "group_id", "is_owner", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-25 04:15:11.595910"], ["group_id", 35], ["is_owner", "t"], ["updated_at", "2014-11-25 04:15:11.595910"], ["user_id", 50]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (44.6ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "group_users" ("created_at", "group_id", "is_owner", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-25 04:15:11.643138"], ["group_id", 35], ["is_owner", "f"], ["updated_at", "2014-11-25 04:15:11.643138"], ["user_id", 51]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "group_users" ("created_at", "group_id", "is_owner", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-25 04:15:11.645132"], ["group_id", 35], ["is_owner", "f"], ["updated_at", "2014-11-25 04:15:11.645132"], ["user_id", 52]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "group_users" ("created_at", "group_id", "is_owner", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-25 04:15:11.646643"], ["group_id", 36], ["is_owner", "f"], ["updated_at", "2014-11-25 04:15:11.646643"], ["user_id", 50]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "group_users" ("created_at", "group_id", "is_owner", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-25 04:15:11.648080"], ["group_id", 36], ["is_owner", "t"], ["updated_at", "2014-11-25 04:15:11.648080"], ["user_id", 51]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "reviews" ("created_at", "group_location_id", "rating", "review", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-25 04:15:11.656498"], ["group_location_id", 89], ["rating", 1], ["review", "THIS IS A REVIEW OF MIXT GREENS"], ["updated_at", "2014-11-25 04:15:11.656498"], ["user_id", 50]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "reviews" ("created_at", "group_location_id", "rating", "review", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-25 04:15:11.658954"], ["group_location_id", 90], ["rating", -1], ["review", "THIS IS A REVIEW OF Rickhouse"], ["updated_at", "2014-11-25 04:15:11.658954"], ["user_id", 51]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "reviews" ("created_at", "group_location_id", "rating", "review", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-25 04:15:11.660620"], ["group_location_id", 91], ["rating", 1], ["review", "THIS IS A REVIEW OF House of NanKing"], ["updated_at", "2014-11-25 04:15:11.660620"], ["user_id", 52]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "reviews" ("created_at", "group_location_id", "rating", "review", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-25 04:15:11.662420"], ["group_location_id", 92], ["rating", 1], ["review", "THIS IS A REVIEW OF MIXT GREENS"], ["updated_at", "2014-11-25 04:15:11.662420"], ["user_id", 50]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "reviews" ("created_at", "group_location_id", "rating", "review", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-25 04:15:11.664008"], ["group_location_id", 93], ["rating", -1], ["review", "THIS IS A REVIEW OF Rickhouse"], ["updated_at", "2014-11-25 04:15:11.664008"], ["user_id", 51]]
+  [1m[35m (0.3ms)[0m  COMMIT
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-24 20:16:01 -0800
+Processing by UserController#profile as HTML
+  Rendered user/profile.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 274ms (Views: 273.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/auth/facebook" for 127.0.0.1 at 2014-11-24 20:16:15 -0800
+(facebook) Request phase initiated.
+
+
+Started POST "/auth/facebook" for 127.0.0.1 at 2014-11-24 20:16:15 -0800
+(facebook) Request phase initiated.
+
+
+Started GET "/auth/facebook/callback?code=AQByJpTdkYUUdlesDzkZilJv7nXNHOPFIaPuN7gG1jhH8W-jUXFZe2pn-B7XdEene_FDcI0U-78q-6dzJIO1FVY0CR9ZihHIznSidcW4wk5vyR13KDlOsfbw9PHlRHspgqj3KWelUZkySdywY5zjpMjUXA98eQZbMvQeiBz7CBWr878yi0ycYPLeLHluj407tMeaHVQapu-QBSjX1B5eQqk8YqVcYFBb0p8P0IwuY5n4anfrHY1WODbIIBCwQbJnwsn3Cwdnhl2g3Z5RMC3yLIMjNokhFwJ57oeCCG4-yFdUrkIFUoWQbCpTH70_VK51cyI&state=efa9e619bb7735192173aea6d88c7db6fb276040796d4e04" for 127.0.0.1 at 2014-11-24 20:16:15 -0800
+(facebook) Callback phase initiated.
+Processing by SessionsController#create as HTML
+  Parameters: {"code"=>"AQByJpTdkYUUdlesDzkZilJv7nXNHOPFIaPuN7gG1jhH8W-jUXFZe2pn-B7XdEene_FDcI0U-78q-6dzJIO1FVY0CR9ZihHIznSidcW4wk5vyR13KDlOsfbw9PHlRHspgqj3KWelUZkySdywY5zjpMjUXA98eQZbMvQeiBz7CBWr878yi0ycYPLeLHluj407tMeaHVQapu-QBSjX1B5eQqk8YqVcYFBb0p8P0IwuY5n4anfrHY1WODbIIBCwQbJnwsn3Cwdnhl2g3Z5RMC3yLIMjNokhFwJ57oeCCG4-yFdUrkIFUoWQbCpTH70_VK51cyI", "state"=>"efa9e619bb7735192173aea6d88c7db6fb276040796d4e04", "provider"=>"facebook"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."provider" = 'facebook' AND "users"."uid" = '10203844294482291'  ORDER BY "users"."id" ASC LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 3ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-24 20:16:16 -0800
+Processing by UserController#profile as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 50]]
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" INNER JOIN "group_users" ON "groups"."id" = "group_users"."group_id" WHERE "group_users"."user_id" = $1[0m  [["user_id", 50]]
+  [1m[35mGroupUser Load (0.4ms)[0m  SELECT  "group_users".* FROM "group_users"  WHERE "group_users"."group_id" = 35 AND "group_users"."user_id" = 50 LIMIT 1
+  [1m[36mGroupUser Load (0.3ms)[0m  [1mSELECT  "group_users".* FROM "group_users"  WHERE "group_users"."group_id" = 36 AND "group_users"."user_id" = 50 LIMIT 1[0m
+  Rendered user/profile.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 265ms (Views: 260.2ms | ActiveRecord: 1.1ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (1.2ms)[0m  DELETE FROM "users"
+  [1m[36mSQL (0.7ms)[0m  [1mDELETE FROM "groups"[0m
+  [1m[35mSQL (0.9ms)[0m  DELETE FROM "reviews"
+  [1m[36mSQL (0.8ms)[0m  [1mDELETE FROM "locations"[0m
+  [1m[35mSQL (0.8ms)[0m  DELETE FROM "group_locations"
+  [1m[36mSQL (0.8ms)[0m  [1mDELETE FROM "group_users"[0m
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-24 20:19:39 -0800
+Processing by UserController#profile as HTML
+  Rendered user/profile.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 247ms (Views: 246.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/auth/facebook" for 127.0.0.1 at 2014-11-24 20:19:42 -0800
+(facebook) Request phase initiated.
+
+
+Started GET "/auth/facebook/callback?code=AQCPbtTt49n6uHrM1nqqJbLKjmFd6-hymHogtz6ROve81A1I5vHoVGPEdR6qDYKAmVx4Ezq8EefNDXjsy-JAyau7b3RzqrY6mxrRKqBlaFJXFM-PVvNdlZgYgqvJ4IFdE7io2RzSNXZ-ruBqW6XOfdwjUAxepWASKeLjtU_17DQXCaS1bFpHHXd0I-RI62gCeQtXAJQeHps0xPYrXUUphdOkhlY_vFJiVXZiwlLKqGB3xuKJMrjQrqMjYs3211F6EZN-W8PJgfNYuiBmxrqdvCkGyz9gsiqmfv6enhmivINTPLDI_JU77uI4nro3FwcJmo8&state=f8d52a0124195956d1b51fbe54925d1ecbf6d070d9ada9f8" for 127.0.0.1 at 2014-11-24 20:19:42 -0800
+(facebook) Callback phase initiated.
+Processing by SessionsController#create as HTML
+  Parameters: {"code"=>"AQCPbtTt49n6uHrM1nqqJbLKjmFd6-hymHogtz6ROve81A1I5vHoVGPEdR6qDYKAmVx4Ezq8EefNDXjsy-JAyau7b3RzqrY6mxrRKqBlaFJXFM-PVvNdlZgYgqvJ4IFdE7io2RzSNXZ-ruBqW6XOfdwjUAxepWASKeLjtU_17DQXCaS1bFpHHXd0I-RI62gCeQtXAJQeHps0xPYrXUUphdOkhlY_vFJiVXZiwlLKqGB3xuKJMrjQrqMjYs3211F6EZN-W8PJgfNYuiBmxrqdvCkGyz9gsiqmfv6enhmivINTPLDI_JU77uI4nro3FwcJmo8", "state"=>"f8d52a0124195956d1b51fbe54925d1ecbf6d070d9ada9f8", "provider"=>"facebook"}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."provider" = 'facebook' AND "users"."uid" = '10203844294482291'  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "first_name", "image", "last_name", "oauth_expires_at", "oauth_token", "provider", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["created_at", "2014-11-25 04:19:43.195654"], ["first_name", "Peter"], ["image", "http://graph.facebook.com/10203844294482291/picture"], ["last_name", "Schulz"], ["oauth_expires_at", "2015-01-24 00:56:51.000000"], ["oauth_token", "CAALvadZCq1V4BACd5jHL3nb5fTdg6fm2ZBLPrQaMphmmSmcomGKKG3ZAlgcGjyaWAjMI5pYSoj85Gtro5sZA8gUqwbU7iqCc08wukAzhfNxYGyNskGQk5UZB6nAakh55oYkZAKFZAYO4Qp2XtjStL4rWhjsM8szeZADWZBLjMlZAnfZCWVSBnpHWBb8"], ["provider", "facebook"], ["uid", "10203844294482291"], ["updated_at", "2014-11-25 04:19:43.195654"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 7ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-24 20:19:43 -0800
+Processing by UserController#profile as HTML
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 53]]
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" INNER JOIN "group_users" ON "groups"."id" = "group_users"."group_id" WHERE "group_users"."user_id" = $1[0m  [["user_id", 53]]
+  Rendered user/profile.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 271ms (Views: 267.6ms | ActiveRecord: 0.8ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (1.1ms)[0m  DELETE FROM "users"
+  [1m[36mSQL (0.6ms)[0m  [1mDELETE FROM "groups"[0m
+  [1m[35mSQL (0.5ms)[0m  DELETE FROM "reviews"
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "locations"[0m
+  [1m[35mSQL (0.5ms)[0m  DELETE FROM "group_locations"
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "group_users"[0m
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-24 20:20:57 -0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UserController#profile as HTML
+  Rendered user/profile.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 753ms (Views: 731.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/auth/facebook" for 127.0.0.1 at 2014-11-24 20:21:01 -0800
+(facebook) Request phase initiated.
+
+
+Started GET "/auth/facebook/callback?code=AQC92-buH-V6LefDfPSspD5t4mGVEeUusHwI-6mhfKZcJ9rYm535Hn-bp3fxDnT_27slHztIENyfpNSfsmTbFqU-sQexDk3u7CPaf-UHqlcbQ9wIW-OF2EkuYUzd16suy0laT0utd_KKYRsAd6e794goZSsnwZhKEk559pUdHzwZtbtCnM_fldFx8ndNtEn_ojqPobtV0nJxPo_uf0Ad41nBzCLPPaKO_ptqrKvYQ8bKJSlXYLetEAWcQ_CmLGvY12bJwQzLT9XsgMR5jVmy9vMOEgl2RQgKEe0i8YuDxvivU1_0CBaHPTqbjo41odEBE9g&state=31098f1aee8e82816a3a57d62a3d54cca7507e3f8fa4dd08" for 127.0.0.1 at 2014-11-24 20:21:01 -0800
+(facebook) Callback phase initiated.
+Processing by SessionsController#create as HTML
+  Parameters: {"code"=>"AQC92-buH-V6LefDfPSspD5t4mGVEeUusHwI-6mhfKZcJ9rYm535Hn-bp3fxDnT_27slHztIENyfpNSfsmTbFqU-sQexDk3u7CPaf-UHqlcbQ9wIW-OF2EkuYUzd16suy0laT0utd_KKYRsAd6e794goZSsnwZhKEk559pUdHzwZtbtCnM_fldFx8ndNtEn_ojqPobtV0nJxPo_uf0Ad41nBzCLPPaKO_ptqrKvYQ8bKJSlXYLetEAWcQ_CmLGvY12bJwQzLT9XsgMR5jVmy9vMOEgl2RQgKEe0i8YuDxvivU1_0CBaHPTqbjo41odEBE9g", "state"=>"31098f1aee8e82816a3a57d62a3d54cca7507e3f8fa4dd08", "provider"=>"facebook"}
+  [1m[35mUser Load (1.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."provider" = 'facebook' AND "users"."uid" = '10203844294482291'  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("created_at", "first_name", "image", "last_name", "oauth_expires_at", "oauth_token", "provider", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["created_at", "2014-11-25 04:21:01.653813"], ["first_name", "Peter"], ["image", "http://graph.facebook.com/10203844294482291/picture?width=200&height=200"], ["last_name", "Schulz"], ["oauth_expires_at", "2015-01-24 00:56:50.000000"], ["oauth_token", "CAALvadZCq1V4BAG6GKE2gaWzZBNQYP5vvdB6QWyTHXo7Uky9ZCpTgtMPmzj5mCfFyxctCN9jMBUknJzO96srokzteouKR92nLmbga7OU7kHrnimLzZAoHoDmYFRtlWmNJCh6xi9TIr7nZCUuaIs4mhgWYkfMslCAZCQ7xZC8qDr7HfEKpmgOY2Y"], ["provider", "facebook"], ["uid", "10203844294482291"], ["updated_at", "2014-11-25 04:21:01.653813"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 31ms (ActiveRecord: 5.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-24 20:21:01 -0800
+Processing by UserController#profile as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 54]]
+  [1m[36mGroup Load (0.8ms)[0m  [1mSELECT "groups".* FROM "groups" INNER JOIN "group_users" ON "groups"."id" = "group_users"."group_id" WHERE "group_users"."user_id" = $1[0m  [["user_id", 54]]
+  Rendered user/profile.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 359ms (Views: 256.8ms | ActiveRecord: 3.5ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (1.2ms)[0m  DELETE FROM "users"
+  [1m[36mSQL (0.6ms)[0m  [1mDELETE FROM "groups"[0m
+  [1m[35mSQL (0.5ms)[0m  DELETE FROM "reviews"
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "locations"[0m
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "group_locations"
+  [1m[36mSQL (0.6ms)[0m  [1mDELETE FROM "group_users"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "users" ("created_at", "first_name", "image", "last_name", "oauth_expires_at", "oauth_token", "provider", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["created_at", "2014-11-25 04:22:30.757779"], ["first_name", "Peter"], ["image", "http://graph.facebook.com/10203844294482291/picture?width=200&height=200"], ["last_name", "Schulz"], ["oauth_expires_at", "2015-01-20 23:29:57.000000"], ["oauth_token", "CAALvadZCq1V4BADlKzZA0VBerJ2NlgK7qVtJ32zdqgfp0PEZBkCWYofDlAdPt7VsZCmXVZCdUWx33sZB0UReGEFHFHuVLaVAvuzbtzbZCxWw6vBcUWML2I6ZAfQPlgskzJQQ2R25AeCuHz5Yo8ZBXbYjocZCWObfNaQ83v0ZAXo6AzZAxZCKxGmrLPyVCu6MsLwa8hDBGpZBbH65Djcy9841qj2XLZA..."], ["provider", "facebook"], ["uid", "10203844294482291"], ["updated_at", "2014-11-25 04:22:30.757779"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "first_name", "image", "last_name", "oauth_expires_at", "oauth_token", "provider", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["created_at", "2014-11-25 04:22:30.762871"], ["first_name", "Melody"], ["image", "http://graph.facebook.com/10103525070422447/picture?width=200&height=200?width=200&height=200"], ["last_name", "Serra"], ["oauth_expires_at", "2015-01-22 19:01:17.000000"], ["oauth_token", "CAALvadZCq1V4BABf9cmWuYtQ5aL4qGBzQiAlZAYopZBpTsLHswjrMYR2tINBq1GA9vHifDxg45uvfYFzcbu1MUwNmXdhR6kZAhbcQHtUIio96Bgy63sqk3yAqCge1xy1Dwt4eguEGhZCCZAHhqOQHrKzP9mgfZAzjBV70Ejlj69YZAfd9aYI7g7gH5J1DWp4xR3cSTGxOZARV7WEXOqP9n49o"], ["provider", "facebook"], ["uid", "10103525070422447"], ["updated_at", "2014-11-25 04:22:30.762871"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "first_name", "image", "last_name", "oauth_expires_at", "oauth_token", "provider", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["created_at", "2014-11-25 04:22:30.764967"], ["first_name", "Tim"], ["image", "http://graph.facebook.com/688572161238150/picture?width=200&height=200"], ["last_name", "Gray"], ["oauth_expires_at", "2015-01-21 22:08:12.000000"], ["oauth_token", "CAALvadZCq1V4BACwZApBZCb0TwYrWAkzDD3sEvH34nyMnnufDZBrNhjNjZBIXvrpjHd3eRG2JzLFKQnftclZB4sMw4ZAZCkFYaIg5rMLoyrM1mjd9ckekYS66Wxcm2QrrqBOr7P6q8XNR48FoVcJTEhA2japZAyZAZCERqW90vPKaM0RTQ2k2xZAqgrgIAQdatMsphHT28p20rVkFZBEfR9mGMtAS"], ["provider", "facebook"], ["uid", "688572161238150"], ["updated_at", "2014-11-25 04:22:30.764967"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "groups" ("created_at", "lat", "lng", "name", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-25 04:22:30.773064"], ["lat", "37.7912563"], ["lng", "-122.4006792"], ["name", "General Assembly"], ["updated_at", "2014-11-25 04:22:30.773064"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "groups" ("created_at", "lat", "lng", "name", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-25 04:22:30.775575"], ["lat", "37.7912563"], ["lng", "-122.4006792"], ["name", "WDI"], ["updated_at", "2014-11-25 04:22:30.775575"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "locations" ("address", "created_at", "lat", "lng", "phone_number", "place_id", "title", "updated_at", "website") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["address", "120 Sansome St., San Francisco, CA"], ["created_at", "2014-11-25 04:22:30.786134"], ["lat", "37.791578"], ["lng", "-122.40063700000002"], ["phone_number", "415-555-5555"], ["place_id", "ChIJ62yCEWKAhYARNL0YQVpRuKg"], ["title", "Mixt Greens"], ["updated_at", "2014-11-25 04:22:30.786134"], ["website", "http://mixtgreens.com"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "locations" ("address", "created_at", "lat", "lng", "phone_number", "place_id", "title", "updated_at", "website") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["address", "246 Kearny St, San Francisco"], ["created_at", "2014-11-25 04:22:30.788739"], ["lat", "37.79046"], ["lng", "-122.40386799999999"], ["phone_number", "415-777-7777"], ["place_id", "ChIJd7ebnImAhYARhr91iINx01g"], ["title", "Rickhouse"], ["updated_at", "2014-11-25 04:22:30.788739"], ["website", "http://www.rickhousebar.com/"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "locations" ("address", "created_at", "lat", "lng", "phone_number", "place_id", "title", "updated_at", "website") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["address", "919 Kearny St, San Francisco, CA 94133, United States"], ["created_at", "2014-11-25 04:22:30.790388"], ["lat", "37.796477"], ["lng", "-122.40542600000003"], ["phone_number", "415-333-3333"], ["place_id", "ChIJvS92wfSAhYARC2tq3BmjmIM"], ["title", "House of NanKing"], ["updated_at", "2014-11-25 04:22:30.790388"], ["website", "http://poop.com"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "group_locations" ("created_at", "group_id", "location_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-25 04:22:30.801902"], ["group_id", 37], ["location_id", 63], ["updated_at", "2014-11-25 04:22:30.801902"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "group_locations" ("created_at", "group_id", "location_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-25 04:22:30.805783"], ["group_id", 37], ["location_id", 64], ["updated_at", "2014-11-25 04:22:30.805783"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "group_locations" ("created_at", "group_id", "location_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-25 04:22:30.808597"], ["group_id", 37], ["location_id", 65], ["updated_at", "2014-11-25 04:22:30.808597"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "group_locations" ("created_at", "group_id", "location_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-25 04:22:30.810504"], ["group_id", 38], ["location_id", 63], ["updated_at", "2014-11-25 04:22:30.810504"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "group_locations" ("created_at", "group_id", "location_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-25 04:22:30.812417"], ["group_id", 38], ["location_id", 64], ["updated_at", "2014-11-25 04:22:30.812417"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "group_users" ("created_at", "group_id", "is_owner", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-25 04:22:30.820906"], ["group_id", 37], ["is_owner", "t"], ["updated_at", "2014-11-25 04:22:30.820906"], ["user_id", 55]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "group_users" ("created_at", "group_id", "is_owner", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-25 04:22:30.867328"], ["group_id", 37], ["is_owner", "f"], ["updated_at", "2014-11-25 04:22:30.867328"], ["user_id", 56]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "group_users" ("created_at", "group_id", "is_owner", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-25 04:22:30.869914"], ["group_id", 37], ["is_owner", "f"], ["updated_at", "2014-11-25 04:22:30.869914"], ["user_id", 57]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "group_users" ("created_at", "group_id", "is_owner", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-25 04:22:30.872039"], ["group_id", 38], ["is_owner", "f"], ["updated_at", "2014-11-25 04:22:30.872039"], ["user_id", 55]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "group_users" ("created_at", "group_id", "is_owner", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-25 04:22:30.873850"], ["group_id", 38], ["is_owner", "t"], ["updated_at", "2014-11-25 04:22:30.873850"], ["user_id", 56]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "reviews" ("created_at", "group_location_id", "rating", "review", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-25 04:22:30.883800"], ["group_location_id", 94], ["rating", 1], ["review", "THIS IS A REVIEW OF MIXT GREENS"], ["updated_at", "2014-11-25 04:22:30.883800"], ["user_id", 55]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "reviews" ("created_at", "group_location_id", "rating", "review", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-25 04:22:30.886337"], ["group_location_id", 95], ["rating", -1], ["review", "THIS IS A REVIEW OF Rickhouse"], ["updated_at", "2014-11-25 04:22:30.886337"], ["user_id", 56]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "reviews" ("created_at", "group_location_id", "rating", "review", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-25 04:22:30.887880"], ["group_location_id", 96], ["rating", 1], ["review", "THIS IS A REVIEW OF House of NanKing"], ["updated_at", "2014-11-25 04:22:30.887880"], ["user_id", 57]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "reviews" ("created_at", "group_location_id", "rating", "review", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-25 04:22:30.889443"], ["group_location_id", 97], ["rating", 1], ["review", "THIS IS A REVIEW OF MIXT GREENS"], ["updated_at", "2014-11-25 04:22:30.889443"], ["user_id", 55]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "reviews" ("created_at", "group_location_id", "rating", "review", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-25 04:22:30.890918"], ["group_location_id", 98], ["rating", -1], ["review", "THIS IS A REVIEW OF Rickhouse"], ["updated_at", "2014-11-25 04:22:30.890918"], ["user_id", 56]]
+  [1m[35m (0.4ms)[0m  COMMIT
