@@ -1,0 +1,134 @@
+.content {
+	margin-left: 30px;
+}
+
+.container {
+	width: 100%;
+	padding: 0 20px;
+}
+
+#hero-img {
+	background: url("home4.jpeg") no-repeat;
+	background-position: 0 0;
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+}
+
+#hero-img h1 {
+	/*padding: 150px 0px;*/
+	color: #FFFFFF; 
+	font-family: 'Petit Formal Script', cursive;
+	font-size: 100px; 
+	text-align:center;
+	margin-top:200px;
+	margin-bottom: 50px;
+}
+
+.about h3 { 
+	letter-spacing: 1px; 
+	margin-bottom: 0; 
+	color: #0099FF;
+	font-family: 'Poiret One';
+	font-size: 250%;
+}
+
+.about_us {
+	/*clear: right*/; 
+	/*padding: 0px 10px 0 10px;*/
+	font-size: 20px;
+	text-align: center;
+	color:white;
+	font-family: 'Quicksand', sans-serif;	
+	margin-bottom: 50px;
+}
+
+.how h3 { 
+	letter-spacing: 1px; 
+	margin-bottom: 0; 
+	color: #0099FF;
+	font-family: 'Poiret One';
+	font-size: 250%;
+}
+
+.how {
+	width: 100%;
+} 
+
+#img1 {
+	width: 100%;
+}
+
+.getstarted h3 { 
+	letter-spacing: 1px; 
+	margin-bottom: 0; 
+	color: #0099FF;
+	font-family: 'Poiret One';
+	font-size: 250%;
+	margin-bottom: 20px;
+}
+
+#sign_in {
+	margin: 0 auto;
+	display: block;
+	background:none;
+	border: 1px solid white;
+	font-family: 'Quicksand', sans-serif;
+	padding:15px;
+}
+
+/*.footer {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	text-align: center;
+}*/
+
+/*.row-space-top-8 {
+	/*margin-top: 50px;*/
+/*}*/
+
+/*.row-space-5 {
+	margin-bottom: 31.25px; 
+}*/
+
+/*.text-center {
+	text-align:center;
+}*/
+
+/*div {
+	display: block; 
+}*/ 
+
+/*.row .row-table {
+	width: calc(100% + 25px); 
+} */
+
+.image {
+	height: 100%; 
+	width: 200px;
+	border-radius:100%;
+	-moz-border-radius:100%;
+	-webkit-border-radius:100%;
+	border:#DDD 3px solid;
+	display:block;
+	margin:0 auto;
+}
+
+.welcome {
+	font-family: 'Quicksand', sans-serif;	
+	font-size: 20px;
+}
+
+#sign_out {
+	margin: 10px;
+	display: block;
+	background:none;
+	border: 1px solid black;
+	font-family: 'Quicksand', sans-serif;
+	padding:15px;
+	position:absolute;
+	top: 0;
+	right: 0;
+}
+
+

@@ -1,10 +1,18 @@
 Rails.application.routes.draw do
-  root 'home#index'
+
+  get 'user/profile'
+
+  root 'user#profile'
   get 'home/index'
 
   get 'home/about'
 
   get 'home/faq'
+
+  # Groups Controller Resources
+  resources :groups, only: [:new, :edit, :create, :update, :destroy]
+  delete 'groups/:id/leave', to: 'groups#leave', as: 'leave_group'
+  get 'groups/:id/map', to: 'groups#map', as: 'group_map'
 
   #OMNIAUTH ROUTES
   match 'auth/:provider/callback', to: 'sessions#create', via: :get

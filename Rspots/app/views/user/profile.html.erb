@@ -1,0 +1,78 @@
+
+ <% if !@current_user %>
+
+ <div class="container" id="hero-img">
+    <h1>spots</h1>
+    <p class="about_us">A new way to visualize your circle's favorite spots around town</p>
+
+
+<!-- <div class="content">
+
+<div class="how" id="howitworks" role="article">
+      <h3>How it Works:</h3>
+      <div class="pictures">
+        <img src="/assets/img1.png" class="img-responsive" />
+      </div>
+</div>
+ -->
+
+<div class="getstarted" id="start" role="article">
+
+        <%= button_to('Sign in with Facebook', "/auth/facebook", :class => 'btn btn-large btn-primary', id: "sign_in")  %>
+</div>
+</div>
+
+
+  <% else %> <!-- start of profile page -->
+  <div class="container">
+  <div class="row row-table row-full-height text-center">
+    <div class="col-12 col-middle">
+      <%= image_tag(@current_user.image, :class => "image") %>
+    </div>
+ <!--  </div> -->
+
+  <!-- 
+    <h1>User Profile</h1>
+     <%= image_tag(@current_user.image) %> -->
+    <p class="welcome"> Welcome <strong><%= @current_user.first_name %></strong>!</p>
+  </div> <!-- end of row div -->
+
+    <!-- <%= link_to "Sign out", signout_path, id: "sign_out" %> -->
+
+    <%= button_to('Sign out', signout_path, :class => 'btn btn-large btn-default', :method => :get, id: "sign_out")  %>
+
+<!-- <div class="row">
+  <div class="col-md-6"></div>
+  <div class="col-md-6"></div>
+</div> -->
+<!-- <div class="row">
+  <div class="col-md-6"> -->
+    <h3>Groups I Created:</h3>
+  <%= link_to "Create New Group", new_group_path %>
+
+  <% @groups.each do |g| %>
+    <p><%= link_to g.name, group_map_path(g)%></p>
+
+    <!-- Find if owner for leave or delete/edit -->
+    <% if g.is_owned_by_user?(@current_user) %>
+      <%= link_to "Edit", edit_group_path(g) %><br> <!-- Edit group if owner -->
+      <%= link_to "Delete Group", group_path(g), method: :delete, :data => {:confirm => 'Are you sure? Because you are the owner this will delete it for everyone...'} %>
+   <!--  </div> -->
+    <% else %>
+    <!-- <div class="col-md-6"> -->
+      <h3>Groups I Belong To:</h3>
+      <%= link_to "Leave Group", leave_group_path(g), method: :delete, :data => {:confirm => 'Are you sure you want to leave this group?'} %>
+   <!--  </div>
+  </div> -->
+    <% end %>
+    <hr>
+  <% end %>
+  </div>
+  <% end %>
+
+
+  
+  
+
+
+
