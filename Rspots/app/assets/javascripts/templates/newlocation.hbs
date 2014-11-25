@@ -1,4 +1,6 @@
 <!-- location information div -->
+<p class="lead location-header">{{name}}</p>
+
 <div class="location-info">
   <p>
     {{formatted_address}}<br>
@@ -24,6 +26,6 @@ method="POST">
 <input type="hidden" name="authenticity_token" value="">
 <label><input type="radio" name="rating" value="1"required> Try it!</label>
 <label><input type="radio" name="rating" value="-1"required> Skip it!</label>
-<input type="textarea" required name="review" >
-<input type="submit" value="Save">
+<input type="textarea" class="review_text" required name="review" >
+<input type="submit" value="Save" class="btn-info btn-xs">
 </form>

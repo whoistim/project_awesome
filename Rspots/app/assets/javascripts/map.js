@@ -1,6 +1,6 @@
 var load_map = function () {
   var markers = [];
-
+  var our_locations;
 	var map = new google.maps.Map(document.getElementById('map-canvas'), {
 		zoom: 17,
 		center: new google.maps.LatLng(37.7912563,-122.4006792),
@@ -8,7 +8,7 @@ var load_map = function () {
 		mapTypeControl: false,
 		streetViewControl: false,
 		panControl: false,
-		zoomControl: false,
+		zoomControl: true,
 		scrollwheel: true,
   });
 
@@ -28,6 +28,7 @@ var load_map = function () {
 	    type:"GET",
 	    success: function (locations){
 	        setMarkers(locations,map); // calls function from spot.js to put down markers
+	    our_locations.push(locations.place_id);
 	    },
 	    error: function (xhr, status){
 	        console.info(xhr.error);
@@ -41,7 +42,6 @@ var load_map = function () {
 	google.maps.event.addListener(searchBox, 'places_changed', function() {
 	  var places = searchBox.getPlaces();
 
-	  // console.log("Place:" + places);
 	  if (places.length == 0) {
 	    return;
 	  }
@@ -51,9 +51,9 @@ var load_map = function () {
 
 		// For each place, get the icon, place name, and location.
 		markers = [];
-		var bounds = new google.maps.LatLngBounds();
 
 		places.forEach(function(place){
+
 		  var image = {
 		    url: place.icon,
 		    size: new google.maps.Size(71, 71),
@@ -96,7 +96,7 @@ var load_map = function () {
     });
 
 			markers.push(marker);
-			bounds.extend(place.geometry.location);
+			// bounds.extend(place.geometry.location);
 			map.setCenter(place.geometry.location);
 		}	);
 });
