@@ -1,4 +1,5 @@
 //The GA location
+
 var myLatlng = new google.maps.LatLng(37.7908767,-122.4016454);
 
 // sets logo as GA logo -- NEED TO CHANGE TO GET LOGO FROM DB in v2
@@ -43,14 +44,13 @@ var setMarkers = function (locations,map){
       location.reviews = reviews; // add reviews to location object
       // console.log(location.reviews)
       var template_html = HandlebarsTemplates["review"](location); //passing location to hbs template
-      
+
       var contentString = template_html; //adding template to content for infowindow
-      var locLatlng = new google.maps.LatLng(location.lng,location.lat);
+      var locLatlng = new google.maps.LatLng(location.lat,location.lng);
 
       var infowindow = new google.maps.InfoWindow({
         content: contentString,
         maxWidth: 400,
-        maxHeighth: 400,
         pixelOffset: {width:-23, height:3} 
       }); //end infowindow variable
 
@@ -83,6 +83,7 @@ var setMarkers = function (locations,map){
         }
         currentWindow = infowindow;
         infowindow.open(map,marker);
+        //adding auth token to allow controller access. Tricksy.
         $('form.hbs input[name=authenticity_token]').val(
           $('meta[name="csrf-token"]').attr('content')
         );

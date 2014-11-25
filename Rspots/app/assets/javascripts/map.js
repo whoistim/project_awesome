@@ -40,6 +40,7 @@ var load_map = function () {
 
 	google.maps.event.addListener(searchBox, 'places_changed', function() {
 	  var places = searchBox.getPlaces();
+
 	  // console.log("Place:" + places);
 	  if (places.length == 0) {
 	    return;
@@ -68,11 +69,16 @@ var load_map = function () {
 			  title: place.name,
 			  position: place.geometry.location
 			});
-		var contentString = place.formatted_address;
+
+		//ADDING HANDLEBARS TEMPLATE TO INFO WINDOW HERE
+		place.group_id = group_id; //adding group id to place object
+		console.log(place);
+		var newlocation_html = HandlebarsTemplates["newlocation"](place);	//passing place to hbs template
+		var contentString = newlocation_html; //adding new location to infowindow
     var infowindow = new google.maps.InfoWindow({
       content: contentString,
       maxWidth: 400,
-			pixelOffset: {width:-23, height:3}      
+      pixelOffset: {width:-23, height:3}
 	  }); //end infowindow variable
 
     //add event listener to marker to open infowindow on click
@@ -83,6 +89,10 @@ var load_map = function () {
 				currentWindow.setMap(null);
 			}
 			currentWindow = infowindow;
+			//adding auth token to allow controller access. Tricksy.
+        $('form.hbs input[name=authenticity_token]').val(
+          $('meta[name="csrf-token"]').attr('content')
+        );
     });
 
 			markers.push(marker);

@@ -20,8 +20,8 @@ Rails.application.routes.draw do
   delete 'groups/:id/leave', to: 'groups#leave', as: 'leave_group'
   get 'groups/:id/map', to: 'groups#map', as: 'group_map'
 
-  # Locations routes
-  post 'locations', to: 'locations#create', as: 'new_location'
+  # # Locations routes
+  # post 'locations', to: 'locations#create', as: 'new_location'
 
   #OMNIAUTH ROUTES
   match 'auth/:provider/callback', to: 'sessions#create', via: :get
