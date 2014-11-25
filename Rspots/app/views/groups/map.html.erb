@@ -1,4 +1,5 @@
 
+
 <div id="user_nav">
   <% if @current_user %>
     Signed in as <strong><%= @current_user.first_name %></strong>!
@@ -8,7 +9,18 @@
   <% end %>
 </div>
 
+<!-- input to store group id to be passed to AJAX request -->
+<input type="hidden" id="group_id" data-path="<%= @group.id %>" name="group_id" value="taco">
+
+<!-- searchbox and map canvas -->
 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
 <div id="map-canvas"></div>
+
+<script>
+  $(document).ready(function(){
+        load_map();
+       });
+</script>
+
 
 

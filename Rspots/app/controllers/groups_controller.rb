@@ -27,7 +27,7 @@ class GroupsController < ApplicationController
     id = params[:id]
     @group = Group.find(id)
     if @group.update(group_params)
-      flash[:success] = "You're Group has been updated"
+      flash[:success] = "Your Group has been updated"
       redirect_to root_path
     else
       flash[:alert] = "Input not valid. Please fill out all fields."
@@ -37,7 +37,6 @@ class GroupsController < ApplicationController
   end
 
   # DELETE /groups/:id(.:format) groups#destroy
-  # :data => {:confirm => 'Are you sure?'} -- add this to link in view
   def destroy
     id = params[:id]
     @group = Group.find(id)
@@ -66,7 +65,8 @@ class GroupsController < ApplicationController
 
   def map
     id = params[:id]
-    @locations = Group.find_by_id(id).locations
+    @group = Group.find_by_id(id) #will use to pass id into page for AJAX
+    @locations = @group.locations #calls locations for group
     respond_to do |format|
       format.html # map.html.erb
       format.json { render json: @locations}
