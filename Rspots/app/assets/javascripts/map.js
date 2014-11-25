@@ -1,4 +1,5 @@
 var load_map = function () {
+  var markers = [];
 
 	var map = new google.maps.Map(document.getElementById('map-canvas'), {
 		zoom: 17,
@@ -15,7 +16,7 @@ var load_map = function () {
 	map.controls[google.maps.ControlPosition.TOP_RIGHT].push(input);
 
 	// console.log(myLatlng);
-	
+
 	groupMarker(myLatlng,map);//TG: puts GA home marker on the map. function from spot.js
 
 	// id for ajax call
@@ -39,7 +40,6 @@ var load_map = function () {
 
 	google.maps.event.addListener(searchBox, 'places_changed', function() {
 	  var places = searchBox.getPlaces();
-	  var markers = [];
 	  // console.log("Place:" + places);
 	  if (places.length == 0) {
 	    return;
@@ -71,7 +71,8 @@ var load_map = function () {
 		var contentString = place.formatted_address;
     var infowindow = new google.maps.InfoWindow({
       content: contentString,
-      maxWidth: 400
+      maxWidth: 400,
+			pixelOffset: {width:-23, height:3}      
 	  }); //end infowindow variable
 
     //add event listener to marker to open infowindow on click

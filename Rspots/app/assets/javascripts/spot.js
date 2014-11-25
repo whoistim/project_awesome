@@ -49,7 +49,9 @@ var setMarkers = function (locations,map){
 
       var infowindow = new google.maps.InfoWindow({
         content: contentString,
-        maxWidth: 400
+        maxWidth: 400,
+        maxHeighth: 400,
+        pixelOffset: {width:-23, height:3} 
       }); //end infowindow variable
 
       //lets us see locations referenced in console for testing
