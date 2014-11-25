@@ -5,17 +5,17 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 # Ignore bundler config.
-/.bundle
+Rspots/.bundle
 
 # Ignore the default SQLite database.
-/db/*.sqlite3
-/db/*.sqlite3-journal
+Rspots/db/*.sqlite3
+Rspots/db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
-/log/*.log
-/tmp
+Rspots/log/*.log
+Rspots/tmp
 
 # Ignore application configuration
-/config/application.yml
+Rspots/config/application.yml
 
 .DS_Store
