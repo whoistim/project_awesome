@@ -44,6 +44,7 @@ var setMarkers = function (locations,map){
       location.reviews = reviews; // add reviews to location object
       // console.log(location.reviews)
       var template_html = HandlebarsTemplates["review"](location); //passing location to hbs template
+
       var contentString = template_html; //adding template to content for infowindow
       var locLatlng = new google.maps.LatLng(location.lng,location.lat);
 
@@ -81,6 +82,10 @@ var setMarkers = function (locations,map){
         }
         currentWindow = infowindow;
         infowindow.open(map,marker);
+        $('form.hbs input[name=authenticity_token]').val(
+          $('meta[name="csrf-token"]').attr('content')
+        );
+
       });//end info window function
 
     });//end of when function

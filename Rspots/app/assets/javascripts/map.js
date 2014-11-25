@@ -15,6 +15,7 @@ var load_map = function () {
 	map.controls[google.maps.ControlPosition.TOP_RIGHT].push(input);
 
 	// console.log(myLatlng);
+	
 	groupMarker(myLatlng,map);//TG: puts GA home marker on the map. function from spot.js
 
 	// id for ajax call
