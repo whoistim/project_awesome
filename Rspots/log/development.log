@@ -10930,3 +10930,1020 @@ Processing by GroupsController#new as HTML
   [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
   Rendered groups/new.html.erb within layouts/application (1.5ms)
 Completed 200 OK in 216ms (Views: 212.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/groups/28/map" for 127.0.0.1 at 2014-11-24 19:14:40 -0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by GroupsController#map as HTML
+  Parameters: {"id"=>"28"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 38]]
+  [1m[36mGroup Load (0.6ms)[0m  [1mSELECT  "groups".* FROM "groups"  WHERE "groups"."id" = 28 LIMIT 1[0m
+  Rendered groups/map.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 803ms (Views: 665.8ms | ActiveRecord: 9.7ms)
+
+
+Started GET "/groups/28/map.json" for 127.0.0.1 at 2014-11-24 19:14:42 -0800
+Processing by GroupsController#map as JSON
+  Parameters: {"id"=>"28"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 38]]
+  [1m[36mGroup Load (0.4ms)[0m  [1mSELECT  "groups".* FROM "groups"  WHERE "groups"."id" = 28 LIMIT 1[0m
+  [1m[35mLocation Load (0.9ms)[0m  SELECT "locations".* FROM "locations" INNER JOIN "group_locations" ON "locations"."id" = "group_locations"."location_id" WHERE "group_locations"."group_id" = $1  [["group_id", 28]]
+Completed 200 OK in 21ms (Views: 15.1ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/groups/28/locations/41.json" for 127.0.0.1 at 2014-11-24 19:14:42 -0800
+Processing by LocationsController#show as JSON
+  Parameters: {"group_id"=>"28", "id"=>"41"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 38]]
+  [1m[35mGroupLocation Load (0.5ms)[0m  SELECT  "group_locations".* FROM "group_locations"  WHERE "group_locations"."group_id" = 28 AND "group_locations"."location_id" = 41 LIMIT 1
+  [1m[36mReview Load (0.8ms)[0m  [1mSELECT "reviews".* FROM "reviews"  WHERE "reviews"."group_location_id" = $1[0m  [["group_location_id", 64]]
+Completed 200 OK in 104ms (Views: 82.5ms | ActiveRecord: 7.2ms)
+
+
+Started GET "/groups/28/locations/42.json" for 127.0.0.1 at 2014-11-24 19:14:42 -0800
+Processing by LocationsController#show as JSON
+  Parameters: {"group_id"=>"28", "id"=>"42"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 38]]
+  [1m[36mGroupLocation Load (0.4ms)[0m  [1mSELECT  "group_locations".* FROM "group_locations"  WHERE "group_locations"."group_id" = 28 AND "group_locations"."location_id" = 42 LIMIT 1[0m
+  [1m[35mReview Load (0.3ms)[0m  SELECT "reviews".* FROM "reviews"  WHERE "reviews"."group_location_id" = $1  [["group_location_id", 65]]
+Completed 200 OK in 5ms (Views: 1.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/groups/28/locations/45.json" for 127.0.0.1 at 2014-11-24 19:14:42 -0800
+Processing by LocationsController#show as JSON
+  Parameters: {"group_id"=>"28", "id"=>"45"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 38]]
+  [1m[35mGroupLocation Load (1.1ms)[0m  SELECT  "group_locations".* FROM "group_locations"  WHERE "group_locations"."group_id" = 28 AND "group_locations"."location_id" = 45 LIMIT 1
+  [1m[36mReview Load (0.6ms)[0m  [1mSELECT "reviews".* FROM "reviews"  WHERE "reviews"."group_location_id" = $1[0m  [["group_location_id", 73]]
+Completed 200 OK in 8ms (Views: 1.9ms | ActiveRecord: 2.2ms)
+
+
+Started POST "/groups/28/reviews" for 127.0.0.1 at 2014-11-24 19:14:48 -0800
+Processing by ReviewsController#create as HTML
+  Parameters: {"location_id"=>"45", "authenticity_token"=>"UiKVP7RpaEt+T4cg/9mHjmZvcEBSJbCmpxesFTx9ljM=", "rating"=>"1", "review"=>"asf", "group_id"=>"28"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 38]]
+  [1m[36mGroupLocation Load (0.4ms)[0m  [1mSELECT  "group_locations".* FROM "group_locations"  WHERE "group_locations"."group_id" = 28 AND "group_locations"."location_id" = 45 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "reviews" ("created_at", "group_location_id", "rating", "review", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-25 03:14:48.288098"], ["group_location_id", 73], ["rating", 1], ["review", "asf"], ["updated_at", "2014-11-25 03:14:48.288098"], ["user_id", 38]]
+  [1m[35m (15.5ms)[0m  COMMIT
+Redirected to http://localhost:3000/groups/28/map
+Completed 302 Found in 63ms (ActiveRecord: 16.9ms)
+
+
+Started GET "/groups/28/map" for 127.0.0.1 at 2014-11-24 19:14:48 -0800
+Processing by GroupsController#map as HTML
+  Parameters: {"id"=>"28"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 38]]
+  [1m[35mGroup Load (0.4ms)[0m  SELECT  "groups".* FROM "groups"  WHERE "groups"."id" = 28 LIMIT 1
+  Rendered groups/map.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 270ms (Views: 267.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/groups/28/map.json" for 127.0.0.1 at 2014-11-24 19:14:49 -0800
+Processing by GroupsController#map as JSON
+  Parameters: {"id"=>"28"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 38]]
+  [1m[35mGroup Load (0.5ms)[0m  SELECT  "groups".* FROM "groups"  WHERE "groups"."id" = 28 LIMIT 1
+  [1m[36mLocation Load (0.6ms)[0m  [1mSELECT "locations".* FROM "locations" INNER JOIN "group_locations" ON "locations"."id" = "group_locations"."location_id" WHERE "group_locations"."group_id" = $1[0m  [["group_id", 28]]
+Completed 200 OK in 8ms (Views: 2.5ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/groups/28/locations/42.json" for 127.0.0.1 at 2014-11-24 19:14:49 -0800
+Processing by LocationsController#show as JSON
+  Parameters: {"group_id"=>"28", "id"=>"42"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 38]]
+  [1m[36mGroupLocation Load (0.6ms)[0m  [1mSELECT  "group_locations".* FROM "group_locations"  WHERE "group_locations"."group_id" = 28 AND "group_locations"."location_id" = 42 LIMIT 1[0m
+  [1m[35mReview Load (0.5ms)[0m  SELECT "reviews".* FROM "reviews"  WHERE "reviews"."group_location_id" = $1  [["group_location_id", 65]]
+Completed 200 OK in 6ms (Views: 1.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/groups/28/locations/45.json" for 127.0.0.1 at 2014-11-24 19:14:49 -0800
+Processing by LocationsController#show as JSON
+  Parameters: {"group_id"=>"28", "id"=>"45"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 38]]
+  [1m[35mGroupLocation Load (1.3ms)[0m  SELECT  "group_locations".* FROM "group_locations"  WHERE "group_locations"."group_id" = 28 AND "group_locations"."location_id" = 45 LIMIT 1
+  [1m[36mReview Load (0.6ms)[0m  [1mSELECT "reviews".* FROM "reviews"  WHERE "reviews"."group_location_id" = $1[0m  [["group_location_id", 73]]
+Completed 200 OK in 8ms (Views: 2.3ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/groups/28/locations/41.json" for 127.0.0.1 at 2014-11-24 19:14:49 -0800
+Processing by LocationsController#show as JSON
+  Parameters: {"group_id"=>"28", "id"=>"41"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 38]]
+  [1m[36mGroupLocation Load (0.7ms)[0m  [1mSELECT  "group_locations".* FROM "group_locations"  WHERE "group_locations"."group_id" = 28 AND "group_locations"."location_id" = 41 LIMIT 1[0m
+  [1m[35mReview Load (0.4ms)[0m  SELECT "reviews".* FROM "reviews"  WHERE "reviews"."group_location_id" = $1  [["group_location_id", 64]]
+Completed 200 OK in 5ms (Views: 1.1ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-24 19:15:00 -0800
+Processing by UserController#profile as HTML
+  [1m[36mUser Load (5.8ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 38]]
+  [1m[35mGroup Load (1.1ms)[0m  SELECT "groups".* FROM "groups" INNER JOIN "group_users" ON "groups"."id" = "group_users"."group_id" WHERE "group_users"."user_id" = $1  [["user_id", 38]]
+  [1m[36mGroupUser Load (0.4ms)[0m  [1mSELECT  "group_users".* FROM "group_users"  WHERE "group_users"."group_id" = 27 AND "group_users"."user_id" = 38 LIMIT 1[0m
+  [1m[35mGroupUser Load (0.4ms)[0m  SELECT  "group_users".* FROM "group_users"  WHERE "group_users"."group_id" = 28 AND "group_users"."user_id" = 38 LIMIT 1
+  Rendered user/profile.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 287ms (Views: 260.7ms | ActiveRecord: 10.6ms)
+
+
+Started GET "/signout" for 127.0.0.1 at 2014-11-24 19:15:46 -0800
+Processing by SessionsController#destroy as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 38]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-24 19:15:46 -0800
+Processing by UserController#profile as HTML
+  Rendered user/profile.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 240ms (Views: 239.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/auth/facebook" for 127.0.0.1 at 2014-11-24 19:15:51 -0800
+(facebook) Request phase initiated.
+
+
+Started GET "/auth/facebook/callback?code=AQD6RAZs-9P1p9cTfOtmgvBgjgnMxDdEUpZvGADjgdRiLr3MPSpqM5kwocKnXpWbbGwr5czCJjjIF9UI1UeNgCNQdXaAPxgZDqwfUbOlRtDc7ZT9-whI-WbjcGxPMwHJzQa1sUkU5EZAOUWuHmfgDj1khsREy1duGvaCqOR5IA-Y3qXdJwdpV8kvHW2x8w6SOfPR13zn81eJVXiWoIV_6lpeldYbGW48Ml_VSu2y1Bp1x4PvHv1oCbXxqz_uvuTuF5yNvQ93DjWWpgJinG9ld3Ct8u5WFPIG95jXBnwn9qNqP5lRfoqtaa04A_NrZK7-4fw&state=b4fb51fe701d08269b95e9880e8f1ea0a5e8db6fe5876030" for 127.0.0.1 at 2014-11-24 19:15:51 -0800
+(facebook) Callback phase initiated.
+Processing by SessionsController#create as HTML
+  Parameters: {"code"=>"AQD6RAZs-9P1p9cTfOtmgvBgjgnMxDdEUpZvGADjgdRiLr3MPSpqM5kwocKnXpWbbGwr5czCJjjIF9UI1UeNgCNQdXaAPxgZDqwfUbOlRtDc7ZT9-whI-WbjcGxPMwHJzQa1sUkU5EZAOUWuHmfgDj1khsREy1duGvaCqOR5IA-Y3qXdJwdpV8kvHW2x8w6SOfPR13zn81eJVXiWoIV_6lpeldYbGW48Ml_VSu2y1Bp1x4PvHv1oCbXxqz_uvuTuF5yNvQ93DjWWpgJinG9ld3Ct8u5WFPIG95jXBnwn9qNqP5lRfoqtaa04A_NrZK7-4fw", "state"=>"b4fb51fe701d08269b95e9880e8f1ea0a5e8db6fe5876030", "provider"=>"facebook"}
+  [1m[35mUser Load (1.8ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."provider" = 'facebook' AND "users"."uid" = '10203844294482291'  ORDER BY "users"."id" ASC LIMIT 1
+Redirected to http://localhost:3000/
+Completed 302 Found in 5ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-24 19:15:52 -0800
+Processing by UserController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 38]]
+  [1m[35mGroup Load (0.5ms)[0m  SELECT "groups".* FROM "groups" INNER JOIN "group_users" ON "groups"."id" = "group_users"."group_id" WHERE "group_users"."user_id" = $1  [["user_id", 38]]
+  [1m[36mGroupUser Load (0.4ms)[0m  [1mSELECT  "group_users".* FROM "group_users"  WHERE "group_users"."group_id" = 27 AND "group_users"."user_id" = 38 LIMIT 1[0m
+  [1m[35mGroupUser Load (0.3ms)[0m  SELECT  "group_users".* FROM "group_users"  WHERE "group_users"."group_id" = 28 AND "group_users"."user_id" = 38 LIMIT 1
+  Rendered user/profile.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 275ms (Views: 269.6ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/groups/27/map" for 127.0.0.1 at 2014-11-24 19:15:56 -0800
+Processing by GroupsController#map as HTML
+  Parameters: {"id"=>"27"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 38]]
+  [1m[35mGroup Load (0.4ms)[0m  SELECT  "groups".* FROM "groups"  WHERE "groups"."id" = 27 LIMIT 1
+  Rendered groups/map.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 330ms (Views: 326.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/groups/27/map.json" for 127.0.0.1 at 2014-11-24 19:15:56 -0800
+Processing by GroupsController#map as JSON
+  Parameters: {"id"=>"27"}
+  [1m[36mUser Load (2.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 38]]
+  [1m[35mGroup Load (1.0ms)[0m  SELECT  "groups".* FROM "groups"  WHERE "groups"."id" = 27 LIMIT 1
+  [1m[36mLocation Load (2.0ms)[0m  [1mSELECT "locations".* FROM "locations" INNER JOIN "group_locations" ON "locations"."id" = "group_locations"."location_id" WHERE "group_locations"."group_id" = $1[0m  [["group_id", 27]]
+Completed 200 OK in 13ms (Views: 4.5ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/groups/27/locations/41.json" for 127.0.0.1 at 2014-11-24 19:15:56 -0800
+Processing by LocationsController#show as JSON
+  Parameters: {"group_id"=>"27", "id"=>"41"}
+  [1m[35mUser Load (2.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 38]]
+  [1m[36mGroupLocation Load (4.8ms)[0m  [1mSELECT  "group_locations".* FROM "group_locations"  WHERE "group_locations"."group_id" = 27 AND "group_locations"."location_id" = 41 LIMIT 1[0m
+  [1m[35mReview Load (0.4ms)[0m  SELECT "reviews".* FROM "reviews"  WHERE "reviews"."group_location_id" = $1  [["group_location_id", 61]]
+Completed 200 OK in 14ms (Views: 1.9ms | ActiveRecord: 7.9ms)
+
+
+Started GET "/groups/27/locations/42.json" for 127.0.0.1 at 2014-11-24 19:15:56 -0800
+Processing by LocationsController#show as JSON
+  Parameters: {"group_id"=>"27", "id"=>"42"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 38]]
+  [1m[35mGroupLocation Load (0.6ms)[0m  SELECT  "group_locations".* FROM "group_locations"  WHERE "group_locations"."group_id" = 27 AND "group_locations"."location_id" = 42 LIMIT 1
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT "reviews".* FROM "reviews"  WHERE "reviews"."group_location_id" = $1[0m  [["group_location_id", 62]]
+Completed 200 OK in 6ms (Views: 1.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/groups/27/locations/43.json" for 127.0.0.1 at 2014-11-24 19:15:56 -0800
+Processing by LocationsController#show as JSON
+  Parameters: {"group_id"=>"27", "id"=>"43"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 38]]
+  [1m[36mGroupLocation Load (0.6ms)[0m  [1mSELECT  "group_locations".* FROM "group_locations"  WHERE "group_locations"."group_id" = 27 AND "group_locations"."location_id" = 43 LIMIT 1[0m
+  [1m[35mReview Load (0.3ms)[0m  SELECT "reviews".* FROM "reviews"  WHERE "reviews"."group_location_id" = $1  [["group_location_id", 63]]
+Completed 200 OK in 6ms (Views: 1.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/groups/27/locations/46.json" for 127.0.0.1 at 2014-11-24 19:15:56 -0800
+Processing by LocationsController#show as JSON
+  Parameters: {"group_id"=>"27", "id"=>"46"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 38]]
+  [1m[35mGroupLocation Load (0.6ms)[0m  SELECT  "group_locations".* FROM "group_locations"  WHERE "group_locations"."group_id" = 27 AND "group_locations"."location_id" = 46 LIMIT 1
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT "reviews".* FROM "reviews"  WHERE "reviews"."group_location_id" = $1[0m  [["group_location_id", 68]]
+Completed 200 OK in 5ms (Views: 1.2ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/groups/27/locations/45.json" for 127.0.0.1 at 2014-11-24 19:15:56 -0800
+Processing by LocationsController#show as JSON
+  Parameters: {"group_id"=>"27", "id"=>"45"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 38]]
+  [1m[36mGroupLocation Load (1.1ms)[0m  [1mSELECT  "group_locations".* FROM "group_locations"  WHERE "group_locations"."group_id" = 27 AND "group_locations"."location_id" = 45 LIMIT 1[0m
+  [1m[35mReview Load (0.4ms)[0m  SELECT "reviews".* FROM "reviews"  WHERE "reviews"."group_location_id" = $1  [["group_location_id", 67]]
+Completed 200 OK in 6ms (Views: 1.4ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/groups/27/locations/44.json" for 127.0.0.1 at 2014-11-24 19:15:56 -0800
+Processing by LocationsController#show as JSON
+  Parameters: {"group_id"=>"27", "id"=>"44"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 38]]
+  [1m[35mGroupLocation Load (0.6ms)[0m  SELECT  "group_locations".* FROM "group_locations"  WHERE "group_locations"."group_id" = 27 AND "group_locations"."location_id" = 44 LIMIT 1
+  [1m[36mReview Load (0.2ms)[0m  [1mSELECT "reviews".* FROM "reviews"  WHERE "reviews"."group_location_id" = $1[0m  [["group_location_id", 66]]
+Completed 200 OK in 5ms (Views: 1.3ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/groups/27/locations/47.json" for 127.0.0.1 at 2014-11-24 19:15:56 -0800
+Processing by LocationsController#show as JSON
+  Parameters: {"group_id"=>"27", "id"=>"47"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 38]]
+  [1m[36mGroupLocation Load (0.5ms)[0m  [1mSELECT  "group_locations".* FROM "group_locations"  WHERE "group_locations"."group_id" = 27 AND "group_locations"."location_id" = 47 LIMIT 1[0m
+  [1m[35mReview Load (0.3ms)[0m  SELECT "reviews".* FROM "reviews"  WHERE "reviews"."group_location_id" = $1  [["group_location_id", 69]]
+Completed 200 OK in 5ms (Views: 1.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/groups/27/locations/48.json" for 127.0.0.1 at 2014-11-24 19:15:56 -0800
+Processing by LocationsController#show as JSON
+  Parameters: {"group_id"=>"27", "id"=>"48"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 38]]
+  [1m[35mGroupLocation Load (0.5ms)[0m  SELECT  "group_locations".* FROM "group_locations"  WHERE "group_locations"."group_id" = 27 AND "group_locations"."location_id" = 48 LIMIT 1
+  [1m[36mReview Load (0.2ms)[0m  [1mSELECT "reviews".* FROM "reviews"  WHERE "reviews"."group_location_id" = $1[0m  [["group_location_id", 70]]
+Completed 200 OK in 5ms (Views: 1.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/groups/27/locations/49.json" for 127.0.0.1 at 2014-11-24 19:15:56 -0800
+Processing by LocationsController#show as JSON
+  Parameters: {"group_id"=>"27", "id"=>"49"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 38]]
+  [1m[36mGroupLocation Load (2.0ms)[0m  [1mSELECT  "group_locations".* FROM "group_locations"  WHERE "group_locations"."group_id" = 27 AND "group_locations"."location_id" = 49 LIMIT 1[0m
+  [1m[35mReview Load (0.3ms)[0m  SELECT "reviews".* FROM "reviews"  WHERE "reviews"."group_location_id" = $1  [["group_location_id", 71]]
+Completed 200 OK in 7ms (Views: 1.3ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/groups/27/locations/50.json" for 127.0.0.1 at 2014-11-24 19:15:56 -0800
+Processing by LocationsController#show as JSON
+  Parameters: {"group_id"=>"27", "id"=>"50"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 38]]
+  [1m[35mGroupLocation Load (0.4ms)[0m  SELECT  "group_locations".* FROM "group_locations"  WHERE "group_locations"."group_id" = 27 AND "group_locations"."location_id" = 50 LIMIT 1
+  [1m[36mReview Load (0.2ms)[0m  [1mSELECT "reviews".* FROM "reviews"  WHERE "reviews"."group_location_id" = $1[0m  [["group_location_id", 72]]
+Completed 200 OK in 4ms (Views: 1.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-24 19:20:41 -0800
+Processing by UserController#profile as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 38]]
+  [1m[36mGroup Load (0.7ms)[0m  [1mSELECT "groups".* FROM "groups" INNER JOIN "group_users" ON "groups"."id" = "group_users"."group_id" WHERE "group_users"."user_id" = $1[0m  [["user_id", 38]]
+  [1m[35mGroupUser Load (0.4ms)[0m  SELECT  "group_users".* FROM "group_users"  WHERE "group_users"."group_id" = 27 AND "group_users"."user_id" = 38 LIMIT 1
+  [1m[36mGroupUser Load (0.3ms)[0m  [1mSELECT  "group_users".* FROM "group_users"  WHERE "group_users"."group_id" = 28 AND "group_users"."user_id" = 38 LIMIT 1[0m
+  Rendered user/profile.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 267ms (Views: 261.6ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/signout" for 127.0.0.1 at 2014-11-24 19:31:58 -0800
+Processing by SessionsController#destroy as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 38]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-24 19:31:58 -0800
+Processing by UserController#profile as HTML
+  Rendered user/profile.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 264ms (Views: 264.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/auth/facebook" for 127.0.0.1 at 2014-11-24 19:32:00 -0800
+(facebook) Request phase initiated.
+
+
+Started GET "/auth/facebook/callback?code=AQBRuLC2SUx_PUEG59SC-WdBoWA-3Pv3ElRmA3WQhctwqaeaC9y5XovHGeI6OoQjLj7hp7voze4W6SmF99vBK0vPfsj9_rgeXiew-spfNjHSfe-Q8__Qmib9_BMCiGgny5RX-GoB_Kfr5cIlZguTqbfPpP_wvfniFicq51pRmQzb2SD0XR2aEZKsn6qO1_gsSJBcPhZFlBx-1eVmcYMS5KmHUurrCwlzYcPsfVJJ0f4F05CqjIM4CJJqULzwM5AeNQFKuX1HJJVkJmX3EkCsic9-Kc7D5hYHsKlG68z7LqU03D79TWWnbrdw3BQzI5gzzWw&state=189a0b17c9340be2ce0c06906e1c6f7f42549caf518f3028" for 127.0.0.1 at 2014-11-24 19:32:00 -0800
+(facebook) Callback phase initiated.
+Processing by SessionsController#create as HTML
+  Parameters: {"code"=>"AQBRuLC2SUx_PUEG59SC-WdBoWA-3Pv3ElRmA3WQhctwqaeaC9y5XovHGeI6OoQjLj7hp7voze4W6SmF99vBK0vPfsj9_rgeXiew-spfNjHSfe-Q8__Qmib9_BMCiGgny5RX-GoB_Kfr5cIlZguTqbfPpP_wvfniFicq51pRmQzb2SD0XR2aEZKsn6qO1_gsSJBcPhZFlBx-1eVmcYMS5KmHUurrCwlzYcPsfVJJ0f4F05CqjIM4CJJqULzwM5AeNQFKuX1HJJVkJmX3EkCsic9-Kc7D5hYHsKlG68z7LqU03D79TWWnbrdw3BQzI5gzzWw", "state"=>"189a0b17c9340be2ce0c06906e1c6f7f42549caf518f3028", "provider"=>"facebook"}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."provider" = 'facebook' AND "users"."uid" = '10203844294482291'  ORDER BY "users"."id" ASC LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 3ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-24 19:32:00 -0800
+Processing by UserController#profile as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 38]]
+  [1m[36mGroup Load (0.5ms)[0m  [1mSELECT "groups".* FROM "groups" INNER JOIN "group_users" ON "groups"."id" = "group_users"."group_id" WHERE "group_users"."user_id" = $1[0m  [["user_id", 38]]
+  [1m[35mGroupUser Load (0.4ms)[0m  SELECT  "group_users".* FROM "group_users"  WHERE "group_users"."group_id" = 27 AND "group_users"."user_id" = 38 LIMIT 1
+  [1m[36mGroupUser Load (0.3ms)[0m  [1mSELECT  "group_users".* FROM "group_users"  WHERE "group_users"."group_id" = 28 AND "group_users"."user_id" = 38 LIMIT 1[0m
+  Rendered user/profile.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 261ms (Views: 255.9ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-24 19:32:08 -0800
+Processing by UserController#profile as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 38]]
+  [1m[36mGroup Load (0.6ms)[0m  [1mSELECT "groups".* FROM "groups" INNER JOIN "group_users" ON "groups"."id" = "group_users"."group_id" WHERE "group_users"."user_id" = $1[0m  [["user_id", 38]]
+  [1m[35mGroupUser Load (0.5ms)[0m  SELECT  "group_users".* FROM "group_users"  WHERE "group_users"."group_id" = 27 AND "group_users"."user_id" = 38 LIMIT 1
+  [1m[36mGroupUser Load (0.5ms)[0m  [1mSELECT  "group_users".* FROM "group_users"  WHERE "group_users"."group_id" = 28 AND "group_users"."user_id" = 38 LIMIT 1[0m
+  Rendered user/profile.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 277ms (Views: 270.3ms | ActiveRecord: 1.8ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (1.0ms)[0m  DELETE FROM "users"
+  [1m[36mSQL (1.3ms)[0m  [1mDELETE FROM "groups"[0m
+  [1m[35mSQL (0.8ms)[0m  DELETE FROM "reviews"
+  [1m[36mSQL (1.5ms)[0m  [1mDELETE FROM "locations"[0m
+  [1m[35mSQL (1.0ms)[0m  DELETE FROM "group_locations"
+  [1m[36mSQL (0.8ms)[0m  [1mDELETE FROM "group_users"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "users" ("created_at", "first_name", "image", "last_name", "oauth_expires_at", "oauth_token", "provider", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["created_at", "2014-11-25 03:33:01.197137"], ["first_name", "Melody"], ["image", "http://graph.facebook.com/10103525070422447/picture"], ["last_name", "Serra"], ["oauth_expires_at", "2015-01-22 19:01:17.000000"], ["oauth_token", "CAALvadZCq1V4BABf9cmWuYtQ5aL4qGBzQiAlZAYopZBpTsLHswjrMYR2tINBq1GA9vHifDxg45uvfYFzcbu1MUwNmXdhR6kZAhbcQHtUIio96Bgy63sqk3yAqCge1xy1Dwt4eguEGhZCCZAHhqOQHrKzP9mgfZAzjBV70Ejlj69YZAfd9aYI7g7gH5J1DWp4xR3cSTGxOZARV7WEXOqP9n49o"], ["provider", "facebook"], ["uid", "10103525070422447"], ["updated_at", "2014-11-25 03:33:01.197137"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "first_name", "image", "last_name", "oauth_expires_at", "oauth_token", "provider", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["created_at", "2014-11-25 03:33:01.213946"], ["first_name", "Tim"], ["image", "http://graph.facebook.com/688572161238150/picture"], ["last_name", "Gray"], ["oauth_expires_at", "2015-01-21 22:08:12.000000"], ["oauth_token", "CAALvadZCq1V4BACwZApBZCb0TwYrWAkzDD3sEvH34nyMnnufDZBrNhjNjZBIXvrpjHd3eRG2JzLFKQnftclZB4sMw4ZAZCkFYaIg5rMLoyrM1mjd9ckekYS66Wxcm2QrrqBOr7P6q8XNR48FoVcJTEhA2japZAyZAZCERqW90vPKaM0RTQ2k2xZAqgrgIAQdatMsphHT28p20rVkFZBEfR9mGMtAS"], ["provider", "facebook"], ["uid", "688572161238150"], ["updated_at", "2014-11-25 03:33:01.213946"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "groups" ("created_at", "lat", "lng", "name", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-25 03:33:01.222760"], ["lat", "37.7912563"], ["lng", "-122.4006792"], ["name", "General Assembly"], ["updated_at", "2014-11-25 03:33:01.222760"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "groups" ("created_at", "lat", "lng", "name", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-25 03:33:01.225281"], ["lat", "37.7912563"], ["lng", "-122.4006792"], ["name", "WDI"], ["updated_at", "2014-11-25 03:33:01.225281"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "locations" ("address", "created_at", "lat", "lng", "phone_number", "place_id", "title", "updated_at", "website") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["address", "120 Sansome St., San Francisco, CA"], ["created_at", "2014-11-25 03:33:01.235893"], ["lat", "37.791578"], ["lng", "-122.40063700000002"], ["phone_number", "415-555-5555"], ["place_id", "ChIJ62yCEWKAhYARNL0YQVpRuKg"], ["title", "Mixt Greens"], ["updated_at", "2014-11-25 03:33:01.235893"], ["website", "http://mixtgreens.com"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "locations" ("address", "created_at", "lat", "lng", "phone_number", "place_id", "title", "updated_at", "website") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["address", "246 Kearny St, San Francisco"], ["created_at", "2014-11-25 03:33:01.239418"], ["lat", "37.79046"], ["lng", "-122.40386799999999"], ["phone_number", "415-777-7777"], ["place_id", "ChIJd7ebnImAhYARhr91iINx01g"], ["title", "Rickhouse"], ["updated_at", "2014-11-25 03:33:01.239418"], ["website", "http://www.rickhousebar.com/"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "locations" ("address", "created_at", "lat", "lng", "phone_number", "place_id", "title", "updated_at", "website") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["address", "919 Kearny St, San Francisco, CA 94133, United States"], ["created_at", "2014-11-25 03:33:01.241251"], ["lat", "37.796477"], ["lng", "-122.40542600000003"], ["phone_number", "415-333-3333"], ["place_id", "ChIJvS92wfSAhYARC2tq3BmjmIM"], ["title", "House of NanKing"], ["updated_at", "2014-11-25 03:33:01.241251"], ["website", "http://poop.com"]]
+  [1m[35m (0.8ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "group_locations" ("created_at", "group_id", "location_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-25 03:33:01.249128"], ["group_id", 29], ["location_id", 51], ["updated_at", "2014-11-25 03:33:01.249128"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "group_locations" ("created_at", "group_id", "location_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-25 03:33:01.251578"], ["group_id", 29], ["location_id", 52], ["updated_at", "2014-11-25 03:33:01.251578"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "group_locations" ("created_at", "group_id", "location_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-25 03:33:01.253415"], ["group_id", 29], ["location_id", 53], ["updated_at", "2014-11-25 03:33:01.253415"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "group_locations" ("created_at", "group_id", "location_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-25 03:33:01.256345"], ["group_id", 30], ["location_id", 51], ["updated_at", "2014-11-25 03:33:01.256345"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "group_locations" ("created_at", "group_id", "location_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-25 03:33:01.257830"], ["group_id", 30], ["location_id", 52], ["updated_at", "2014-11-25 03:33:01.257830"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+
+
+Started GET "/signout" for 127.0.0.1 at 2014-11-24 19:33:53 -0800
+Processing by SessionsController#destroy as HTML
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 38]]
+Completed 404 Not Found in 2ms
+
+ActiveRecord::RecordNotFound - Couldn't find User with 'id'=38:
+  activerecord (4.1.7) lib/active_record/relation/finder_methods.rb:320:in `raise_record_not_found_exception!'
+  activerecord (4.1.7) lib/active_record/relation/finder_methods.rb:429:in `find_one'
+  activerecord (4.1.7) lib/active_record/relation/finder_methods.rb:413:in `find_with_ids'
+  activerecord (4.1.7) lib/active_record/relation/finder_methods.rb:68:in `find'
+  activerecord (4.1.7) lib/active_record/querying.rb:3:in `find'
+  app/controllers/application_controller.rb:9:in `current_user'
+  activesupport (4.1.7) lib/active_support/callbacks.rb:424:in `block in make_lambda'
+  activesupport (4.1.7) lib/active_support/callbacks.rb:160:in `call'
+  activesupport (4.1.7) lib/active_support/callbacks.rb:160:in `block in halting'
+  activesupport (4.1.7) lib/active_support/callbacks.rb:229:in `call'
+  activesupport (4.1.7) lib/active_support/callbacks.rb:229:in `block in halting'
+  activesupport (4.1.7) lib/active_support/callbacks.rb:229:in `call'
+  activesupport (4.1.7) lib/active_support/callbacks.rb:229:in `block in halting'
+  activesupport (4.1.7) lib/active_support/callbacks.rb:166:in `call'
+  activesupport (4.1.7) lib/active_support/callbacks.rb:166:in `block in halting'
+  activesupport (4.1.7) lib/active_support/callbacks.rb:166:in `call'
+  activesupport (4.1.7) lib/active_support/callbacks.rb:166:in `block in halting'
+  activesupport (4.1.7) lib/active_support/callbacks.rb:166:in `call'
+  activesupport (4.1.7) lib/active_support/callbacks.rb:166:in `block in halting'
+  activesupport (4.1.7) lib/active_support/callbacks.rb:86:in `call'
+  activesupport (4.1.7) lib/active_support/callbacks.rb:86:in `run_callbacks'
+  actionpack (4.1.7) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.1.7) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.7) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.1.7) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.7) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.7) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.7) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.7) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.7) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.7) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.7) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.7) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.7) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.7) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.7) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.7) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.7) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.7) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.7) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.7) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.7) lib/action_dispatch/routing/route_set.rb:678:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  omniauth (1.2.2) lib/omniauth/builder.rb:59:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.7) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.7) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.7) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.1.7) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.7) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.7) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.7) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.7) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.7) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.7) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  better_errors (2.0.0) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.0.0) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.0.0) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (4.1.7) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.7) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.7) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.7) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.7) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.7) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.7) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.7) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.0.3) lib/quiet_assets.rb:23:in `call_with_quiet_assets'
+  actionpack (4.1.7) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.7) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.7) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.7) lib/rails/engine.rb:514:in `call'
+  railties (4.1.7) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+
+Started POST "/__better_errors/e29d365635c01fd3/variables" for 127.0.0.1 at 2014-11-24 19:33:53 -0800
+
+
+Started GET "/signout" for 127.0.0.1 at 2014-11-24 19:34:12 -0800
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-24 19:34:12 -0800
+Processing by UserController#profile as HTML
+  Rendered user/profile.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 248ms (Views: 247.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/auth/facebook" for 127.0.0.1 at 2014-11-24 19:34:14 -0800
+(facebook) Request phase initiated.
+
+
+Started GET "/auth/facebook/callback?code=AQDwjiHIkJq5RXxB_lZguUUu4SEIVpoGP_BHZRSbszbhHWkn0k-iqJ73EIsG8_h54AZULqU3OUkTlFTWNzNHv1dggQcZcVMpeHS5sGt6qwbfbdmMJmO-WqqmNxj-gnk9be0yXniiQPCwqERo26d7flPf8mK7NIHYeaLZjQgwvHiJvbSDoLAqJiUtfIn5tdJoaGHjNvl6MY-2TtWE8O9Z4GhYcOMjb9tga1U7cmzd85sG1grjrj4Okxkj2ZfDrvBY-pXCtqTPFX69Pw5xfkUHaM6D4OkiIw6ka8QBeki_gjHlc11Ib2IIffXEsk2BzsdB8YQ&state=fba786a1d280a0bc364e7c06b835b8fff6ba8402ecf4d333" for 127.0.0.1 at 2014-11-24 19:34:14 -0800
+(facebook) Callback phase initiated.
+Processing by SessionsController#create as HTML
+  Parameters: {"code"=>"AQDwjiHIkJq5RXxB_lZguUUu4SEIVpoGP_BHZRSbszbhHWkn0k-iqJ73EIsG8_h54AZULqU3OUkTlFTWNzNHv1dggQcZcVMpeHS5sGt6qwbfbdmMJmO-WqqmNxj-gnk9be0yXniiQPCwqERo26d7flPf8mK7NIHYeaLZjQgwvHiJvbSDoLAqJiUtfIn5tdJoaGHjNvl6MY-2TtWE8O9Z4GhYcOMjb9tga1U7cmzd85sG1grjrj4Okxkj2ZfDrvBY-pXCtqTPFX69Pw5xfkUHaM6D4OkiIw6ka8QBeki_gjHlc11Ib2IIffXEsk2BzsdB8YQ", "state"=>"fba786a1d280a0bc364e7c06b835b8fff6ba8402ecf4d333", "provider"=>"facebook"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."provider" = 'facebook' AND "users"."uid" = '10203844294482291'  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "users" ("created_at", "first_name", "image", "last_name", "oauth_expires_at", "oauth_token", "provider", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["created_at", "2014-11-25 03:34:14.889013"], ["first_name", "Peter"], ["image", "http://graph.facebook.com/10203844294482291/picture"], ["last_name", "Schulz"], ["oauth_expires_at", "2015-01-24 00:56:50.000000"], ["oauth_token", "CAALvadZCq1V4BAIUmFvADaQhjrboOnUwFTCVEKqWv87VI1E6UQjqyBzCQl5jostvM6f3I1CSMdVoXKjgnRZBVNI2M4KNfdkHCBjmIMRE8WuaN69YCZCSgrJyPCt6cNhdrLOc8ZBE4xXc9I7Lxzkrh6f7TULYYHhkZAP340BJkZBjPOttKZAfEhpeia8HgfH2batwZCiuTElc7bsjKlyiihIn"], ["provider", "facebook"], ["uid", "10203844294482291"], ["updated_at", "2014-11-25 03:34:14.889013"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 7ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-24 19:34:14 -0800
+Processing by UserController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 43]]
+  [1m[35mGroup Load (0.5ms)[0m  SELECT "groups".* FROM "groups" INNER JOIN "group_users" ON "groups"."id" = "group_users"."group_id" WHERE "group_users"."user_id" = $1  [["user_id", 43]]
+  Rendered user/profile.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 247ms (Views: 243.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-24 19:34:18 -0800
+Processing by UserController#profile as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 43]]
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" INNER JOIN "group_users" ON "groups"."id" = "group_users"."group_id" WHERE "group_users"."user_id" = $1  [["user_id", 43]]
+  Rendered user/profile.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 264ms (Views: 261.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-24 19:37:23 -0800
+Processing by UserController#profile as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 43]]
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" INNER JOIN "group_users" ON "groups"."id" = "group_users"."group_id" WHERE "group_users"."user_id" = $1  [["user_id", 43]]
+  Rendered user/profile.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 325ms (Views: 322.2ms | ActiveRecord: 0.5ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (1.5ms)[0m  DELETE FROM "users"
+  [1m[36mSQL (1.2ms)[0m  [1mDELETE FROM "groups"[0m
+  [1m[35mSQL (0.6ms)[0m  DELETE FROM "reviews"
+  [1m[36mSQL (1.3ms)[0m  [1mDELETE FROM "locations"[0m
+  [1m[35mSQL (0.9ms)[0m  DELETE FROM "group_locations"
+  [1m[36mSQL (0.5ms)[0m  [1mDELETE FROM "group_users"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "users" ("created_at", "first_name", "image", "last_name", "oauth_expires_at", "oauth_token", "provider", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["created_at", "2014-11-25 03:37:47.274901"], ["first_name", "Peter"], ["image", "http://graph.facebook.com/10203844294482291/picture?/type=normal"], ["last_name", "Schulz"], ["oauth_expires_at", "2015-01-20 23:29:57.000000"], ["oauth_token", "CAALvadZCq1V4BADlKzZA0VBerJ2NlgK7qVtJ32zdqgfp0PEZBkCWYofDlAdPt7VsZCmXVZCdUWx33sZB0UReGEFHFHuVLaVAvuzbtzbZCxWw6vBcUWML2I6ZAfQPlgskzJQQ2R25AeCuHz5Yo8ZBXbYjocZCWObfNaQ83v0ZAXo6AzZAxZCKxGmrLPyVCu6MsLwa8hDBGpZBbH65Djcy9841qj2XLZA..."], ["provider", "facebook"], ["uid", "10203844294482291"], ["updated_at", "2014-11-25 03:37:47.274901"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "first_name", "image", "last_name", "oauth_expires_at", "oauth_token", "provider", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["created_at", "2014-11-25 03:37:47.289309"], ["first_name", "Melody"], ["image", "http://graph.facebook.com/10103525070422447/picture"], ["last_name", "Serra"], ["oauth_expires_at", "2015-01-22 19:01:17.000000"], ["oauth_token", "CAALvadZCq1V4BABf9cmWuYtQ5aL4qGBzQiAlZAYopZBpTsLHswjrMYR2tINBq1GA9vHifDxg45uvfYFzcbu1MUwNmXdhR6kZAhbcQHtUIio96Bgy63sqk3yAqCge1xy1Dwt4eguEGhZCCZAHhqOQHrKzP9mgfZAzjBV70Ejlj69YZAfd9aYI7g7gH5J1DWp4xR3cSTGxOZARV7WEXOqP9n49o"], ["provider", "facebook"], ["uid", "10103525070422447"], ["updated_at", "2014-11-25 03:37:47.289309"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "first_name", "image", "last_name", "oauth_expires_at", "oauth_token", "provider", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["created_at", "2014-11-25 03:37:47.292288"], ["first_name", "Tim"], ["image", "http://graph.facebook.com/688572161238150/picture"], ["last_name", "Gray"], ["oauth_expires_at", "2015-01-21 22:08:12.000000"], ["oauth_token", "CAALvadZCq1V4BACwZApBZCb0TwYrWAkzDD3sEvH34nyMnnufDZBrNhjNjZBIXvrpjHd3eRG2JzLFKQnftclZB4sMw4ZAZCkFYaIg5rMLoyrM1mjd9ckekYS66Wxcm2QrrqBOr7P6q8XNR48FoVcJTEhA2japZAyZAZCERqW90vPKaM0RTQ2k2xZAqgrgIAQdatMsphHT28p20rVkFZBEfR9mGMtAS"], ["provider", "facebook"], ["uid", "688572161238150"], ["updated_at", "2014-11-25 03:37:47.292288"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "groups" ("created_at", "lat", "lng", "name", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-25 03:37:47.301086"], ["lat", "37.7912563"], ["lng", "-122.4006792"], ["name", "General Assembly"], ["updated_at", "2014-11-25 03:37:47.301086"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "groups" ("created_at", "lat", "lng", "name", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-25 03:37:47.303541"], ["lat", "37.7912563"], ["lng", "-122.4006792"], ["name", "WDI"], ["updated_at", "2014-11-25 03:37:47.303541"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "locations" ("address", "created_at", "lat", "lng", "phone_number", "place_id", "title", "updated_at", "website") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["address", "120 Sansome St., San Francisco, CA"], ["created_at", "2014-11-25 03:37:47.313573"], ["lat", "37.791578"], ["lng", "-122.40063700000002"], ["phone_number", "415-555-5555"], ["place_id", "ChIJ62yCEWKAhYARNL0YQVpRuKg"], ["title", "Mixt Greens"], ["updated_at", "2014-11-25 03:37:47.313573"], ["website", "http://mixtgreens.com"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "locations" ("address", "created_at", "lat", "lng", "phone_number", "place_id", "title", "updated_at", "website") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["address", "246 Kearny St, San Francisco"], ["created_at", "2014-11-25 03:37:47.316282"], ["lat", "37.79046"], ["lng", "-122.40386799999999"], ["phone_number", "415-777-7777"], ["place_id", "ChIJd7ebnImAhYARhr91iINx01g"], ["title", "Rickhouse"], ["updated_at", "2014-11-25 03:37:47.316282"], ["website", "http://www.rickhousebar.com/"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "locations" ("address", "created_at", "lat", "lng", "phone_number", "place_id", "title", "updated_at", "website") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["address", "919 Kearny St, San Francisco, CA 94133, United States"], ["created_at", "2014-11-25 03:37:47.317977"], ["lat", "37.796477"], ["lng", "-122.40542600000003"], ["phone_number", "415-333-3333"], ["place_id", "ChIJvS92wfSAhYARC2tq3BmjmIM"], ["title", "House of NanKing"], ["updated_at", "2014-11-25 03:37:47.317977"], ["website", "http://poop.com"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "group_locations" ("created_at", "group_id", "location_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-25 03:37:47.325447"], ["group_id", 31], ["location_id", 54], ["updated_at", "2014-11-25 03:37:47.325447"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "group_locations" ("created_at", "group_id", "location_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-25 03:37:47.327941"], ["group_id", 31], ["location_id", 55], ["updated_at", "2014-11-25 03:37:47.327941"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "group_locations" ("created_at", "group_id", "location_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-25 03:37:47.329419"], ["group_id", 31], ["location_id", 56], ["updated_at", "2014-11-25 03:37:47.329419"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "group_locations" ("created_at", "group_id", "location_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-25 03:37:47.330824"], ["group_id", 32], ["location_id", 54], ["updated_at", "2014-11-25 03:37:47.330824"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "group_locations" ("created_at", "group_id", "location_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-25 03:37:47.332320"], ["group_id", 32], ["location_id", 55], ["updated_at", "2014-11-25 03:37:47.332320"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "group_users" ("created_at", "group_id", "is_owner", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-25 03:37:47.340219"], ["group_id", 31], ["is_owner", "t"], ["updated_at", "2014-11-25 03:37:47.340219"], ["user_id", 44]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (48.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "group_users" ("created_at", "group_id", "is_owner", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-25 03:37:47.391078"], ["group_id", 31], ["is_owner", "f"], ["updated_at", "2014-11-25 03:37:47.391078"], ["user_id", 45]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "group_users" ("created_at", "group_id", "is_owner", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-25 03:37:47.393019"], ["group_id", 31], ["is_owner", "f"], ["updated_at", "2014-11-25 03:37:47.393019"], ["user_id", 46]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "group_users" ("created_at", "group_id", "is_owner", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-25 03:37:47.394638"], ["group_id", 32], ["is_owner", "f"], ["updated_at", "2014-11-25 03:37:47.394638"], ["user_id", 44]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "group_users" ("created_at", "group_id", "is_owner", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-25 03:37:47.396167"], ["group_id", 32], ["is_owner", "t"], ["updated_at", "2014-11-25 03:37:47.396167"], ["user_id", 45]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "reviews" ("created_at", "group_location_id", "rating", "review", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-25 03:37:47.404475"], ["group_location_id", 79], ["rating", 1], ["review", "THIS IS A REVIEW OF MIXT GREENS"], ["updated_at", "2014-11-25 03:37:47.404475"], ["user_id", 44]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "reviews" ("created_at", "group_location_id", "rating", "review", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-25 03:37:47.407099"], ["group_location_id", 80], ["rating", -1], ["review", "THIS IS A REVIEW OF Rickhouse"], ["updated_at", "2014-11-25 03:37:47.407099"], ["user_id", 45]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "reviews" ("created_at", "group_location_id", "rating", "review", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-25 03:37:47.408695"], ["group_location_id", 81], ["rating", 1], ["review", "THIS IS A REVIEW OF House of NanKing"], ["updated_at", "2014-11-25 03:37:47.408695"], ["user_id", 46]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "reviews" ("created_at", "group_location_id", "rating", "review", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-25 03:37:47.410243"], ["group_location_id", 82], ["rating", 1], ["review", "THIS IS A REVIEW OF MIXT GREENS"], ["updated_at", "2014-11-25 03:37:47.410243"], ["user_id", 44]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "reviews" ("created_at", "group_location_id", "rating", "review", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-25 03:37:47.411874"], ["group_location_id", 83], ["rating", -1], ["review", "THIS IS A REVIEW OF Rickhouse"], ["updated_at", "2014-11-25 03:37:47.411874"], ["user_id", 45]]
+  [1m[35m (0.3ms)[0m  COMMIT
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-24 19:38:15 -0800
+Processing by UserController#profile as HTML
+  Rendered user/profile.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 333ms (Views: 332.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/auth/facebook" for 127.0.0.1 at 2014-11-24 19:38:18 -0800
+(facebook) Request phase initiated.
+
+
+Started GET "/auth/facebook/callback?code=AQDGxE0_kG_kH2Rv2bpVGXIskXvyNk55GpDMbgPxqPA4S9dp8THN-107KnF_CVaWXTpoR34K9fyUb6Qw8VfNJsMcgs9_ptI8EnHwfYXotgR8vObXNPkTy2zdxomJk4XETzRJUZz8nwMls1PlO5UkfKqVt-FlM_Y8g4cFvFkGaAX2KzdL7Joi65HEIgpsQg7h0nLGuLTmI3Z_96WyhRPRrRL_wfeA-OJ8TBljg2ygVvcRCpHaaAUvqHgGVg4B1RlUXiGnXxv6yR55MY6kYkd3mKM0kPuSW5mL6VKG8y4OwcXJMPDpzAD-20g807pv2Xzkx28&state=11c0a0ecaea4f4e8cef5b50160fad92131cbe26ffbfa886a" for 127.0.0.1 at 2014-11-24 19:38:18 -0800
+(facebook) Callback phase initiated.
+Processing by SessionsController#create as HTML
+  Parameters: {"code"=>"AQDGxE0_kG_kH2Rv2bpVGXIskXvyNk55GpDMbgPxqPA4S9dp8THN-107KnF_CVaWXTpoR34K9fyUb6Qw8VfNJsMcgs9_ptI8EnHwfYXotgR8vObXNPkTy2zdxomJk4XETzRJUZz8nwMls1PlO5UkfKqVt-FlM_Y8g4cFvFkGaAX2KzdL7Joi65HEIgpsQg7h0nLGuLTmI3Z_96WyhRPRrRL_wfeA-OJ8TBljg2ygVvcRCpHaaAUvqHgGVg4B1RlUXiGnXxv6yR55MY6kYkd3mKM0kPuSW5mL6VKG8y4OwcXJMPDpzAD-20g807pv2Xzkx28", "state"=>"11c0a0ecaea4f4e8cef5b50160fad92131cbe26ffbfa886a", "provider"=>"facebook"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."provider" = 'facebook' AND "users"."uid" = '10203844294482291'  ORDER BY "users"."id" ASC LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 3ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-24 19:38:18 -0800
+Processing by UserController#profile as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 44]]
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" INNER JOIN "group_users" ON "groups"."id" = "group_users"."group_id" WHERE "group_users"."user_id" = $1[0m  [["user_id", 44]]
+  [1m[35mGroupUser Load (0.4ms)[0m  SELECT  "group_users".* FROM "group_users"  WHERE "group_users"."group_id" = 31 AND "group_users"."user_id" = 44 LIMIT 1
+  [1m[36mGroupUser Load (0.3ms)[0m  [1mSELECT  "group_users".* FROM "group_users"  WHERE "group_users"."group_id" = 32 AND "group_users"."user_id" = 44 LIMIT 1[0m
+  Rendered user/profile.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 249ms (Views: 245.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-24 19:38:50 -0800
+Processing by UserController#profile as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 44]]
+  [1m[36mGroup Load (0.7ms)[0m  [1mSELECT "groups".* FROM "groups" INNER JOIN "group_users" ON "groups"."id" = "group_users"."group_id" WHERE "group_users"."user_id" = $1[0m  [["user_id", 44]]
+  [1m[35mGroupUser Load (0.5ms)[0m  SELECT  "group_users".* FROM "group_users"  WHERE "group_users"."group_id" = 31 AND "group_users"."user_id" = 44 LIMIT 1
+  [1m[36mGroupUser Load (0.5ms)[0m  [1mSELECT  "group_users".* FROM "group_users"  WHERE "group_users"."group_id" = 32 AND "group_users"."user_id" = 44 LIMIT 1[0m
+  Rendered user/profile.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 270ms (Views: 262.9ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/signout" for 127.0.0.1 at 2014-11-24 19:38:53 -0800
+Processing by SessionsController#destroy as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 44]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-24 19:38:53 -0800
+Processing by UserController#profile as HTML
+  Rendered user/profile.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 250ms (Views: 249.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/auth/facebook" for 127.0.0.1 at 2014-11-24 19:38:55 -0800
+(facebook) Request phase initiated.
+
+
+Started GET "/auth/facebook/callback?code=AQAZySx_wJU3dNgL8qFKABl5RZ36gKBLchPlrUZRMFKaQInghT-bUuNe7spOCCvk6KcLaOow4NFjGFe6bt50MA0fRCF70gJkwhre2LFodmgMWs54jJUoQeR1g14XhwAoNBWK1Cs-73DOEq9rfoIrUGuKxQZPksZL5ndC-To-Ei_wEU6ImqHSkAMU3Eo_CC73lSPNoEHXjxhD5tYqJmbCxP49qfuDBlyR0AGxFeuee6WexqIieQQDqf-dQ5ubQMVq81RViuI_OXnA5gHGDE9P_CY41s3PKYujxVzFyhJAUMH-oHw3ic3eGoszZVZxo7iKajk&state=3abb00adf41445c89f387030fcd6acc3129bc30fbdea4c61" for 127.0.0.1 at 2014-11-24 19:38:55 -0800
+(facebook) Callback phase initiated.
+Processing by SessionsController#create as HTML
+  Parameters: {"code"=>"AQAZySx_wJU3dNgL8qFKABl5RZ36gKBLchPlrUZRMFKaQInghT-bUuNe7spOCCvk6KcLaOow4NFjGFe6bt50MA0fRCF70gJkwhre2LFodmgMWs54jJUoQeR1g14XhwAoNBWK1Cs-73DOEq9rfoIrUGuKxQZPksZL5ndC-To-Ei_wEU6ImqHSkAMU3Eo_CC73lSPNoEHXjxhD5tYqJmbCxP49qfuDBlyR0AGxFeuee6WexqIieQQDqf-dQ5ubQMVq81RViuI_OXnA5gHGDE9P_CY41s3PKYujxVzFyhJAUMH-oHw3ic3eGoszZVZxo7iKajk", "state"=>"3abb00adf41445c89f387030fcd6acc3129bc30fbdea4c61", "provider"=>"facebook"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."provider" = 'facebook' AND "users"."uid" = '10203844294482291'  ORDER BY "users"."id" ASC LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-24 19:38:56 -0800
+Processing by UserController#profile as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 44]]
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" INNER JOIN "group_users" ON "groups"."id" = "group_users"."group_id" WHERE "group_users"."user_id" = $1[0m  [["user_id", 44]]
+  [1m[35mGroupUser Load (0.4ms)[0m  SELECT  "group_users".* FROM "group_users"  WHERE "group_users"."group_id" = 31 AND "group_users"."user_id" = 44 LIMIT 1
+  [1m[36mGroupUser Load (0.4ms)[0m  [1mSELECT  "group_users".* FROM "group_users"  WHERE "group_users"."group_id" = 32 AND "group_users"."user_id" = 44 LIMIT 1[0m
+  Rendered user/profile.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 272ms (Views: 267.6ms | ActiveRecord: 1.2ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (1.0ms)[0m  DELETE FROM "users"
+  [1m[36mSQL (0.8ms)[0m  [1mDELETE FROM "groups"[0m
+  [1m[35mSQL (1.8ms)[0m  DELETE FROM "reviews"
+  [1m[36mSQL (0.8ms)[0m  [1mDELETE FROM "locations"[0m
+  [1m[35mSQL (0.9ms)[0m  DELETE FROM "group_locations"
+  [1m[36mSQL (0.8ms)[0m  [1mDELETE FROM "group_users"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "users" ("created_at", "first_name", "image", "last_name", "oauth_expires_at", "oauth_token", "provider", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["created_at", "2014-11-25 03:39:21.573400"], ["first_name", "Peter"], ["image", "http://graph.facebook.com/10203844294482291/picture?type=large"], ["last_name", "Schulz"], ["oauth_expires_at", "2015-01-20 23:29:57.000000"], ["oauth_token", "CAALvadZCq1V4BADlKzZA0VBerJ2NlgK7qVtJ32zdqgfp0PEZBkCWYofDlAdPt7VsZCmXVZCdUWx33sZB0UReGEFHFHuVLaVAvuzbtzbZCxWw6vBcUWML2I6ZAfQPlgskzJQQ2R25AeCuHz5Yo8ZBXbYjocZCWObfNaQ83v0ZAXo6AzZAxZCKxGmrLPyVCu6MsLwa8hDBGpZBbH65Djcy9841qj2XLZA..."], ["provider", "facebook"], ["uid", "10203844294482291"], ["updated_at", "2014-11-25 03:39:21.573400"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "first_name", "image", "last_name", "oauth_expires_at", "oauth_token", "provider", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["created_at", "2014-11-25 03:39:21.587005"], ["first_name", "Melody"], ["image", "http://graph.facebook.com/10103525070422447/picture"], ["last_name", "Serra"], ["oauth_expires_at", "2015-01-22 19:01:17.000000"], ["oauth_token", "CAALvadZCq1V4BABf9cmWuYtQ5aL4qGBzQiAlZAYopZBpTsLHswjrMYR2tINBq1GA9vHifDxg45uvfYFzcbu1MUwNmXdhR6kZAhbcQHtUIio96Bgy63sqk3yAqCge1xy1Dwt4eguEGhZCCZAHhqOQHrKzP9mgfZAzjBV70Ejlj69YZAfd9aYI7g7gH5J1DWp4xR3cSTGxOZARV7WEXOqP9n49o"], ["provider", "facebook"], ["uid", "10103525070422447"], ["updated_at", "2014-11-25 03:39:21.587005"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "first_name", "image", "last_name", "oauth_expires_at", "oauth_token", "provider", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["created_at", "2014-11-25 03:39:21.589080"], ["first_name", "Tim"], ["image", "http://graph.facebook.com/688572161238150/picture"], ["last_name", "Gray"], ["oauth_expires_at", "2015-01-21 22:08:12.000000"], ["oauth_token", "CAALvadZCq1V4BACwZApBZCb0TwYrWAkzDD3sEvH34nyMnnufDZBrNhjNjZBIXvrpjHd3eRG2JzLFKQnftclZB4sMw4ZAZCkFYaIg5rMLoyrM1mjd9ckekYS66Wxcm2QrrqBOr7P6q8XNR48FoVcJTEhA2japZAyZAZCERqW90vPKaM0RTQ2k2xZAqgrgIAQdatMsphHT28p20rVkFZBEfR9mGMtAS"], ["provider", "facebook"], ["uid", "688572161238150"], ["updated_at", "2014-11-25 03:39:21.589080"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "groups" ("created_at", "lat", "lng", "name", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-25 03:39:21.597330"], ["lat", "37.7912563"], ["lng", "-122.4006792"], ["name", "General Assembly"], ["updated_at", "2014-11-25 03:39:21.597330"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "groups" ("created_at", "lat", "lng", "name", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-25 03:39:21.599840"], ["lat", "37.7912563"], ["lng", "-122.4006792"], ["name", "WDI"], ["updated_at", "2014-11-25 03:39:21.599840"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "locations" ("address", "created_at", "lat", "lng", "phone_number", "place_id", "title", "updated_at", "website") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["address", "120 Sansome St., San Francisco, CA"], ["created_at", "2014-11-25 03:39:21.610209"], ["lat", "37.791578"], ["lng", "-122.40063700000002"], ["phone_number", "415-555-5555"], ["place_id", "ChIJ62yCEWKAhYARNL0YQVpRuKg"], ["title", "Mixt Greens"], ["updated_at", "2014-11-25 03:39:21.610209"], ["website", "http://mixtgreens.com"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "locations" ("address", "created_at", "lat", "lng", "phone_number", "place_id", "title", "updated_at", "website") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["address", "246 Kearny St, San Francisco"], ["created_at", "2014-11-25 03:39:21.612923"], ["lat", "37.79046"], ["lng", "-122.40386799999999"], ["phone_number", "415-777-7777"], ["place_id", "ChIJd7ebnImAhYARhr91iINx01g"], ["title", "Rickhouse"], ["updated_at", "2014-11-25 03:39:21.612923"], ["website", "http://www.rickhousebar.com/"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "locations" ("address", "created_at", "lat", "lng", "phone_number", "place_id", "title", "updated_at", "website") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["address", "919 Kearny St, San Francisco, CA 94133, United States"], ["created_at", "2014-11-25 03:39:21.614662"], ["lat", "37.796477"], ["lng", "-122.40542600000003"], ["phone_number", "415-333-3333"], ["place_id", "ChIJvS92wfSAhYARC2tq3BmjmIM"], ["title", "House of NanKing"], ["updated_at", "2014-11-25 03:39:21.614662"], ["website", "http://poop.com"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "group_locations" ("created_at", "group_id", "location_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-25 03:39:21.622018"], ["group_id", 33], ["location_id", 57], ["updated_at", "2014-11-25 03:39:21.622018"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "group_locations" ("created_at", "group_id", "location_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-25 03:39:21.626050"], ["group_id", 33], ["location_id", 58], ["updated_at", "2014-11-25 03:39:21.626050"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "group_locations" ("created_at", "group_id", "location_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-25 03:39:21.628058"], ["group_id", 33], ["location_id", 59], ["updated_at", "2014-11-25 03:39:21.628058"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "group_locations" ("created_at", "group_id", "location_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-25 03:39:21.629567"], ["group_id", 34], ["location_id", 57], ["updated_at", "2014-11-25 03:39:21.629567"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "group_locations" ("created_at", "group_id", "location_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-25 03:39:21.631038"], ["group_id", 34], ["location_id", 58], ["updated_at", "2014-11-25 03:39:21.631038"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "group_users" ("created_at", "group_id", "is_owner", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-25 03:39:21.639363"], ["group_id", 33], ["is_owner", "t"], ["updated_at", "2014-11-25 03:39:21.639363"], ["user_id", 47]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (53.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "group_users" ("created_at", "group_id", "is_owner", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-25 03:39:21.694964"], ["group_id", 33], ["is_owner", "f"], ["updated_at", "2014-11-25 03:39:21.694964"], ["user_id", 48]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "group_users" ("created_at", "group_id", "is_owner", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-25 03:39:21.696941"], ["group_id", 33], ["is_owner", "f"], ["updated_at", "2014-11-25 03:39:21.696941"], ["user_id", 49]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "group_users" ("created_at", "group_id", "is_owner", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-25 03:39:21.698793"], ["group_id", 34], ["is_owner", "f"], ["updated_at", "2014-11-25 03:39:21.698793"], ["user_id", 47]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "group_users" ("created_at", "group_id", "is_owner", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-25 03:39:21.700316"], ["group_id", 34], ["is_owner", "t"], ["updated_at", "2014-11-25 03:39:21.700316"], ["user_id", 48]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "reviews" ("created_at", "group_location_id", "rating", "review", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-25 03:39:21.710885"], ["group_location_id", 84], ["rating", 1], ["review", "THIS IS A REVIEW OF MIXT GREENS"], ["updated_at", "2014-11-25 03:39:21.710885"], ["user_id", 47]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "reviews" ("created_at", "group_location_id", "rating", "review", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-25 03:39:21.713456"], ["group_location_id", 85], ["rating", -1], ["review", "THIS IS A REVIEW OF Rickhouse"], ["updated_at", "2014-11-25 03:39:21.713456"], ["user_id", 48]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "reviews" ("created_at", "group_location_id", "rating", "review", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-25 03:39:21.715054"], ["group_location_id", 86], ["rating", 1], ["review", "THIS IS A REVIEW OF House of NanKing"], ["updated_at", "2014-11-25 03:39:21.715054"], ["user_id", 49]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "reviews" ("created_at", "group_location_id", "rating", "review", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-25 03:39:21.716647"], ["group_location_id", 87], ["rating", 1], ["review", "THIS IS A REVIEW OF MIXT GREENS"], ["updated_at", "2014-11-25 03:39:21.716647"], ["user_id", 47]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "reviews" ("created_at", "group_location_id", "rating", "review", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-25 03:39:21.718187"], ["group_location_id", 88], ["rating", -1], ["review", "THIS IS A REVIEW OF Rickhouse"], ["updated_at", "2014-11-25 03:39:21.718187"], ["user_id", 48]]
+  [1m[35m (0.3ms)[0m  COMMIT
+
+
+Started GET "/signout" for 127.0.0.1 at 2014-11-24 19:39:40 -0800
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-24 19:39:40 -0800
+Processing by UserController#profile as HTML
+  Rendered user/profile.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 253ms (Views: 252.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/auth/facebook" for 127.0.0.1 at 2014-11-24 19:39:43 -0800
+(facebook) Request phase initiated.
+
+
+Started GET "/auth/facebook/callback?code=AQB3ZPVTFgb4mSUDICBSVjCvAMUtMVOwC9j-TCS3TZJsKyW2ICHil0qzb4o7u6R0JGZ9HC7mNYLis2iZFD5IGTMA4WpSVMUQQxqvKwTy0Snm8hc7liiOXcUNoV97FXUVIpwRT1BsbSunQv83P_qy_wvXTFDkzaSyh5igBqmaXuqFOkyZhrlqxJjjmkvQbKjmtamK3zpx_IK2GzfKncltrxWTAQE6lZ8jAPovEh3pp_akNkwXLGcCo1FPR8Jaboa00RowkD8R5N2tLAoD5YqYz_ZmNCwLbLVqaQUIg8PXfnVJWMVDacY4i79OpauaTp1yRgg&state=60c6a1e8c315c43d41cd0dd8a0cf97f69a8ac69669cca846" for 127.0.0.1 at 2014-11-24 19:39:43 -0800
+(facebook) Callback phase initiated.
+Processing by SessionsController#create as HTML
+  Parameters: {"code"=>"AQB3ZPVTFgb4mSUDICBSVjCvAMUtMVOwC9j-TCS3TZJsKyW2ICHil0qzb4o7u6R0JGZ9HC7mNYLis2iZFD5IGTMA4WpSVMUQQxqvKwTy0Snm8hc7liiOXcUNoV97FXUVIpwRT1BsbSunQv83P_qy_wvXTFDkzaSyh5igBqmaXuqFOkyZhrlqxJjjmkvQbKjmtamK3zpx_IK2GzfKncltrxWTAQE6lZ8jAPovEh3pp_akNkwXLGcCo1FPR8Jaboa00RowkD8R5N2tLAoD5YqYz_ZmNCwLbLVqaQUIg8PXfnVJWMVDacY4i79OpauaTp1yRgg", "state"=>"60c6a1e8c315c43d41cd0dd8a0cf97f69a8ac69669cca846", "provider"=>"facebook"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."provider" = 'facebook' AND "users"."uid" = '10203844294482291'  ORDER BY "users"."id" ASC LIMIT 1
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-24 19:39:44 -0800
+Processing by UserController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 47]]
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" INNER JOIN "group_users" ON "groups"."id" = "group_users"."group_id" WHERE "group_users"."user_id" = $1  [["user_id", 47]]
+  [1m[36mGroupUser Load (0.4ms)[0m  [1mSELECT  "group_users".* FROM "group_users"  WHERE "group_users"."group_id" = 33 AND "group_users"."user_id" = 47 LIMIT 1[0m
+  [1m[35mGroupUser Load (0.3ms)[0m  SELECT  "group_users".* FROM "group_users"  WHERE "group_users"."group_id" = 34 AND "group_users"."user_id" = 47 LIMIT 1
+  Rendered user/profile.html.erb within layouts/application (58.3ms)
+Completed 200 OK in 331ms (Views: 326.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-24 19:39:47 -0800
+Processing by UserController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 47]]
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" INNER JOIN "group_users" ON "groups"."id" = "group_users"."group_id" WHERE "group_users"."user_id" = $1  [["user_id", 47]]
+  [1m[36mGroupUser Load (0.4ms)[0m  [1mSELECT  "group_users".* FROM "group_users"  WHERE "group_users"."group_id" = 33 AND "group_users"."user_id" = 47 LIMIT 1[0m
+  [1m[35mGroupUser Load (0.3ms)[0m  SELECT  "group_users".* FROM "group_users"  WHERE "group_users"."group_id" = 34 AND "group_users"."user_id" = 47 LIMIT 1
+  Rendered user/profile.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 353ms (Views: 348.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-24 19:46:41 -0800
+Processing by UserController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 47]]
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" INNER JOIN "group_users" ON "groups"."id" = "group_users"."group_id" WHERE "group_users"."user_id" = $1  [["user_id", 47]]
+  [1m[36mGroupUser Load (0.4ms)[0m  [1mSELECT  "group_users".* FROM "group_users"  WHERE "group_users"."group_id" = 33 AND "group_users"."user_id" = 47 LIMIT 1[0m
+  [1m[35mGroupUser Load (0.3ms)[0m  SELECT  "group_users".* FROM "group_users"  WHERE "group_users"."group_id" = 34 AND "group_users"."user_id" = 47 LIMIT 1
+  Rendered user/profile.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 271ms (Views: 267.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/groups/33/map" for 127.0.0.1 at 2014-11-24 19:53:18 -0800
+Processing by GroupsController#map as HTML
+  Parameters: {"id"=>"33"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 47]]
+  [1m[35mGroup Load (0.4ms)[0m  SELECT  "groups".* FROM "groups"  WHERE "groups"."id" = 33 LIMIT 1
+  Rendered groups/map.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 308ms (Views: 243.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/groups/33/map.json" for 127.0.0.1 at 2014-11-24 19:53:19 -0800
+Processing by GroupsController#map as JSON
+  Parameters: {"id"=>"33"}
+  [1m[36mUser Load (1.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 47]]
+  [1m[35mGroup Load (1.8ms)[0m  SELECT  "groups".* FROM "groups"  WHERE "groups"."id" = 33 LIMIT 1
+  [1m[36mLocation Load (1.9ms)[0m  [1mSELECT "locations".* FROM "locations" INNER JOIN "group_locations" ON "locations"."id" = "group_locations"."location_id" WHERE "group_locations"."group_id" = $1[0m  [["group_id", 33]]
+Completed 200 OK in 11ms (Views: 2.5ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/groups/33/locations/57.json" for 127.0.0.1 at 2014-11-24 19:53:19 -0800
+Processing by LocationsController#show as JSON
+  Parameters: {"group_id"=>"33", "id"=>"57"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 47]]
+  [1m[36mGroupLocation Load (0.7ms)[0m  [1mSELECT  "group_locations".* FROM "group_locations"  WHERE "group_locations"."group_id" = 33 AND "group_locations"."location_id" = 57 LIMIT 1[0m
+  [1m[35mReview Load (0.6ms)[0m  SELECT "reviews".* FROM "reviews"  WHERE "reviews"."group_location_id" = $1  [["group_location_id", 84]]
+Completed 200 OK in 6ms (Views: 1.5ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/groups/33/locations/58.json" for 127.0.0.1 at 2014-11-24 19:53:19 -0800
+Processing by LocationsController#show as JSON
+  Parameters: {"group_id"=>"33", "id"=>"58"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 47]]
+  [1m[35mGroupLocation Load (0.6ms)[0m  SELECT  "group_locations".* FROM "group_locations"  WHERE "group_locations"."group_id" = 33 AND "group_locations"."location_id" = 58 LIMIT 1
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT "reviews".* FROM "reviews"  WHERE "reviews"."group_location_id" = $1[0m  [["group_location_id", 85]]
+Completed 200 OK in 6ms (Views: 1.6ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/groups/33/locations/59.json" for 127.0.0.1 at 2014-11-24 19:53:19 -0800
+Processing by LocationsController#show as JSON
+  Parameters: {"group_id"=>"33", "id"=>"59"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 47]]
+  [1m[36mGroupLocation Load (0.6ms)[0m  [1mSELECT  "group_locations".* FROM "group_locations"  WHERE "group_locations"."group_id" = 33 AND "group_locations"."location_id" = 59 LIMIT 1[0m
+  [1m[35mReview Load (0.2ms)[0m  SELECT "reviews".* FROM "reviews"  WHERE "reviews"."group_location_id" = $1  [["group_location_id", 86]]
+Completed 200 OK in 5ms (Views: 1.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/groups/33/map" for 127.0.0.1 at 2014-11-24 19:59:20 -0800
+Processing by GroupsController#map as HTML
+  Parameters: {"id"=>"33"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 47]]
+  [1m[35mGroup Load (0.4ms)[0m  SELECT  "groups".* FROM "groups"  WHERE "groups"."id" = 33 LIMIT 1
+  Rendered groups/map.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 264ms (Views: 261.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/groups/33/map.json" for 127.0.0.1 at 2014-11-24 19:59:20 -0800
+Processing by GroupsController#map as JSON
+  Parameters: {"id"=>"33"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 47]]
+  [1m[35mGroup Load (0.4ms)[0m  SELECT  "groups".* FROM "groups"  WHERE "groups"."id" = 33 LIMIT 1
+  [1m[36mLocation Load (0.6ms)[0m  [1mSELECT "locations".* FROM "locations" INNER JOIN "group_locations" ON "locations"."id" = "group_locations"."location_id" WHERE "group_locations"."group_id" = $1[0m  [["group_id", 33]]
+Completed 200 OK in 6ms (Views: 2.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/groups/33/locations/57.json" for 127.0.0.1 at 2014-11-24 19:59:21 -0800
+Processing by LocationsController#show as JSON
+  Parameters: {"group_id"=>"33", "id"=>"57"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 47]]
+  [1m[36mGroupLocation Load (0.4ms)[0m  [1mSELECT  "group_locations".* FROM "group_locations"  WHERE "group_locations"."group_id" = 33 AND "group_locations"."location_id" = 57 LIMIT 1[0m
+  [1m[35mReview Load (0.2ms)[0m  SELECT "reviews".* FROM "reviews"  WHERE "reviews"."group_location_id" = $1  [["group_location_id", 84]]
+Completed 200 OK in 4ms (Views: 0.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/groups/33/locations/58.json" for 127.0.0.1 at 2014-11-24 19:59:21 -0800
+Processing by LocationsController#show as JSON
+  Parameters: {"group_id"=>"33", "id"=>"58"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 47]]
+  [1m[35mGroupLocation Load (0.6ms)[0m  SELECT  "group_locations".* FROM "group_locations"  WHERE "group_locations"."group_id" = 33 AND "group_locations"."location_id" = 58 LIMIT 1
+  [1m[36mReview Load (0.2ms)[0m  [1mSELECT "reviews".* FROM "reviews"  WHERE "reviews"."group_location_id" = $1[0m  [["group_location_id", 85]]
+Completed 200 OK in 4ms (Views: 0.9ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/groups/33/locations/59.json" for 127.0.0.1 at 2014-11-24 19:59:21 -0800
+Processing by LocationsController#show as JSON
+  Parameters: {"group_id"=>"33", "id"=>"59"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 47]]
+  [1m[36mGroupLocation Load (0.6ms)[0m  [1mSELECT  "group_locations".* FROM "group_locations"  WHERE "group_locations"."group_id" = 33 AND "group_locations"."location_id" = 59 LIMIT 1[0m
+  [1m[35mReview Load (0.2ms)[0m  SELECT "reviews".* FROM "reviews"  WHERE "reviews"."group_location_id" = $1  [["group_location_id", 86]]
+Completed 200 OK in 5ms (Views: 1.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/groups/33/map" for 127.0.0.1 at 2014-11-24 20:00:25 -0800
+Processing by GroupsController#map as HTML
+  Parameters: {"id"=>"33"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 47]]
+  [1m[35mGroup Load (0.5ms)[0m  SELECT  "groups".* FROM "groups"  WHERE "groups"."id" = 33 LIMIT 1
+  Rendered groups/map.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 254ms (Views: 250.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/groups/33/map.json" for 127.0.0.1 at 2014-11-24 20:00:25 -0800
+Processing by GroupsController#map as JSON
+  Parameters: {"id"=>"33"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 47]]
+  [1m[35mGroup Load (0.5ms)[0m  SELECT  "groups".* FROM "groups"  WHERE "groups"."id" = 33 LIMIT 1
+  [1m[36mLocation Load (0.6ms)[0m  [1mSELECT "locations".* FROM "locations" INNER JOIN "group_locations" ON "locations"."id" = "group_locations"."location_id" WHERE "group_locations"."group_id" = $1[0m  [["group_id", 33]]
+Completed 200 OK in 7ms (Views: 2.4ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/groups/33/locations/58.json" for 127.0.0.1 at 2014-11-24 20:00:25 -0800
+Processing by LocationsController#show as JSON
+  Parameters: {"group_id"=>"33", "id"=>"58"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 47]]
+  [1m[36mGroupLocation Load (0.6ms)[0m  [1mSELECT  "group_locations".* FROM "group_locations"  WHERE "group_locations"."group_id" = 33 AND "group_locations"."location_id" = 58 LIMIT 1[0m
+  [1m[35mReview Load (0.4ms)[0m  SELECT "reviews".* FROM "reviews"  WHERE "reviews"."group_location_id" = $1  [["group_location_id", 85]]
+Completed 200 OK in 6ms (Views: 1.8ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/groups/33/locations/57.json" for 127.0.0.1 at 2014-11-24 20:00:25 -0800
+Processing by LocationsController#show as JSON
+  Parameters: {"group_id"=>"33", "id"=>"57"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 47]]
+  [1m[35mGroupLocation Load (0.6ms)[0m  SELECT  "group_locations".* FROM "group_locations"  WHERE "group_locations"."group_id" = 33 AND "group_locations"."location_id" = 57 LIMIT 1
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT "reviews".* FROM "reviews"  WHERE "reviews"."group_location_id" = $1[0m  [["group_location_id", 84]]
+Completed 200 OK in 5ms (Views: 1.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/groups/33/locations/59.json" for 127.0.0.1 at 2014-11-24 20:00:25 -0800
+Processing by LocationsController#show as JSON
+  Parameters: {"group_id"=>"33", "id"=>"59"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 47]]
+  [1m[36mGroupLocation Load (0.6ms)[0m  [1mSELECT  "group_locations".* FROM "group_locations"  WHERE "group_locations"."group_id" = 33 AND "group_locations"."location_id" = 59 LIMIT 1[0m
+  [1m[35mReview Load (0.2ms)[0m  SELECT "reviews".* FROM "reviews"  WHERE "reviews"."group_location_id" = $1  [["group_location_id", 86]]
+Completed 200 OK in 5ms (Views: 1.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/groups/33/map" for 127.0.0.1 at 2014-11-24 20:01:34 -0800
+Processing by GroupsController#map as HTML
+  Parameters: {"id"=>"33"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 47]]
+  [1m[35mGroup Load (0.5ms)[0m  SELECT  "groups".* FROM "groups"  WHERE "groups"."id" = 33 LIMIT 1
+  Rendered groups/map.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 256ms (Views: 251.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/groups/33/map.json" for 127.0.0.1 at 2014-11-24 20:01:35 -0800
+Processing by GroupsController#map as JSON
+  Parameters: {"id"=>"33"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 47]]
+  [1m[35mGroup Load (0.5ms)[0m  SELECT  "groups".* FROM "groups"  WHERE "groups"."id" = 33 LIMIT 1
+  [1m[36mLocation Load (0.3ms)[0m  [1mSELECT "locations".* FROM "locations" INNER JOIN "group_locations" ON "locations"."id" = "group_locations"."location_id" WHERE "group_locations"."group_id" = $1[0m  [["group_id", 33]]
+Completed 200 OK in 7ms (Views: 2.5ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/groups/33/locations/57.json" for 127.0.0.1 at 2014-11-24 20:01:35 -0800
+Processing by LocationsController#show as JSON
+  Parameters: {"group_id"=>"33", "id"=>"57"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 47]]
+  [1m[36mGroupLocation Load (0.7ms)[0m  [1mSELECT  "group_locations".* FROM "group_locations"  WHERE "group_locations"."group_id" = 33 AND "group_locations"."location_id" = 57 LIMIT 1[0m
+  [1m[35mReview Load (0.3ms)[0m  SELECT "reviews".* FROM "reviews"  WHERE "reviews"."group_location_id" = $1  [["group_location_id", 84]]
+Completed 200 OK in 6ms (Views: 1.4ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/groups/33/locations/58.json" for 127.0.0.1 at 2014-11-24 20:01:35 -0800
+Processing by LocationsController#show as JSON
+  Parameters: {"group_id"=>"33", "id"=>"58"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 47]]
+  [1m[35mGroupLocation Load (0.6ms)[0m  SELECT  "group_locations".* FROM "group_locations"  WHERE "group_locations"."group_id" = 33 AND "group_locations"."location_id" = 58 LIMIT 1
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT "reviews".* FROM "reviews"  WHERE "reviews"."group_location_id" = $1[0m  [["group_location_id", 85]]
+Completed 200 OK in 6ms (Views: 1.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/groups/33/locations/59.json" for 127.0.0.1 at 2014-11-24 20:01:35 -0800
+Processing by LocationsController#show as JSON
+  Parameters: {"group_id"=>"33", "id"=>"59"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 47]]
+  [1m[36mGroupLocation Load (0.5ms)[0m  [1mSELECT  "group_locations".* FROM "group_locations"  WHERE "group_locations"."group_id" = 33 AND "group_locations"."location_id" = 59 LIMIT 1[0m
+  [1m[35mReview Load (0.2ms)[0m  SELECT "reviews".* FROM "reviews"  WHERE "reviews"."group_location_id" = $1  [["group_location_id", 86]]
+Completed 200 OK in 5ms (Views: 1.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/groups/33/map" for 127.0.0.1 at 2014-11-24 20:03:33 -0800
+Processing by GroupsController#map as HTML
+  Parameters: {"id"=>"33"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 47]]
+  [1m[35mGroup Load (0.4ms)[0m  SELECT  "groups".* FROM "groups"  WHERE "groups"."id" = 33 LIMIT 1
+  Rendered groups/map.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 253ms (Views: 248.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/groups/33/map.json" for 127.0.0.1 at 2014-11-24 20:03:34 -0800
+Processing by GroupsController#map as JSON
+  Parameters: {"id"=>"33"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 47]]
+  [1m[35mGroup Load (0.5ms)[0m  SELECT  "groups".* FROM "groups"  WHERE "groups"."id" = 33 LIMIT 1
+  [1m[36mLocation Load (0.3ms)[0m  [1mSELECT "locations".* FROM "locations" INNER JOIN "group_locations" ON "locations"."id" = "group_locations"."location_id" WHERE "group_locations"."group_id" = $1[0m  [["group_id", 33]]
+Completed 200 OK in 7ms (Views: 2.5ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/groups/33/locations/57.json" for 127.0.0.1 at 2014-11-24 20:03:34 -0800
+Processing by LocationsController#show as JSON
+  Parameters: {"group_id"=>"33", "id"=>"57"}
+  [1m[35mUser Load (3.9ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 47]]
+  [1m[36mGroupLocation Load (0.7ms)[0m  [1mSELECT  "group_locations".* FROM "group_locations"  WHERE "group_locations"."group_id" = 33 AND "group_locations"."location_id" = 57 LIMIT 1[0m
+  [1m[35mReview Load (0.3ms)[0m  SELECT "reviews".* FROM "reviews"  WHERE "reviews"."group_location_id" = $1  [["group_location_id", 84]]
+Completed 200 OK in 10ms (Views: 1.7ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/groups/33/locations/59.json" for 127.0.0.1 at 2014-11-24 20:03:34 -0800
+Processing by LocationsController#show as JSON
+  Parameters: {"group_id"=>"33", "id"=>"59"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 47]]
+  [1m[35mGroupLocation Load (0.6ms)[0m  SELECT  "group_locations".* FROM "group_locations"  WHERE "group_locations"."group_id" = 33 AND "group_locations"."location_id" = 59 LIMIT 1
+  [1m[36mReview Load (0.5ms)[0m  [1mSELECT "reviews".* FROM "reviews"  WHERE "reviews"."group_location_id" = $1[0m  [["group_location_id", 86]]
+Completed 200 OK in 7ms (Views: 1.5ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/groups/33/locations/58.json" for 127.0.0.1 at 2014-11-24 20:03:34 -0800
+Processing by LocationsController#show as JSON
+  Parameters: {"group_id"=>"33", "id"=>"58"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 47]]
+  [1m[36mGroupLocation Load (0.5ms)[0m  [1mSELECT  "group_locations".* FROM "group_locations"  WHERE "group_locations"."group_id" = 33 AND "group_locations"."location_id" = 58 LIMIT 1[0m
+  [1m[35mReview Load (0.3ms)[0m  SELECT "reviews".* FROM "reviews"  WHERE "reviews"."group_location_id" = $1  [["group_location_id", 85]]
+Completed 200 OK in 4ms (Views: 1.1ms | ActiveRecord: 1.1ms)
