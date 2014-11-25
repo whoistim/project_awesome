@@ -12,7 +12,8 @@ Rspots/db/*.sqlite3
 Rspots/db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
-Rspots/log/*.log
+Rspots/log
+Rspots/log/**/*.log
 Rspots/tmp
 
 # Ignore application configuration
